@@ -1,0 +1,3083 @@
+{
+  "testType": "EcdsaVerify",
+  "algorithm": {
+    "algorithmType": "Ecdsa",
+    "curve": "secp192r1",
+    "sha": "SHA-224",
+    "encoding": "DER",
+    "normalize": false,
+    "signature_generation": "Generic"
+  },
+  "version": "0.48",
+  "description": [
+    "The underlying elliptic curve is secp192r1.",
+    "The message digest for hashing the input is SHA-224.",
+    "Signatures are the DER encoding of the sequences containing the two integers r and s.",
+    "The test vectors assume that only DER encoded signatures are valid. Alternative BER encodings are invalid."
+  ],
+  "numTests": 301,
+  "references": [],
+  "notes": {
+    "Basic": {
+      "type": "GENERATION",
+      "desc": "Basic test vectors use the simplest possible inputs. These inputs often overlap with inputs from standards and RFCs. One goal of such test vectors is to simply detect distinct algorithms."
+    },
+    "InvalidRange": {
+      "type": "INVALID",
+      "desc": "The test vector contains a signature where r and/or s are not in the correct range. "
+    },
+    "InvalidSignature": {
+      "type": "VULNERABILITY",
+      "desc": "The signature is invalid."
+    },
+    "ModifiedDer": {
+      "type": "INVALID",
+      "desc": "The test vector contains a signature where the DER is invalid. Accepting such signatures can lead to signature malleability."
+    },
+    "PointAtInfinity": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a signature with special case values that lead to a point at infinity during signature verification."
+    },
+    "PsychicSignature": {
+      "type": "VULNERABILITY",
+      "desc": "The signature contains trivial values such as 0. If the verification is not correctly implemented then it is possible that such signature are verified.",
+      "effect": "Accepting such signatures may result in universal forgeries."
+    },
+    "SpecialAB": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a signature with special case values for the values A and B. These values are chosen to check for arithmetic exceptions during the signature verification."
+    },
+    "SpecialHash": {
+      "type": "CONSTRUCTED",
+      "desc": "The hash of the message is a special case."
+    },
+    "SpecialR": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a signature with special case value for the point R. These values are chosen to check for arithmetic exceptions during the signature verification."
+    },
+    "SpecialRS": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a signature with special case value for r and s. These values are chosen to check for arithmetic exceptions during the signature verification."
+    },
+    "SpecialU12": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a signature with special case values for the value u1 and u2. These values are chosen to check for arithmetic exceptions during the signature verification."
+    },
+    "WrongHash": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a signature that is valid if the wrong hash function is being used to verify the signature."
+    }
+  },
+  "tests": [
+    {
+      "tcId": 1,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "",
+      "sig": "3036021900ddbb115a345f7cde6e38e63b39526b648e63ea45dccd6ebf021900d472250cde8a37b20208a428045831a13d32930a887dde22",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 2,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "000102030405060708090a0b0c0d0e0f",
+      "sig": "303402183dbe40769ed29e07c604660675bed9e537acb71a68c7c297021808f5dd552a38f9e7760d483d11a23b6879829c522572a8f2",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 3,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "616263",
+      "sig": "303502182e73be50b323244fb75d3b38e6c718b5842b8ac9826f315b021900b60a7336e7cbd2b22ddac74224c521b7bd2a32feb04c4b8b",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 4,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "30360219008d4a500abfee1f9880dfe78daa478462c7c6fad43b9341c8021900c6b2a4b5ff2368f40ce2fc60bca2357bf7b1d7f76ab78b6c",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 5,
+      "publicKeyUncompressed": "04446e67345326601157b1fdd89dec25bc97a41d149786a5ded22e5bc238d525dd29d533b83c6c30b58bc6744925a46263",
+      "publicKeyCompressed": "03446e67345326601157b1fdd89dec25bc97a41d149786a5de",
+      "msg": "54657374",
+      "sig": "3006020102020102",
+      "comment": "r=2, s=2",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 6,
+      "publicKeyUncompressed": "04cde313d1ce3e0233e8b4d0feef048b43d8055e7bfad4cb4a3a57656ec506675b2f2e7d51df573530ac010096c427c896",
+      "publicKeyCompressed": "02cde313d1ce3e0233e8b4d0feef048b43d8055e7bfad4cb4a",
+      "msg": "54657374",
+      "sig": "3006020103020103",
+      "comment": "r=3, s=3",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 7,
+      "publicKeyUncompressed": "04bb90c5a990c5a92b2b7942791898ec9f3df1944d7a8a0f7f7600e5288586f11cf1f77391ef64c4a8e2b9f40f35d82796",
+      "publicKeyCompressed": "02bb90c5a990c5a92b2b7942791898ec9f3df1944d7a8a0f7f",
+      "msg": "54657374",
+      "sig": "3006020105020105",
+      "comment": "r=5, s=5",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 8,
+      "publicKeyUncompressed": "0479f81d91ed59123ed1d10c0a9aabd356be91075a6b9a365223097295a6e982926e298388626f03f154b659a141bdb6a2",
+      "publicKeyCompressed": "0279f81d91ed59123ed1d10c0a9aabd356be91075a6b9a3652",
+      "msg": "54657374",
+      "sig": "3006020106020106",
+      "comment": "r=6, s=6",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 9,
+      "publicKeyUncompressed": "04c46b1569d60a8556ab841dd57b4b57b0481b103ace826edf0c23e59ebb2ebb9112f58a2a01ffca6d4f7f1e94eb318f73",
+      "publicKeyCompressed": "03c46b1569d60a8556ab841dd57b4b57b0481b103ace826edf",
+      "msg": "54657374",
+      "sig": "3006020108020108",
+      "comment": "r=8, s=8",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 10,
+      "publicKeyUncompressed": "0438ec9fb6d3d65a0c65d6ef9870a176097975d51d92812220640bfe632b7b8801b6f355b24c7a455b2b9d3c4b81f926a0",
+      "publicKeyCompressed": "0238ec9fb6d3d65a0c65d6ef9870a176097975d51d92812220",
+      "msg": "54657374",
+      "sig": "303402187fffffffffffffffffffffffccef7c1b0a35e4d8da69141902187fffffffffffffffffffffffccef7c1b0a35e4d8da691419",
+      "comment": "r=(n+1)/2, s=(n+1)/2",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 11,
+      "publicKeyUncompressed": "04e0868ef7245c0c5a641602a56cfec0ed86a8d32c0a20b113a5895a8705ee2f9e64fc7907339b4a81b87d5678de9b4dc0",
+      "publicKeyCompressed": "02e0868ef7245c0c5a641602a56cfec0ed86a8d32c0a20b113",
+      "msg": "54657374",
+      "sig": "3036021900ffffffffffffffffffffffff99def836146bc9b1b4d22830021900ffffffffffffffffffffffff99def836146bc9b1b4d22830",
+      "comment": "r=n-1, s=n-1",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 12,
+      "publicKeyUncompressed": "04e1ec86e4e2a3f66a3da3636b1f6df2da0a6ab3db3b202a524c7da908f63af0051985e0d4cc295d9e5ba917fb002e2a0d",
+      "publicKeyCompressed": "03e1ec86e4e2a3f66a3da3636b1f6df2da0a6ab3db3b202a52",
+      "msg": "54657374",
+      "sig": "3036021900ffffffffffffffffffffffff99def836146bc9b1b4d2282f021900ffffffffffffffffffffffff99def836146bc9b1b4d2282f",
+      "comment": "r=n-2, s=n-2",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 13,
+      "publicKeyUncompressed": "0434cdeefc6d8cb81eff55e157489e1e8f9740dd54bda1d8b92d96841830400b0e03749cb39eea87f4f1ef1115d82c784a",
+      "publicKeyCompressed": "0234cdeefc6d8cb81eff55e157489e1e8f9740dd54bda1d8b9",
+      "msg": "54657374",
+      "sig": "3036021900ffffffffffffffffffffffff99def836146bc9b1b4d2282e021900ffffffffffffffffffffffff99def836146bc9b1b4d2282e",
+      "comment": "r=n-3, s=n-3",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 14,
+      "publicKeyUncompressed": "044c612424491aa3cde478c79b08d204638dd432b21a22c9272768c0991f971306af44544bfe7a85b649da54b63a8f0700",
+      "publicKeyCompressed": "024c612424491aa3cde478c79b08d204638dd432b21a22c927",
+      "msg": "54657374",
+      "sig": "303402183606346815fd4d491a92649905a40da025d8cf15f095136b02183606346815fd4d491a92649905a40da025d8cf15f095136b",
+      "comment": "r=z, s=z",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 15,
+      "publicKeyUncompressed": "04dc312093ba0806326914f8262490878a1bd13a36a67c998a02c1b1305b962b8140f3bd690734e5253d8682eac9edf46c",
+      "publicKeyCompressed": "02dc312093ba0806326914f8262490878a1bd13a36a67c998a",
+      "msg": "54657374",
+      "sig": "301e020103021900cccccccccccccccccccccccc7b18c691a9efd48e2a41b9c1",
+      "comment": "r and s^-1 very small",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 16,
+      "publicKeyUncompressed": "0420cdc627ca2752ff8f69582d06da498faee09403458992b1573f8c67d367b519147cb32f0f2774cc493cdef379c9c0e6",
+      "publicKeyCompressed": "0220cdc627ca2752ff8f69582d06da498faee09403458992b1",
+      "msg": "54657374",
+      "sig": "3024020824f22125a254278f021804b5cf66a013518c58dab5799e4212fc46aba6402a4e961f",
+      "comment": "r and s^-1 are 64 bit integers",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 17,
+      "publicKeyUncompressed": "042179a2a179bfeb91b4710d6e98680f37ec16d96fd0ebb3f02203b10673f23d17c54c92a70c76cedeabca2744fd980442",
+      "publicKeyCompressed": "022179a2a179bfeb91b4710d6e98680f37ec16d96fd0ebb3f0",
+      "msg": "54657374",
+      "sig": "3026020900fffffffffffffffd021900d371de1988151e74d371de1933ba77da21e0e2e91c0b0bcb",
+      "comment": "r and s^-1 are edge case 64-bit integers",
+      "valid": true,
+      "flags": ["SpecialRS"]
+    },
+    {
+      "tcId": 18,
+      "publicKeyUncompressed": "04bbd8028621b07d89fb240d138913ade5670bd2f687041398f81a064b758968ff41bcac4afba6821e5d56e06851e5112a",
+      "publicKeyCompressed": "02bbd8028621b07d89fb240d138913ade5670bd2f687041398",
+      "msg": "54657374",
+      "sig": "303502190080000000000000000000000000000000000000000000000302182b5ce7431e1255d02711f08a8c5fb3247dc72e45fa2ed009",
+      "comment": "R: x-coordinate >= 2**191",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 19,
+      "publicKeyUncompressed": "04b35f5e1251bd2f42d5e70006d59607f044604dd6e682555627de9200220b88875f512e79d41a236282d0d46fff3e0da2",
+      "publicKeyCompressed": "02b35f5e1251bd2f42d5e70006d59607f044604dd6e6825556",
+      "msg": "54657374",
+      "sig": "3036021900800000000000000000000000000000000000000000000003021900a8e2d4a6c38baeb9ea609ec7f58adc7b90c1aa571911190e",
+      "comment": "R: x-coordinate >= 2**191",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 20,
+      "publicKeyUncompressed": "04188841faf8c2ad48780b6435be3c00b33589331b3d0fc136d6c97938e618fc5535589bce9e6d3eea2c223bba31f7cbc1",
+      "publicKeyCompressed": "03188841faf8c2ad48780b6435be3c00b33589331b3d0fc136",
+      "msg": "54657374",
+      "sig": "3034021801000000000000000000000000000000000000000000000102182b5ce7431e1255d02711f08a8c5fb3247dc72e45fa2ed009",
+      "comment": "R: x-coordinate >= 2**184",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 21,
+      "publicKeyUncompressed": "04f055097336762983b50099f6f042898aa34a60aee3c7620ccda02c7b8dd042d6e5ea17a8b0352c742febc49938940955",
+      "publicKeyCompressed": "03f055097336762983b50099f6f042898aa34a60aee3c7620c",
+      "msg": "54657374",
+      "sig": "30350218010000000000000000000000000000000000000000000001021900a8e2d4a6c38baeb9ea609ec7f58adc7b90c1aa571911190e",
+      "comment": "R: x-coordinate >= 2**184",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 22,
+      "publicKeyUncompressed": "042f90928e975decceef0b7f60149f8f58c76d06ed74117f2af8013676a988d52e09326e6c70e6c5022cdf4115ae81fa28",
+      "publicKeyCompressed": "022f90928e975decceef0b7f60149f8f58c76d06ed74117f2a",
+      "msg": "54657374",
+      "sig": "301e0202008002182b5ce7431e1255d02711f08a8c5fb3247dc72e45fa2ed009",
+      "comment": "R: small x coordinate",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 23,
+      "publicKeyUncompressed": "0452748b04f52d86448c95c01f978b8e1097d0e0325f3a810d1363cfd29211c50204fe6d24bde3e1578d7bcf895e51ac55",
+      "publicKeyCompressed": "0352748b04f52d86448c95c01f978b8e1097d0e0325f3a810d",
+      "msg": "54657374",
+      "sig": "301f02020080021900a8e2d4a6c38baeb9ea609ec7f58adc7b90c1aa571911190e",
+      "comment": "R: small x coordinate",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 24,
+      "publicKeyUncompressed": "048b81e9ff342ee66d4c4ae752c11f81ef5b49c098910410453310b22e3174a2a6ad7b211bcdc6c3ecba48e09c6f6dec18",
+      "publicKeyCompressed": "028b81e9ff342ee66d4c4ae752c11f81ef5b49c09891041045",
+      "msg": "54657374",
+      "sig": "3035021900ffffffffffffffffffffffff99def836146bc9b1b4d2283002182b5ce7431e1255d02711f08a8c5fb3247dc72e45fa2ed009",
+      "comment": "R: large x-coordinate",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 25,
+      "publicKeyUncompressed": "04e9448fe425eb060c696d24bad0b36e3ababf208cb5a25e016fc664ef1c42cf8bb772c43ca6f721910cf23243cadf006c",
+      "publicKeyCompressed": "02e9448fe425eb060c696d24bad0b36e3ababf208cb5a25e01",
+      "msg": "54657374",
+      "sig": "3036021900ffffffffffffffffffffffff99def836146bc9b1b4d22830021900a8e2d4a6c38baeb9ea609ec7f58adc7b90c1aa571911190e",
+      "comment": "R: large x-coordinate",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 26,
+      "publicKeyUncompressed": "044d527436051c6f155ce57f686639b1d52b1b0e26b773a29885ede9f3432a682616a3fb04303aa0fa9694c9c9053eeeee",
+      "publicKeyCompressed": "024d527436051c6f155ce57f686639b1d52b1b0e26b773a298",
+      "msg": "54657374",
+      "sig": "3028020c662107c8eb94364e4b2dd7cd02182b5ce7431e1255d02711f08a8c5fb3247dc72e45fa2ed009",
+      "comment": "R: x-coordinate close to p",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 27,
+      "publicKeyUncompressed": "048820d91e481f9e7f7cedafd545fba0eee36795c58d285825bab345111ebe62e9ae559d54b2adfc5c43a21f4525571fb6",
+      "publicKeyCompressed": "028820d91e481f9e7f7cedafd545fba0eee36795c58d285825",
+      "msg": "54657374",
+      "sig": "3029020c662107c8eb94364e4b2dd7cd021900a8e2d4a6c38baeb9ea609ec7f58adc7b90c1aa571911190e",
+      "comment": "R: x-coordinate close to p",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 28,
+      "publicKeyUncompressed": "04303c2365cbfe7c353f3ebf6f9196561db901f1a2ca44c91f244fd7d5d5b67c21d84974b95ac21eba5e21d912227c780c",
+      "publicKeyCompressed": "02303c2365cbfe7c353f3ebf6f9196561db901f1a2ca44c91f",
+      "msg": "54657374",
+      "sig": "303402187ffffffffffffffffffffffffffffffffffffffffffffffe02182b5ce7431e1255d02711f08a8c5fb3247dc72e45fa2ed009",
+      "comment": "R: x-coordinate < 2**191 (invalid signature)",
+      "valid": false,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 29,
+      "publicKeyUncompressed": "046b55087feb7058043849638adb7a98779922a9cf20811c63a9fd968bb9c6f014f68c0e9a00e995e29657489530199cad",
+      "publicKeyCompressed": "036b55087feb7058043849638adb7a98779922a9cf20811c63",
+      "msg": "54657374",
+      "sig": "303502187ffffffffffffffffffffffffffffffffffffffffffffffe021900a8e2d4a6c38baeb9ea609ec7f58adc7b90c1aa571911190e",
+      "comment": "R: x-coordinate < 2**191 (invalid signature)",
+      "valid": false,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 30,
+      "publicKeyUncompressed": "042eeba6412c2c25442dfce0914b129309492066109c74e2e5744c99d6f39b80f8f4ad057c9b49cae6e6ae609933605920",
+      "publicKeyCompressed": "022eeba6412c2c25442dfce0914b129309492066109c74e2e5",
+      "msg": "54657374",
+      "sig": "3034021800ffffffffffffffffffffffffffffffffffffffffffffff02182b5ce7431e1255d02711f08a8c5fb3247dc72e45fa2ed009",
+      "comment": "R: x-coordinate < 2**184",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 31,
+      "publicKeyUncompressed": "048de150178dade7d12f36f96bfd953fdfebfae2b272371fd015e829dc2c696be2d17f9d6c697c9608c0a80ebe88743e64",
+      "publicKeyCompressed": "028de150178dade7d12f36f96bfd953fdfebfae2b272371fd0",
+      "msg": "54657374",
+      "sig": "3035021800ffffffffffffffffffffffffffffffffffffffffffffff021900a8e2d4a6c38baeb9ea609ec7f58adc7b90c1aa571911190e",
+      "comment": "R: x-coordinate < 2**184",
+      "valid": true,
+      "flags": ["SpecialR"]
+    },
+    {
+      "tcId": 32,
+      "publicKeyUncompressed": "041e0a2cc3e6617bc47b8199dfba7b53794189dc8b584ea4d2780e5f74e96e43127e14ec3f9a07ff7a9e54f059929c82a7",
+      "publicKeyCompressed": "031e0a2cc3e6617bc47b8199dfba7b53794189dc8b584ea4d2",
+      "msg": "5465737422",
+      "sig": "3035021900dc8519974a2ec1f69dc6e7dd6d91292d537b073c00b73bc8021808a1e42eac983bc1bb059bb825c164c87a3d6067a059b173",
+      "comment": "u1 = 1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 33,
+      "publicKeyUncompressed": "044b8cd97b6b2fc7ed01eb6cb7ec4f59f6e432689152edfdbc740582e3605430cf41201f434d4fe58c28ef5e96b1e54751",
+      "publicKeyCompressed": "034b8cd97b6b2fc7ed01eb6cb7ec4f59f6e432689152edfdbc",
+      "msg": "5465737421",
+      "sig": "3036021900fb9e6563bbc72acc4eb90594b28458f72ba4f527d6bf0cf6021900fb9e6563bbc72acc4eb90594b28458f72ba4f527d6bf0cf6",
+      "comment": "u2 = 1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 34,
+      "publicKeyUncompressed": "044cee1116bd54001100f9780ff43cfa9fa19c059b8ed4322db02090e1edf881fa04aacf4f82c00243be304a873335fbaf",
+      "publicKeyCompressed": "034cee1116bd54001100f9780ff43cfa9fa19c059b8ed4322d",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d021846189593cd25da6dfdb8b16fc8ccb2cdb01386b042520047",
+      "comment": "u1 = u2 = 1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 35,
+      "publicKeyUncompressed": "04fe688f69b88a2e6106c1521737a93db1b1474adfedc8c24a703f392c1df2b236bd4c67fd126833f7ef88a7928050ca08",
+      "publicKeyCompressed": "02fe688f69b88a2e6106c1521737a93db1b1474adfedc8c24a",
+      "msg": "5465737420",
+      "sig": "303502186e1f489787a5530929920c9d443f7b2a03267d7f8dbbccde02190091dd76ea44e19af86c4b78c9c7118751dab601ccdc3765df",
+      "comment": "u1 = 2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 36,
+      "publicKeyUncompressed": "04f5cce34dde01c3ed138b275fafe0ea8112a734c8726350fcbdb9ff39cb44d0116e5cb82a6290b9a98f76820d00998a4e",
+      "publicKeyCompressed": "02f5cce34dde01c3ed138b275fafe0ea8112a734c8726350fc",
+      "msg": "5465737421",
+      "sig": "30360219009dec1ccd5f15d17ab8046eec40e66f19ebc628267b1f3f43021900cef60e66af8ae8bd5c023775ed62b3a80018f8ec17f8b3ba",
+      "comment": "u2 = 2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 37,
+      "publicKeyUncompressed": "04ea9d76a932b28ef693870f36eaffb289b21af8f6de72d936e1d84765381945e3248bb1f85741974a85ea97e5608fac65",
+      "publicKeyCompressed": "03ea9d76a932b28ef693870f36eaffb289b21af8f6de72d936",
+      "msg": "5465737420",
+      "sig": "3035021823baedd489c335f0d896f193f444166da10039e8039ca38d021900f4bf36d95d58f51708fd46231f1552196a7446b0da6ea5a1",
+      "comment": "u1 = u2 = 2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 38,
+      "publicKeyUncompressed": "043e6f66dc2f1cc0857cb36b438ed3349167b6a49f31077924a6c1491fb5fadabb29c89ede6c27c5b91143a657793e9ff1",
+      "publicKeyCompressed": "033e6f66dc2f1cc0857cb36b438ed3349167b6a49f31077924",
+      "msg": "5465737421",
+      "sig": "3035021825a3f3c73eba240db66b622e07db0f460924828054f4f7ad0219009d954d16dc8dc36e92f5de10b82320ad2e194e8e810b6e0e",
+      "comment": "u1 = 3",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 39,
+      "publicKeyUncompressed": "048eb0d7da68d7809d9625ee7001ffca89c750261c4413fb9f172ae759e78eec147cbc22e200e5ecd0e4d437537da2348d",
+      "publicKeyCompressed": "038eb0d7da68d7809d9625ee7001ffca89c750261c4413fb9f",
+      "msg": "5465737421",
+      "sig": "303502187142df81c75a71b15cfc4bacfba17ca2b95b502a63455b5d021900d06b9fd5ed1e25e5c9a96e8eba75245a4b664bd9eef88e95",
+      "comment": "u2 = 3",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 40,
+      "publicKeyUncompressed": "0488a63225e877ebef8e088c1254e11917f55570f96286d71c9c1435ddc27d1b4ce813085212aa419e9ffd9e6d3e22462b",
+      "publicKeyCompressed": "0388a63225e877ebef8e088c1254e11917f55570f96286d71c",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d021808e2c43ebb15dc720d1c15d162d7280cd00148124d3fb9a8",
+      "comment": "u1 = u2 = 3",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 41,
+      "publicKeyUncompressed": "04ddac6d50fc96f3fb02493851bdc217b705f4b239a35eb641cb9d40f783610e5fb92c6c5720be6eab4523be97009b653f",
+      "publicKeyCompressed": "03ddac6d50fc96f3fb02493851bdc217b705f4b239a35eb641",
+      "msg": "5465737420",
+      "sig": "303502187dbf2e6252c38c2f06f2ec69942b96b893b9041b886fa065021900dc45122b763cca0f27690e6ba59ae1c8736b8fc9b13584a4",
+      "comment": "u1 = n-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 42,
+      "publicKeyUncompressed": "040d87d2a3d5914a706a09d1efeb3da259862e341db1613ad1faf4245b5d72c7bf4adfff879ce52405297ac78e19768bed",
+      "publicKeyCompressed": "030d87d2a3d5914a706a09d1efeb3da259862e341db1613ad1",
+      "msg": "5465737420",
+      "sig": "30350219009d4bed2128d7fb5d339ac51258796b7fd916b8562d89f1f8021862b412ded72804a2cc653aed41658cb63b55115b87483639",
+      "comment": "u2 = n-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 43,
+      "publicKeyUncompressed": "04bb90cf54ec9d117c8b8f86265c8304c5e9e7fa7516c342c5ce1eaa6f18fa016a98e2b19a736a64daf2a58df06bd0c550",
+      "publicKeyCompressed": "02bb90cf54ec9d117c8b8f86265c8304c5e9e7fa7516c342c5",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d021862b412ded72804a2cc653aed41658cb63b55115b87483639",
+      "comment": "u1 = u2 = n-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 44,
+      "publicKeyUncompressed": "042596c57193efaadcbe166ba0a6a0df3f0764e6bd9613fa8d4bd835c491929c79155fc087ac87359a74ac5ee38c798a89",
+      "publicKeyCompressed": "032596c57193efaadcbe166ba0a6a0df3f0764e6bd9613fa8d",
+      "msg": "5465737420",
+      "sig": "303402187a58eae9c3ecd016738316957197332b4445ea7943d6c2b602186e228915bb1e650793b48735d2cd70e439b5c7e4d89ac252",
+      "comment": "u1 = n-2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 45,
+      "publicKeyUncompressed": "045ed9918606f208b1904dda5c9f463378396567a16a191f0bf864f1fdf3a48ad12ee602f05ba905756208598302de2904",
+      "publicKeyCompressed": "025ed9918606f208b1904dda5c9f463378396567a16a191f0b",
+      "msg": "5465737420",
+      "sig": "30340218218a062df59fa7ffca328e8fc151f5734fdd103e0e12266f02186f3afce905302c001ae6b8b7ec46816162475cb9d36000e1",
+      "comment": "u2 = n-2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 46,
+      "publicKeyUncompressed": "044b7633316c0cdfcb6656efc9a39ba89292045d8b11f7e8561d4d8ecaea2690651ac5eb800964d1a785077b5a96afb867",
+      "publicKeyCompressed": "034b7633316c0cdfcb6656efc9a39ba89292045d8b11f7e856",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d02186f3afce905302c001ae6b8b7ec46816162475cb9d36000e1",
+      "comment": "u1 = u2 = n-2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 47,
+      "publicKeyUncompressed": "04f9d7f348bcbed252b598c2577d0d2ad38cc7768a2177380c8b6eb50a0ba91fb7cf7cb7f87166a8b3e477351a7a46810e",
+      "publicKeyCompressed": "02f9d7f348bcbed252b598c2577d0d2ad38cc7768a2177380c",
+      "msg": "5465737421",
+      "sig": "303402186b96bb4727b912091d74f26e1743bb3def25847c03bd505e0218626ab2e923723c916d0a21eee1bbd788e6527b2333c6ba23",
+      "comment": "u1 = n-3",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 48,
+      "publicKeyUncompressed": "0400a07aa47eb526c9e2adfd5ce337137b3eb90032ce0791e3b2c3f1dd0a65620ee6c2e34a4f88c082eb9283060e986fdc",
+      "publicKeyCompressed": "0200a07aa47eb526c9e2adfd5ce337137b3eb90032ce0791e3",
+      "msg": "5465737420",
+      "sig": "3034021869defebd29e510c23109aac33c1c6b00ff7177e3f5c979ed0218320b006b9cb3a5149a521c6974962f11b1a8c5ef3fad8f6c",
+      "comment": "u2 = n-3",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 49,
+      "publicKeyUncompressed": "04c1ebaf3765b8a258c1c6b0874d295460cd960fa8b8d283f9a2f4c6f822bc4928ccb266962863a2e78f1aa2d1057ad05e",
+      "publicKeyCompressed": "02c1ebaf3765b8a258c1c6b0874d295460cd960fa8b8d283f9",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d0218320b006b9cb3a5149a521c6974962f11b1a8c5ef3fad8f6c",
+      "comment": "u1 = u2 = n-3",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 50,
+      "publicKeyUncompressed": "04c7fcbd608d750e67f9cfc0bc3512a2520cf8e318d2898a96ebe25999a09c1fec8b6bd33f739a32764a04a3fa62ab220e",
+      "publicKeyCompressed": "02c7fcbd608d750e67f9cfc0bc3512a2520cf8e318d2898a96",
+      "msg": "5465737421",
+      "sig": "3035021900a0409344d21e7baa4e5eec0056da8fcc43c1d1619e887184021807d99e8be211578a749fadf5cf10e94752e8bb24c7b39ad8",
+      "comment": "u1 = n-5",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 51,
+      "publicKeyUncompressed": "04cc58f83e0187f8054d13a99862a1c05e0d6f3f7a3985636c038613195fee05937b30250e49df2bbafdfd102c833c0fcf",
+      "publicKeyCompressed": "03cc58f83e0187f8054d13a99862a1c05e0d6f3f7a3985636c",
+      "msg": "5465737421",
+      "sig": "3035021850ba65ef3a4aebfb4de8044ecd3f4ac82d68ec25d40f0f99021900bca785368df10400f06b3256520c1e033a747220330b836f",
+      "comment": "u2 = n-5",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 52,
+      "publicKeyUncompressed": "04eef8e60a641bc096af293f873111446215407e82f20872176cda820a8c4e1e16e9a0c43f0b2a943fad182780b1514804",
+      "publicKeyCompressed": "02eef8e60a641bc096af293f873111446215407e82f2087217",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d0218060beea2e6198157027bafd449e561b89539b521d1d526d6",
+      "comment": "u1 = u2 = n-5",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 53,
+      "publicKeyUncompressed": "0484ae10aa8ddd190bc1d9282be62bdb012dad14667f506cdb55c3f3e8222bcdf2c6abf538bd4e7012f06bb42201a42244",
+      "publicKeyCompressed": "0284ae10aa8ddd190bc1d9282be62bdb012dad14667f506cdb",
+      "msg": "5465737420",
+      "sig": "3034021801113e511a780310a1888936e57713e8d137403d71d2f22f02184409de06357666022a33945876c843b6a5b10cc87c4a3d43",
+      "comment": "u1 = n-7",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 54,
+      "publicKeyUncompressed": "04c91336e699112902b039eac89cdbee770e398d8efd6b8c8318417cf401c989d8c52f70099c6375506d488c61ef470b3e",
+      "publicKeyCompressed": "02c91336e699112902b039eac89cdbee770e398d8efd6b8c83",
+      "msg": "5465737427",
+      "sig": "303402187ac8d6c2b35088d6eb9d7dbc27b35744e385d02435b3b4cf02185c2c739b0af47ebcb9c4ee09856a827b0cd1ef902140651c",
+      "comment": "u2 = n-7",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 55,
+      "publicKeyUncompressed": "04b167cbf8bcb5687169759c8665035a5499af841bda5643354e71a8f709b1a713fa1e59af9f382ad8cc2ec8dad368deff",
+      "publicKeyCompressed": "03b167cbf8bcb5687169759c8665035a5499af841bda564335",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d021871336f42c69603141c367ae4f7cf1c81216cdcb274867785",
+      "comment": "u1 = u2 = n-7",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 56,
+      "publicKeyUncompressed": "043ca0a425082b33f6bed7744079b299c27515cc3f65194074f6ba71f8c9f11aa6a1f0bde390531d31e67f408fa15be913",
+      "publicKeyCompressed": "033ca0a425082b33f6bed7744079b299c27515cc3f65194074",
+      "msg": "5465737420",
+      "sig": "3034021829c61bb437a245bcda17d01385c37013fa7b1c522282216e02184775dba913866be1b12de327e8882cdb420073d00739471a",
+      "comment": "u1 = (n+1)/2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 57,
+      "publicKeyUncompressed": "04c6407d2c0c29298052e373174925011121e327f42ac1484caac261803ee8d5efb2bf0477f6991788266a66158ff32dcb",
+      "publicKeyCompressed": "03c6407d2c0c29298052e373174925011121e327f42ac1484c",
+      "msg": "5465737420",
+      "sig": "3036021900e39e82a46a73d9fb867846cc2136ccd41e5e0ee0811a7e62021900c73d0548d4e7b3f70cf08d98a88ea1722850540f4d62d493",
+      "comment": "u2 = (n+1)/2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 58,
+      "publicKeyUncompressed": "04069b36359fd51d278239064fae42b1102fec31ea98b10c21f6d37e6edcbc8c70522a2d5439364c29916a767df46391e0",
+      "publicKeyCompressed": "02069b36359fd51d278239064fae42b1102fec31ea98b10c21",
+      "msg": "5465737420",
+      "sig": "3035021823baedd489c335f0d896f193f444166da10039e8039ca38d021900c73d0548d4e7b3f70cf08d98a88ea1722850540f4d62d493",
+      "comment": "u1 = u2 = (n+1)/2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 59,
+      "publicKeyUncompressed": "043b8cfccbe01b136ce0249fbc3abcbbc4d82706a33d07f7c19ebbd9237a034f88c3e98011f4cd847271673124be212b36",
+      "publicKeyCompressed": "023b8cfccbe01b136ce0249fbc3abcbbc4d82706a33d07f7c1",
+      "msg": "5465737420",
+      "sig": "30350218152021b00d96a4c8a5fc911d6ecf35d2fddb3dcc7cfd3698021900b88a2456ec79941e4ed21cd7b156cb5ad26b55e1ad98e117",
+      "comment": "u1 = (n-1)/2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 60,
+      "publicKeyUncompressed": "04b5415957852fb19d6e5058ab11d4079c12456777e86ea17cebf7f8037f1ee143b73eed00dfaecd2c800fd1fa0dfddc64",
+      "publicKeyCompressed": "02b5415957852fb19d6e5058ab11d4079c12456777e86ea17c",
+      "msg": "5465737420",
+      "sig": "303402187b078395f7248d4989c202f9b15eb05e78de8beb1f76baa2021809f0f8d411b6e56cec7bfa0c3721977922aeb1db75e4b2ed",
+      "comment": "u2 = (n-1)/2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 61,
+      "publicKeyUncompressed": "047b7b73dc8b2859bd191b2cce380d99d81ddd27abde6551b8f4d01175129b79c00c71ccd3ecced86aa429bab2b4a67fda",
+      "publicKeyCompressed": "027b7b73dc8b2859bd191b2cce380d99d81ddd27abde6551b8",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d021809f0f8d411b6e56cec7bfa0c3721977922aeb1db75e4b2ed",
+      "comment": "u1 = u2 = (n-1)/2",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 62,
+      "publicKeyUncompressed": "0493b51d51e48f1be69afe81ed60aa135f04d1aec6a9f503013582d3214943ea5f4a6b15c09754e084800c0799760471ad",
+      "publicKeyCompressed": "0393b51d51e48f1be69afe81ed60aa135f04d1aec6a9f50301",
+      "msg": "5465737420",
+      "sig": "303402184b1ff97ae99215c23ce52379fd8ca9e884685f750e013da80218309db28fbdfe66d6e07a907741ebae8a3e7a3122780dae32",
+      "comment": "u1 = 2**191",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 63,
+      "publicKeyUncompressed": "049a508d3f65fd6b4148b2ab04aa8a16143876a384caa4d6dd7e90ce642a0aa64599f4548af2e5c9b0009668e7302f13a3",
+      "publicKeyCompressed": "039a508d3f65fd6b4148b2ab04aa8a16143876a384caa4d6dd",
+      "msg": "5465737420",
+      "sig": "3036021900d5ff6fda446ed23bf6fec580b12a6455cbdd8b011cc9f8360219009a5149884d76b5e5a520e921c5e21f2cdcd5918a5cdf9c7c",
+      "comment": "u2 = 2**191",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 64,
+      "publicKeyUncompressed": "04a4e2bb1758afaaae7666cc5892ea0ef5cbe0f5433e49000742b02a458f8e47e97e89e131bc15f8563aa5065de87dcea9",
+      "publicKeyCompressed": "03a4e2bb1758afaaae7666cc5892ea0ef5cbe0f5433e490007",
+      "msg": "5465737420",
+      "sig": "3035021823baedd489c335f0d896f193f444166da10039e8039ca38d0219009a5149884d76b5e5a520e921c5e21f2cdcd5918a5cdf9c7c",
+      "comment": "u1 = u2 = 2**191",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 65,
+      "publicKeyUncompressed": "04e05795bfae92e9cb92f58e8c84ef8874d1e74ccff958f59a26c3aafd29a80f3ce772d335fd2ba1b60699f16b472d66cd",
+      "publicKeyCompressed": "03e05795bfae92e9cb92f58e8c84ef8874d1e74ccff958f59a",
+      "msg": "5465737421",
+      "sig": "3035021879c8ce9b62194e88d63d2e8ad4b0f2b6ee2034d3e251d7a4021900fe1b25a55f8a370679e9febcc1deb8a5786c9820bfd8f357",
+      "comment": "u1 = 2**191-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 66,
+      "publicKeyUncompressed": "0428b09569f4aa5c547720dd0202bda2408e0f3f0d6b0db6d2fcaecae4ac58afcacf213d0a27d9df5dd46559d95002792e",
+      "publicKeyCompressed": "0228b09569f4aa5c547720dd0202bda2408e0f3f0d6b0db6d2",
+      "msg": "5465737422",
+      "sig": "30360219008272adfda7325f5c26641d6a221d3d863932663bb3922006021900884e718820592e0fbfd409bb56f58960dae67a767f992d39",
+      "comment": "u2 = 2**191-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 67,
+      "publicKeyUncompressed": "04af9bc27664abcb72d1b6d8dde0d524f879ac8ffb46ea5717b58ac4475743ab5e2255c40e1a001c175edee408ff11e68d",
+      "publicKeyCompressed": "03af9bc27664abcb72d1b6d8dde0d524f879ac8ffb46ea5717",
+      "msg": "5465737420",
+      "sig": "3035021823baedd489c335f0d896f193f444166da10039e8039ca38d021900bcd2feb15481af8489289d17bf3f90bba149105b464fe47e",
+      "comment": "u1 = u2 = 2**191-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 68,
+      "publicKeyUncompressed": "04617c5cd2e18be5853b3a5ac3eac83867879df5a4f7c00a084569c5ef91005d6d8a9c7d8c0b084507a4641bddb8bf6678",
+      "publicKeyCompressed": "02617c5cd2e18be5853b3a5ac3eac83867879df5a4f7c00a08",
+      "msg": "5465737420",
+      "sig": "3034021869fdcd32ee79628742c78f99292b62a31d238564e1a6caf00218613b651f7bfccdadc0f520ee83d75d147cf46244f01b5c64",
+      "comment": "u1 = 2**190",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 69,
+      "publicKeyUncompressed": "0426e821efc7d80df1b6814b62e3010537bbb021a1a6990dcc81008eac743dfd24b10193308211111e72189e024c8aa76d",
+      "publicKeyCompressed": "0326e821efc7d80df1b6814b62e3010537bbb021a1a6990dcc",
+      "msg": "5465737424",
+      "sig": "3034021861b708df96fd1f73601fe1bbc65e6f1623d46d6982fcf1220218756c9d167915dbe54e0043f3563356ffb8223217b05772b5",
+      "comment": "u2 = 2**190",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 70,
+      "publicKeyUncompressed": "04909bdf88b9a0177205327fee796b3f7fa88d57158af400d55f09b5d4819dd16306b5a02ac2b486044ab72abb3db6fc81",
+      "publicKeyCompressed": "03909bdf88b9a0177205327fee796b3f7fa88d57158af400d5",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d0218626ffb1199313a3e919572379f96a1b03e04132237ac3aa5",
+      "comment": "u1 = u2 = 2**190",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 71,
+      "publicKeyUncompressed": "043d7d03e5ccb9ef1ecf9d28832a8baa6d70015f17097786db0ccdd72e0321c557881a06ccbe69c304c43986b6014d1a07",
+      "publicKeyCompressed": "033d7d03e5ccb9ef1ecf9d28832a8baa6d70015f17097786db",
+      "msg": "5465737421",
+      "sig": "30350218579b9b284737f8f515c9ce2105538a25c8be6ed55d8a3f1c021900c501161789276cfc9e43eb5c93c98f7fd7c8506965d02b00",
+      "comment": "u1 = 2**190-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 72,
+      "publicKeyUncompressed": "04c3d6c57994f652216c9c2f471b1ed15fda5adaedca4e8ec33fa69387eee367428625a928ccc54f3ece07495e531a99b6",
+      "publicKeyCompressed": "02c3d6c57994f652216c9c2f471b1ed15fda5adaedca4e8ec3",
+      "msg": "5465737421",
+      "sig": "30340218395331860f9141be0dff2eff782cccd8c3353fb5f61543ba021802fcd87eb5ee78e236321dda3997939758d0fe4ff7cae5bd",
+      "comment": "u2 = 2**190-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 73,
+      "publicKeyUncompressed": "043e2c3581cf061753787a3f53d56fddd1ce7316036204cd5766d98203743f40859e441928f7818688805c5c1e33163b43",
+      "publicKeyCompressed": "033e2c3581cf061753787a3f53d56fddd1ce7316036204cd57",
+      "msg": "5465737420",
+      "sig": "3034021823baedd489c335f0d896f193f444166da10039e8039ca38d021863d6c71e5a3cc4c5f1d5a125cc2df50cf4b8f0bfc4e9b97c",
+      "comment": "u1 = u2 = 2**190-1",
+      "valid": true,
+      "flags": ["SpecialU12"]
+    },
+    {
+      "tcId": 74,
+      "publicKeyUncompressed": "04cfc6e65792a6a0d4ca0a38ecdd771b6a401ad183c3cbc230c63330ed58cfd3967f3df373d105355c47429b9fb243a04b",
+      "publicKeyCompressed": "03cfc6e65792a6a0d4ca0a38ecdd771b6a401ad183c3cbc230",
+      "msg": "5465737420",
+      "sig": "3036021900d09c699122a0190a509f0d9e081ae367e02d6e64d7e6975102190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "A = B",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 75,
+      "publicKeyUncompressed": "04542a5a0beb66ba232009b2f1aac01b15d6f08aa9637097fb4c07e56f70bb947be7ccc09107d05a954726a8bbe6c2e116",
+      "publicKeyCompressed": "02542a5a0beb66ba232009b2f1aac01b15d6f08aa9637097fb",
+      "msg": "5465737420",
+      "sig": "3035021806be82e25cd06e5ed5f674ded946eb2aecfdad4cc340caf602190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: x-coordinate >= 2**191",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 76,
+      "publicKeyUncompressed": "049da4ee63da002298478541e01ec0abe91a16d1c2fabeb13ba9e63646ff7b5427a7b19c223aaf6d8ee611de0a72342ff0",
+      "publicKeyCompressed": "029da4ee63da002298478541e01ec0abe91a16d1c2fabeb13b",
+      "msg": "5465737420",
+      "sig": "3035021806a8488d82e8f03681da17600c39f52d9fa62630a17da89702190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: x-coordinate >= 2**184",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 77,
+      "publicKeyUncompressed": "04021edd3c7cea8d0ebcfbf03fe3e4dd92b3c98edd2753e8df168c5019499db6d8c70083cb15d0a141a2bd4b444ae8e415",
+      "publicKeyCompressed": "03021edd3c7cea8d0ebcfbf03fe3e4dd92b3c98edd2753e8df",
+      "msg": "5465737420",
+      "sig": "3036021900ef7fdb85da9bbfb25431f0d37db4ca8f036f698a86475ef902190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: small x coordinate",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 78,
+      "publicKeyUncompressed": "04283a87cb7352387050fd889690c372b6c4de753ec8571a01e638b1f554d4174a063003e1721fbeda588c79766010ec6e",
+      "publicKeyCompressed": "02283a87cb7352387050fd889690c372b6c4de753ec8571a01",
+      "msg": "5465737420",
+      "sig": "3035021855f6ec771d4327e59c87459c20de7f64ebb32861ad046c6f02190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: small x coordinate",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 79,
+      "publicKeyUncompressed": "04de63edb50812254eb2f42e2fb3b540d1df4e1ac7a88d78da175811a10197e5ca00dc54a364a0f6e24929d9e83060e3d7",
+      "publicKeyCompressed": "03de63edb50812254eb2f42e2fb3b540d1df4e1ac7a88d78da",
+      "msg": "5465737420",
+      "sig": "3036021900c6eac669d318ba89d6dfa86d58077ed635277bb8472c944202190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: large x-coordinate",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 80,
+      "publicKeyUncompressed": "0450b3bd7ff173bbf46abaafd2919d679b8ee968f45df37ddb445fc4d6739bc87f4b66a3af40161be455227080a665dd72",
+      "publicKeyCompressed": "0250b3bd7ff173bbf46abaafd2919d679b8ee968f45df37ddb",
+      "msg": "5465737420",
+      "sig": "30360219008d0c0c572e759ee3d4793461d0d34f971de1e195b304593102190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: x-coordinate close to p",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 81,
+      "publicKeyUncompressed": "04ed7607320f41f8a01b0c59e0a8df4a6274afbfb697d1f9b2e2d3f9b3af19633b12444b0fba5e9a98613903093bf4a842",
+      "publicKeyCompressed": "02ed7607320f41f8a01b0c59e0a8df4a6274afbfb697d1f9b2",
+      "msg": "5465737420",
+      "sig": "3035021812d48d90f5946a37fcb44b2bf8edf825b083115bdc03f3fd02190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: x-coordinate < 2**191",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 82,
+      "publicKeyUncompressed": "04435718882be2657463e661f3178e2ef2ba34e74d05b59ce204525e0bb934428707a8f1be6c1adc26e4360a127f48fbe3",
+      "publicKeyCompressed": "03435718882be2657463e661f3178e2ef2ba34e74d05b59ce2",
+      "msg": "5465737420",
+      "sig": "3036021900e89260cddbb0e5278362848822be671b358d8eedfc53f32d02190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B: x-coordinate < 2**184",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 83,
+      "publicKeyUncompressed": "0407b667914ec62d98432dc5dac6503fc0f20898f2016d2c06d96f29f98927adcadb197c304296857185ab9faa5c9957b5",
+      "publicKeyCompressed": "0307b667914ec62d98432dc5dac6503fc0f20898f2016d2c06",
+      "msg": "5465737420",
+      "sig": "3034021833a3e36ffcc05c7f5fe9f421bfa138a110ef0ee8fd7832c7021823baedd489c335f0d896f193f444166da10039e8039ca38d",
+      "comment": "A: g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 84,
+      "publicKeyUncompressed": "04b852b7f619c3001c696fe3a4e2018df721272ec8695780a47841b75fde225769fefd104d60a24bd1a7cdb4a3ef285e5e",
+      "publicKeyCompressed": "02b852b7f619c3001c696fe3a4e2018df721272ec8695780a4",
+      "msg": "5465737420",
+      "sig": "3035021900dafebf5828783f2ad35534631588a3f629a70fb16982a888021823baedd489c335f0d896f193f444166da10039e8039ca38d",
+      "comment": "A = B: g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 85,
+      "publicKeyUncompressed": "04d2660f3a8aaa739e6b007f8b23a1d5e6f5a79b162c32a7d1cc3754c8f3636a3217263b0b8089f881d09223919a1ed870",
+      "publicKeyCompressed": "02d2660f3a8aaa739e6b007f8b23a1d5e6f5a79b162c32a7d1",
+      "msg": "5465737420",
+      "sig": "3036021900ce7fb8e3cfcdfd40ab9ebaf0bf36668f6c1e3158ffde3ffc02190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B; g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 86,
+      "publicKeyUncompressed": "04ad087f1dc1c97e4ffb5c245bdb29dbccc27e0686ae93c027a31de53974868e698389a5fe28c3e285421c963e9955b048",
+      "publicKeyCompressed": "02ad087f1dc1c97e4ffb5c245bdb29dbccc27e0686ae93c027",
+      "msg": "5465737420",
+      "sig": "3036021900eee8896deb3eba7c5e4dd135eda0da7df0a024bcc62c1b3e021900dc45122b763cca0f27690e6ba59ae1c8736b8fc9b13584a4",
+      "comment": "A: -g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 87,
+      "publicKeyUncompressed": "04b852b7f619c3001c696fe3a4e2018df721272ec8695780a47841b75fde225769fefd104d60a24bd1a7cdb4a3ef285e5e",
+      "publicKeyCompressed": "02b852b7f619c3001c696fe3a4e2018df721272ec8695780a4",
+      "msg": "5465737420",
+      "sig": "3036021900dafebf5828783f2ad35534631588a3f629a70fb16982a888021900dc45122b763cca0f27690e6ba59ae1c8736b8fc9b13584a4",
+      "comment": "A = B: -g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 88,
+      "publicKeyUncompressed": "04c9c3ceeb4a1ae43a9e8914f8479eddd920a3d318a97ded340593903e49091599b37ff78ba06e9ba7dcd2beec0d4de92a",
+      "publicKeyCompressed": "02c9c3ceeb4a1ae43a9e8914f8479eddd920a3d318a97ded34",
+      "msg": "5465737420",
+      "sig": "303502181dcc5bb4a30fa0cdd001c94f60d106a49df149497fd06ffa02190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B; -g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 89,
+      "publicKeyUncompressed": "04dcd55cac689cc8d2e787f8650861146e7c4da967acb03bf1dbcc22da0cfa41d0a27adffe4bdf3d1a613a9750e4dcbba5",
+      "publicKeyCompressed": "03dcd55cac689cc8d2e787f8650861146e7c4da967acb03bf1",
+      "msg": "5465737420",
+      "sig": "3036021900925d9af2759892fb6b348a84145a0bc442ec460628fd385802190091dd76ea44e19af86c4b78c9c7118751dab601ccdc3765df",
+      "comment": "A: 2*g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 90,
+      "publicKeyUncompressed": "04da0891a4bcacf47f7dbf6c7a924c1814a35e9c68c983c78d28ffc5fa7e33c097a36c9cc2421c1a373a8eb736cd49ee25",
+      "publicKeyCompressed": "03da0891a4bcacf47f7dbf6c7a924c1814a35e9c68c983c78d",
+      "msg": "5465737420",
+      "sig": "3035021835433907297cc378b0015703374729d7a4fe46647084e4ba02190091dd76ea44e19af86c4b78c9c7118751dab601ccdc3765df",
+      "comment": "A = B: 2*g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 91,
+      "publicKeyUncompressed": "040215e15c6b089d8f06fbab737057c486f9c209a7906bd436ced33d7724e03d7ba13cdc7550610e6afe4608bcaa5a7287",
+      "publicKeyCompressed": "030215e15c6b089d8f06fbab737057c486f9c209a7906bd436",
+      "msg": "5465737420",
+      "sig": "3035021810d4afb4ddb0857f119d5707aa8a6a88bd23574f392c9fe402190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B; 2*g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 92,
+      "publicKeyUncompressed": "04164506eeafd24f3eb527365a4396c68c325d2f344307264480cae8d55af16d1d92ec18f6d7660b68bba29ca15f1b05cc",
+      "publicKeyCompressed": "02164506eeafd24f3eb527365a4396c68c325d2f3443072644",
+      "msg": "5465737420",
+      "sig": "3036021900e82ee585c87cce4f21dffc95d2efc6154f710d23dd11d06a021900c8eebb752270cd7c3625bc64b0783fc3f790e5bf4884c708",
+      "comment": "A: 4*g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 93,
+      "publicKeyUncompressed": "04401ca8c54a3dd85a952e6ba1e59cec62cb1a9484c203727e4977ab5baf33dacb9b4180955c763edf5f5a20626ccf39d2",
+      "publicKeyCompressed": "02401ca8c54a3dd85a952e6ba1e59cec62cb1a9484c203727e",
+      "msg": "5465737420",
+      "sig": "303502182fa1f92d1ecce92014771993cc14899d4b5977883397edde021900c8eebb752270cd7c3625bc64b0783fc3f790e5bf4884c708",
+      "comment": "A = B: 4*g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 94,
+      "publicKeyUncompressed": "044e84dafcb40ac432e99f8d36ed773392bbba5622f72bb734733de0901ef85f9b8663140da0ee7ad768ec943aac0d688f",
+      "publicKeyCompressed": "034e84dafcb40ac432e99f8d36ed773392bbba5622f72bb734",
+      "msg": "5465737420",
+      "sig": "3036021900d44917139890acb99cf435b293d0333073d2111c6263b33002190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B; 4*g",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 95,
+      "publicKeyUncompressed": "04641f6f47c767e89f5207b9e4d15f85a0e0db6c2db62ea5267c634356d04c91c14490015a6c53f7af98f9506ed962d2c1",
+      "publicKeyCompressed": "03641f6f47c767e89f5207b9e4d15f85a0e0db6c2db62ea526",
+      "msg": "5465737420",
+      "sig": "3036021900f53f8bccc6b56ff10f47ede852c32ee924b08b122b172a21021900b88a2456ec79941e4ed21cd7b156cb5ad26b55e1ad98e117",
+      "comment": "A: g*(n-1)/2",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 96,
+      "publicKeyUncompressed": "04b70f4e50e448978e929ff44aaaf068f4fdeb6669aed8640d481507f4e595d205f9c67e73b98581f5409f5c9dc9220b81",
+      "publicKeyCompressed": "03b70f4e50e448978e929ff44aaaf068f4fdeb6669aed8640d",
+      "msg": "5465737420",
+      "sig": "30350218188da80eb03090f67cbf20eb43a18800f4ff0afd82ff1012021900b88a2456ec79941e4ed21cd7b156cb5ad26b55e1ad98e117",
+      "comment": "A = B: g*(n-1)/2",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 97,
+      "publicKeyUncompressed": "04754fd9fccc5e490f332124cdb8b8b012ffec7ddd677a38f4315d4d0e835c71901a665c08673aff1bf3526fc7a55535d7",
+      "publicKeyCompressed": "03754fd9fccc5e490f332124cdb8b8b012ffec7ddd677a38f4",
+      "msg": "5465737420",
+      "sig": "3035021828222e3836a44d26d6181aabb5f7b4d38d5ba6a569fd692702190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B; g*(n-1)/2",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 98,
+      "publicKeyUncompressed": "047fb9b8efb34b32400cc0a2ae4dc56a71f00794bc7c7e367da5b4a18ef4d3af421addce3c0a7ef981636b38ad8c32cf41",
+      "publicKeyCompressed": "037fb9b8efb34b32400cc0a2ae4dc56a71f00794bc7c7e367d",
+      "msg": "5465737420",
+      "sig": "303402187ff3b35038090ec68e5ac742d6c3f433b14b767f6919dbde02184775dba913866be1b12de327e8882cdb420073d00739471a",
+      "comment": "A: g*(n+1)/2",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 99,
+      "publicKeyUncompressed": "04b70f4e50e448978e929ff44aaaf068f4fdeb6669aed8640d481507f4e595d205f9c67e73b98581f5409f5c9dc9220b81",
+      "publicKeyCompressed": "03b70f4e50e448978e929ff44aaaf068f4fdeb6669aed8640d",
+      "msg": "5465737420",
+      "sig": "30340218188da80eb03090f67cbf20eb43a18800f4ff0afd82ff101202184775dba913866be1b12de327e8882cdb420073d00739471a",
+      "comment": "A = B: g*(n+1)/2",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 100,
+      "publicKeyUncompressed": "047fb2592c9d2a7a869a05cea4e980251b1704815f0bc9a26f65ead0c0d3be129efc5277321966e82d3ad5af5edd8469d8",
+      "publicKeyCompressed": "027fb2592c9d2a7a869a05cea4e980251b1704815f0bc9a26f",
+      "msg": "5465737420",
+      "sig": "30360219009a15e5f9383ef8477a15d66c7870d30dd74c42c9187bc4b102190099fcae834eaf923eb853931ac90cf07f227e43258ad6e3de",
+      "comment": "B; g*(n+1)/2",
+      "valid": true,
+      "flags": ["SpecialAB"]
+    },
+    {
+      "tcId": 101,
+      "publicKeyUncompressed": "048c631a4f998c5b1b286c4fd448cae02c16dc9faf33b272ffecf93f61cdac69d204fdb96d7255e01a989677ef28fac349",
+      "publicKeyCompressed": "038c631a4f998c5b1b286c4fd448cae02c16dc9faf33b272ff",
+      "msg": "54657374",
+      "sig": "3035021900e210cc50d481145b7cdfa8be3072d8856916444d17ab352202181097babf38146d1b98bd75fed5026ee4e65130baecf151c4",
+      "comment": "point at infinity during verify (invalid signature)",
+      "valid": false,
+      "flags": ["PointAtInfinity"]
+    },
+    {
+      "tcId": 102,
+      "publicKeyUncompressed": "04d0c23e6e76c8e938e0a466792e1c51e45158c15b9e0e13383d255af21940110c47dc7571de7ece149e76571537cd7225",
+      "publicKeyCompressed": "03d0c23e6e76c8e938e0a466792e1c51e45158c15b9e0e1338",
+      "msg": "54657374",
+      "sig": "303402187ffffffffffffffffffffffffffffffffffffffffffffffe02187fffffffffffffffffffffffffffffffffffffffffffffff",
+      "comment": "point at infinity during verify (invalid signature)",
+      "valid": false,
+      "flags": ["PointAtInfinity"]
+    },
+    {
+      "tcId": 103,
+      "publicKeyUncompressed": "040fc5373d58450f1d15086aff06f7073cdac50dc35a3e3617e3ba4f676e30236ddcf6e0b5254b0194c083cde62964503b",
+      "publicKeyCompressed": "030fc5373d58450f1d15086aff06f7073cdac50dc35a3e3617",
+      "msg": "54657374",
+      "sig": "3029020c662107c9eb94364e4b2dd7ce021900ffffffffffffffffffffffffffffffffffffffffffffffff",
+      "comment": "point at infinity during verify (s not in range)",
+      "valid": false,
+      "flags": ["PointAtInfinity"]
+    },
+    {
+      "tcId": 104,
+      "publicKeyUncompressed": "046d158eb5667994a41440ff2c1d48e57232ce9d21267dbd5991a64116db746ec25c1df6fc335610fa7bd031c9e6614b8d",
+      "publicKeyCompressed": "036d158eb5667994a41440ff2c1d48e57232ce9d21267dbd59",
+      "msg": "54657374",
+      "sig": "3029020c662107c9eb94364e4b2dd7cf021901000000000000000000000000000000000000000000000000",
+      "comment": "point at infinity during verify (s not in range)",
+      "valid": false,
+      "flags": ["PointAtInfinity"]
+    },
+    {
+      "tcId": 105,
+      "publicKeyUncompressed": "046d982ae1c104fa8a1d1ecd0c9f77469080b0919714dc07e46b1f198e4339554f5de9855db33fee21f35583a4d872521e",
+      "publicKeyCompressed": "026d982ae1c104fa8a1d1ecd0c9f77469080b0919714dc07e4",
+      "msg": "54657374",
+      "sig": "3006020102020101",
+      "comment": "point at infinity during verify (invalid signature)",
+      "valid": false,
+      "flags": ["PointAtInfinity"]
+    },
+    {
+      "tcId": 106,
+      "publicKeyUncompressed": "041cf7cd3f2ac79a503682050b191762482d22d89203b5e20ae89c4ce33aaa1a5567ca17f6e269a35a65e02e10c0b96c3a",
+      "publicKeyCompressed": "021cf7cd3f2ac79a503682050b191762482d22d89203b5e20a",
+      "msg": "54657374",
+      "sig": "3036021900ffffffffffffffffffffffff99def836146bc9b1b4d22830021900ffffffffffffffffffffffff99def836146bc9b1b4d22830",
+      "comment": "point at infinity during verify (invalid signature)",
+      "valid": false,
+      "flags": ["PointAtInfinity"]
+    },
+    {
+      "tcId": 107,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "",
+      "sig": "3036021900ddbb115a345f7cde6e38e63b39526b648e63ea45dccd6ebf021900d472250cde8a37b20208a428045831a13d32930a887dde22",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 108,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "000102030405060708090a0b0c0d0e0f",
+      "sig": "303402183dbe40769ed29e07c604660675bed9e537acb71a68c7c297021808f5dd552a38f9e7760d483d11a23b6879829c522572a8f2",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 109,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "616263",
+      "sig": "303502182e73be50b323244fb75d3b38e6c718b5842b8ac9826f315b021900b60a7336e7cbd2b22ddac74224c521b7bd2a32feb04c4b8b",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 110,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "30360219008d4a500abfee1f9880dfe78daa478462c7c6fad43b9341c8021900c6b2a4b5ff2368f40ce2fc60bca2357bf7b1d7f76ab78b6c",
+      "comment": "normal",
+      "valid": true,
+      "flags": ["Basic"]
+    },
+    {
+      "tcId": 111,
+      "publicKeyUncompressed": "041d81b938f6f2bc9cc1f60007b5ffb40a5fc0a1c23b6bab313de32216ce5768cb2ab010033be51aa7b9a329af0ce45d4e",
+      "publicKeyCompressed": "021d81b938f6f2bc9cc1f60007b5ffb40a5fc0a1c23b6bab31",
+      "msg": "54657374",
+      "sig": "303502180f7934a5a41180f8b75cc2d711c7323766617941b3aa84fa021900ffffffffffffffffffffffffb2016e96a1644ae2d002dc6f",
+      "comment": "s too large (s not in range)",
+      "valid": false,
+      "flags": ["InvalidRange"]
+    },
+    {
+      "tcId": 112,
+      "publicKeyUncompressed": "040435e7b32d4a6b49e3601ad565fb58b21a50fdbaf5d03f36bc08ed75dff1d14c7ae5149d30f0525711595b41b195a604",
+      "publicKeyCompressed": "020435e7b32d4a6b49e3601ad565fb58b21a50fdbaf5d03f36",
+      "msg": "54657374",
+      "sig": "303502180f7934a5a41180f8b75cc2d711c7323766617941b3aa84fa021900ffffffffffffffffffffffff99def836146bc9b1b4d22832",
+      "comment": "s = n+1 (s not in range)",
+      "valid": false,
+      "flags": ["InvalidRange"]
+    },
+    {
+      "tcId": 113,
+      "publicKeyUncompressed": "048a26132cf51d9cfcc39fd2f2c9a2185b86029e391f7facb5f87da0009c102015010ea0d89e3c5af0571b6d9b0bb9ab04",
+      "publicKeyCompressed": "028a26132cf51d9cfcc39fd2f2c9a2185b86029e391f7facb5",
+      "msg": "54657374",
+      "sig": "3035021900ffffffffffffffffffffffff99def836146bc9b1b4d2283302185099718b34fd10df781b3816647a391ea0423955e5a2d04e",
+      "comment": "r = n+{Rlow[0]} (r not in range)",
+      "valid": false,
+      "flags": ["InvalidRange"]
+    },
+    {
+      "tcId": 114,
+      "publicKeyUncompressed": "0470a12879d62ca5e9d4854af01a2798c6fc5e67cb3160366180f5267332b6ed29cbceda9dbc026ee8386274984df879dc",
+      "publicKeyCompressed": "0270a12879d62ca5e9d4854af01a2798c6fc5e67cb31603661",
+      "msg": "54657374",
+      "sig": "303502180f7934a5a41180f8b75cc2d711c7323766617941b3aa84fa021900ffffffffffffffffffffffffffffffffffffffffffffffff",
+      "comment": "s = 2**192-1 (s not in range)",
+      "valid": false,
+      "flags": ["InvalidRange"]
+    },
+    {
+      "tcId": 115,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006020100020100",
+      "comment": "r=0, s=0 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 116,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006020100020101",
+      "comment": "r=0, s=1 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 117,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006020101020100",
+      "comment": "r=1, s=0 (s not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 118,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006020101020101",
+      "comment": "r=1, s=1 (invalid signature)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 119,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30060201000201ff",
+      "comment": "r=0, s=-1 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 120,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30060201ff020100",
+      "comment": "r=-1, s=0 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 121,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30060201ff0201ff",
+      "comment": "r=-1, s=-1 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 122,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "301e020100021900fffffffffffffffffffffffffffffffeffffffffffffffff",
+      "comment": "r=0, s=p (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 123,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "301e021900fffffffffffffffffffffffffffffffeffffffffffffffff020100",
+      "comment": "r=p, s=0 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 124,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3036021900fffffffffffffffffffffffffffffffeffffffffffffffff021900fffffffffffffffffffffffffffffffeffffffffffffffff",
+      "comment": "r=p, s=p (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 125,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "301e0201000219ff000000000000000000000000000000010000000000000001",
+      "comment": "r=0, s=-p (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 126,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "301e0219ff000000000000000000000000000000010000000000000001020100",
+      "comment": "r=-p, s=0 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 127,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30360219ff0000000000000000000000000000000100000000000000010219ff000000000000000000000000000000010000000000000001",
+      "comment": "r=-p, s=-p (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 128,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "301e020100021900ffffffffffffffffffffffff99def836146bc9b1b4d22831",
+      "comment": "r=0, s=n (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 129,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "301e021900ffffffffffffffffffffffff99def836146bc9b1b4d22831020100",
+      "comment": "r=n, s=0 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 130,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3036021900ffffffffffffffffffffffff99def836146bc9b1b4d22831021900ffffffffffffffffffffffff99def836146bc9b1b4d22831",
+      "comment": "r=n, s=n (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 131,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3011020100020c99def836146bc9b1b4d22831",
+      "comment": "r=0, s=n (unsigned) (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 132,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3011020c99def836146bc9b1b4d22831020100",
+      "comment": "r=n (unsigned), s=0 (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 133,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "301c020c99def836146bc9b1b4d22831020c99def836146bc9b1b4d22831",
+      "comment": "r=n (unsigned), s=n (unsigned) (r not in range)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 134,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006020100010100",
+      "comment": "r=0, s=False ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 135,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006010100020100",
+      "comment": "r=False, s=0 ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 136,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006010100010100",
+      "comment": "r=False, s=False ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 137,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30050201001600",
+      "comment": "r=0, s=empty string ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 138,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30051600020100",
+      "comment": "r=empty string, s=0 ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 139,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "300416001600",
+      "comment": "r=empty string, s=empty string ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 140,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30050201003000",
+      "comment": "r=0, s=empty list ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 141,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30053000020100",
+      "comment": "r=empty list, s=0 ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 142,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "300430003000",
+      "comment": "r=empty list, s=empty list ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 143,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30050201000500",
+      "comment": "r=0, s=null ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 144,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "30050500020100",
+      "comment": "r=null, s=0 ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 145,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "300405000500",
+      "comment": "r=null, s=null ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 146,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006020100160130",
+      "comment": "r=0, s=string 0 ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 147,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006160130020100",
+      "comment": "r=string 0, s=0 ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 148,
+      "publicKeyUncompressed": "04a50f72955640ab2135121d3f72db67357963ad3995c2e80ae5e7cbadfa0f52bd86faff7806d31a6d58fc6e01f509019f",
+      "publicKeyCompressed": "03a50f72955640ab2135121d3f72db67357963ad3995c2e80a",
+      "msg": "54657374",
+      "sig": "3006160130160130",
+      "comment": "r=string 0, s=string 0 ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["PsychicSignature"]
+    },
+    {
+      "tcId": 149,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "303402180f21370df0191cc56b0414ad7ce964996b5bc1ed2263948202184834b39254ebd5e1eb0aedffd7cf1d545fb1051dc28e5870",
+      "comment": "wrong hash: using SHA-1 instead of SHA-224 (invalid signature)",
+      "valid": false,
+      "flags": ["WrongHash"]
+    },
+    {
+      "tcId": 150,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "303502186e1717decb3f3e417d6e5e427536bdd0674c8c4fa90db21f0219008aaaf5306ed0f096ab38f07c7c21f48fdf08d9e0506376ff",
+      "comment": "wrong hash: using SHA-256 instead of SHA-224 (invalid signature)",
+      "valid": false,
+      "flags": ["WrongHash"]
+    },
+    {
+      "tcId": 151,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "3036021900f6715fb7519abfdb4b25fe0d628609e0bf46b238547ef59d021900c03258bb41df6dc03f957558ca10d9937ef837b867f68bd1",
+      "comment": "wrong hash: using SHA3-256 instead of SHA-224 (invalid signature)",
+      "valid": false,
+      "flags": ["WrongHash"]
+    },
+    {
+      "tcId": 152,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "30360219008d0c43dd9740d5d3e6175d7533c8e470d64788bb5285026402190081b64c47b9dd439ea2d18f0d65541a1fc0304b77e604d039",
+      "comment": "wrong hash: using SHA-512/256 instead of SHA-224 (invalid signature)",
+      "valid": false,
+      "flags": ["WrongHash"]
+    },
+    {
+      "tcId": 153,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "303402180d4337b2ac6e58b75fe0c6e15c49df22e920a719ded5cffd0218322219b9f3e8049909bda9104639bcab42ea0d8d1fd1295b",
+      "comment": "wrong hash: using KECCAK256 instead of SHA-224 (invalid signature)",
+      "valid": false,
+      "flags": ["WrongHash"]
+    },
+    {
+      "tcId": 154,
+      "publicKeyUncompressed": "0451f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77a3840ab4dca958ca3006f7c3f24a9f52b2b484e4a48cd3ca",
+      "publicKeyCompressed": "0251f49667e1cba2d5de53646c599b44852cb3deb1a9ef3f77",
+      "msg": "54657374",
+      "sig": "30360219008bb4c95547758b521c955a173a6047a8c8614f502201586e021900865fcd24ec04017b54dab5a3f5f3cc5bf0dc463cb879c2ee",
+      "comment": "wrong hash: using SHA-512 instead of SHA-224 (invalid signature)",
+      "valid": false,
+      "flags": ["WrongHash"]
+    },
+    {
+      "tcId": 155,
+      "publicKeyUncompressed": "046b280947c7469b092a8165a53bc5eb9b6f13ab88f801e0632f6173629c3b452471a7c45fac58daade669c81466c38f0c",
+      "publicKeyCompressed": "026b280947c7469b092a8165a53bc5eb9b6f13ab88f801e063",
+      "msg": "68656c6c6f00776f726c64",
+      "sig": "303502186461a79cd119da54cfa057ce264f183c3394017e46d151e502190098173e4ac8769a57aeef75fb390b105138990dfb374ff963",
+      "comment": "wrong message (invalid signature)",
+      "valid": false,
+      "flags": ["InvalidSignature"]
+    },
+    {
+      "tcId": 156,
+      "publicKeyUncompressed": "046b280947c7469b092a8165a53bc5eb9b6f13ab88f801e0632f6173629c3b452471a7c45fac58daade669c81466c38f0c",
+      "publicKeyCompressed": "026b280947c7469b092a8165a53bc5eb9b6f13ab88f801e063",
+      "msg": "ff",
+      "sig": "303402185ea8cdf8137ddad12eb68a3dd247ceae85a9ea274d3b51aa02182f0614c7d7b2bbfff16e7be1b48f5d0c2483931adfc929bd",
+      "comment": "wrong message (invalid signature)",
+      "valid": false,
+      "flags": ["InvalidSignature"]
+    },
+    {
+      "tcId": 157,
+      "publicKeyUncompressed": "046b280947c7469b092a8165a53bc5eb9b6f13ab88f801e0632f6173629c3b452471a7c45fac58daade669c81466c38f0c",
+      "publicKeyCompressed": "026b280947c7469b092a8165a53bc5eb9b6f13ab88f801e063",
+      "msg": "68656c6c6f20",
+      "sig": "303502186461a79cd119da54cfa057ce264f183c3394017e46d151e502190098173e4ac8769a57aeef75fb390b105138990dfb374ff963",
+      "comment": "wrong message (invalid signature)",
+      "valid": false,
+      "flags": ["InvalidSignature"]
+    },
+    {
+      "tcId": 158,
+      "publicKeyUncompressed": "046b280947c7469b092a8165a53bc5eb9b6f13ab88f801e0632f6173629c3b452471a7c45fac58daade669c81466c38f0c",
+      "publicKeyCompressed": "026b280947c7469b092a8165a53bc5eb9b6f13ab88f801e063",
+      "msg": "00000000",
+      "sig": "303402185ea8cdf8137ddad12eb68a3dd247ceae85a9ea274d3b51aa02182f0614c7d7b2bbfff16e7be1b48f5d0c2483931adfc929bd",
+      "comment": "wrong message (invalid signature)",
+      "valid": false,
+      "flags": ["InvalidSignature"]
+    },
+    {
+      "tcId": 159,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f90c78f5d5",
+      "sig": "303502184ee2b2499af723eabb03163afb8769e4ab54476eb780295d021900c518e8e4797b59b0230c7402901db4f379f1950811975fa0",
+      "comment": "special hash:highcnt",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 160,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f901af0767",
+      "sig": "3035021900ba54b7c2233e39e550f50f82e4b6423b4feb10fbf823e36002187426a7e812185a2f1d27a5da72f71b4991430d712dd900b7",
+      "comment": "special hash:lowcnt",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 161,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9db1f3948",
+      "sig": "3035021900a5242ad3347202c781f7829fe7613952132a83f416f355380218225d14ac2e50cb624eed614eacc10792942458c2effeccc4",
+      "comment": "special hash:lowcnt",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 162,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f902063336",
+      "sig": "30350218450e5b04801d37ba2e857e4645e2f78a2fc74239fd6c4c91021900b2b9085b6a7d834584af1816c07f714122621b27996b6047",
+      "comment": "special hash:maxt",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 163,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f924febbe3",
+      "sig": "3036021900ff0ac9e848ddfa52f4c3e151bea132d0e41f18c1a1125efb02190082f3786e9db462fb8f3852568800745c88dcf611510f780a",
+      "comment": "special hash:maxt",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 164,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f906ef5306",
+      "sig": "3035021900a7b4934f2d8817bda2643196658b76595313d3a52d3d48ea021815d448d01caa31c93a23e8d5bd8a26d41b71961deae58b92",
+      "comment": "special hash:mint",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 165,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f90c1664c9",
+      "sig": "303502185bea5b038aa015a18eff577388ac9038c24a5fe243bc4afa0219008e9ec1f2539b284387d7c278ed53a4d7e86466773839323b",
+      "comment": "special hash:mint",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 166,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f91731f546",
+      "sig": "3035021833145cde1603cef59cb46c039c1f6b9f9c50273ebf9f1047021900ecabd0c7a4dd1ed77655a5ac749ae6798738b7e71070263d",
+      "comment": "special hash:mint",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 167,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f97201f0eb",
+      "sig": "3035021900e0cc048b6805ea9e628f670c626b2e10cc780fda5510c4d2021864878ab8a1417a90337540678981309a4ea04605598c7542",
+      "comment": "special hash:mint",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 168,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f97b3ab5c3",
+      "sig": "3036021900869e2dd2659cf2031f74cdc2c29f59c5596c238531fd80c8021900a38e40aa7e55907b287d5e675454d656ef2bd09c03934332",
+      "comment": "special hash:mint",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 169,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9069ffd4a",
+      "sig": "30350219008cc3c2b24e706932c93dd0893455e7eb5102c72bed9f972c021875a49c44e17a67e904456a97d6a147576f91ba8068a643da",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 170,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f91a365240",
+      "sig": "303402180d4d0b852aa0692654675525bcde077cd644431082db9ad202181ff97f9c8d4cb12b2409fc0c9719a8e5eaa2530f819726f3",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 171,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f91a544f9c",
+      "sig": "30340218137ac9f7f404ee9f3e20030a716cee70732967a39abd39ac02185c53d71b0de39c57b831de5177d7bc2f624e06e7b0f1da87",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 172,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f91a55924e",
+      "sig": "303402180726da21311a89b593165a00c57a5c0c57cde11950be4c320218114a399f965776d2af1f589ae4e229000ac95bae0368b7b9",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 173,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9231d70a7",
+      "sig": "303402182889d4a3e249b14e7be5c3d95052d452ee8c0a18d2e55f0802183c2baa8818ff558172bea07a539374a3a2f6d58825b76be3",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 174,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f92470356c",
+      "sig": "3036021900f02653d2d4c5c2ce5c11a2388e77446fc22752e131629c9a021900df345d558401ca35dac53930d554f159b6d6cd273af6e2e1",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 175,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f92e79ee00",
+      "sig": "3036021900c6de050d5b6dd70f98ad60dd0e8493a85052113bb1b3950b021900ae25e45fbf65ec676ee02ab2f9ca0c0837dc98affda9e35a",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 176,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f92f7e8556",
+      "sig": "3035021900cf2b2a7b71e7dc47717091bc79419fe6bbd9905fea51aeb6021830bdf9eaa534281debad93298a4e0d01198c4a39055f223a",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 177,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f93515b63d",
+      "sig": "3034021860bfa9847e9dc4a329dccfca836be31bc72f2a37a24a5bbb021830a6818ec2b6e033dbdc03457dd8a7ac96f08131cc3942be",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 178,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f93a2fb0f0",
+      "sig": "3036021900f54090f68586449a1e0edf28afb39449d58d3ce8168e9553021900c6c3cad1c312ce344b824dc0200842f884795696aa542aa5",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 179,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f93f81fd28",
+      "sig": "30350218262875058788588c0b284d7a783f4d19065a41a3475eb58b0219009b429f97f2f85bd48cb4aa8c9626b2f0649d2751e01e5053",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 180,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f944781124",
+      "sig": "3035021863e654d3da6b8619c9e5c0138f0ab4573f7fcc83a7422e59021900a50103079a2e38b823a5ef8752f5924b40469d9cf8f73202",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 181,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f94784cf7a",
+      "sig": "3035021900bbd49fd8413c7ff4a4b265a1111f231d07da52848264879702183587a0f47ca67f6a0b94b330fb39763cbeb45dcaa92d9732",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 182,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f94d17f836",
+      "sig": "3036021900be4997351d4ce18ee64ff520f7e19da1e79740b33306b055021900ff75ac7d8fbcd6a7431aaa7aa75dccad92e6ff86b17e1f4a",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 183,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9514a89a3",
+      "sig": "303502190086c53c9d43a8aaa1ab3f335a9d71a8347f45244e173ccdc5021855bfbf337d161a3ae8613b45edfe0794d986d6ceb68cd10e",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 184,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f955b16d28",
+      "sig": "3035021900836f93dea7483c72790b31e0d9e739bcc3d4479d4f2a3dea021819481cbf87cc2b855cfddedc85f89dd15da7a5ce9d9c278a",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 185,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f957373b41",
+      "sig": "3036021900ccdb100aad6c5ed40e3906b17be318bf95bb62e5cd6f00c2021900b20e18b49a22d7855efdae8df7c8ce4dc136c27f668a33ae",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 186,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9574a3a52",
+      "sig": "3036021900d5a2e7fc8d0a366e7f168bc47d5fdb97b032cf8bddea9a9f021900da6f9592ab51048dfdadd048e72b58805b381b258cfc1cfd",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 187,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f95dcac760",
+      "sig": "303402181960eeb7b2f9c37f86316c4094097b26a0df68405716d70d02187d3df3c5e56dd5c94db4f50d821f5630e966c1ad3859b844",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 188,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f95fd22edf",
+      "sig": "303502181f2f87fdbd4f58783086107628617070225ccef21b769b2d021900980d67859756d9997828a4eb7c6ca0311906aa4cbaac2e18",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 189,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9669a8d1d",
+      "sig": "303502190096e2f3e2bfcff98f9c0eb9439e9a563c1d6509960de03ec2021821b789fc54bbf023705506abfdebb9cd2a14f8c21e01bc93",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 190,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f96a084395",
+      "sig": "3036021900e34895122b3dffebce5166934284e6d87bf46240b7953f0c021900af3d9bda12792ae7b86f7354587e561c5a0e029fbd10c85d",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 191,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f977abfebb",
+      "sig": "3035021900bcd3b03675178ae43b6dad544077d0453e51c962d129dd09021849539274b0311449c6fdcb01513f50f2a6b38ce498c347c6",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 192,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f97ce45ab3",
+      "sig": "303602190095c413f8643a2fcb9895a6539472c33b755d180913243faf021900ce4d9d2325dce66fc067938299740a9c3de7ddbd3caee7bb",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 193,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f981c3298b",
+      "sig": "303502185fcf4f5b18db78121afae8ec54e4cde704edac38ba8e54ef02190094319335a9e5f6e18a44fde2b4ab67dfdb6c379396eb5bec",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 194,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f98495a8f0",
+      "sig": "303502182d887675a0469eb170d49fe425e0511b823744d9a68307ec021900e734aa532bfdfc16c30a8023e776a7ce9a6c73b954d2470a",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 195,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f98d426e4d",
+      "sig": "3036021900e973e620581c1bc54c5b86a92357399bbe27469fc3f7b8f1021900b0a5a82c2473e2ef8cf0de4e1829dd0cffd9885b4e9620d0",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 196,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f98d7bfdb5",
+      "sig": "3034021842dddb7e7034949a4f51b6bf957333ad96d869b235f7987b021852542bd6395ecf5e5a24d810c019873533f3e0bc47713f93",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 197,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f98d8b2e5f",
+      "sig": "303402186359ab923f9882a84f3c20ec62b57e107efb69528b0a316702182cdf581aaa0e69325cd58eac5d825b7d7b40708935a4a9b0",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 198,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f98ea722e6",
+      "sig": "3036021900e3d780fbc6be454515e8f7256943561287353bb165cf425d021900dbfe7046010079b4e325aa0b8586707f23eaee0b2f99068b",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 199,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f98f283316",
+      "sig": "3035021832aef754c90b2ab82ba639db63c49677b14cd0bf6c9d7b63021900a96f1f15004927b691853d4de1b9fc4caf785da9f0e685e3",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 200,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f995f5f9ff",
+      "sig": "3034021800bbc7a3e09b059bad687df3a36d9f141d9b1787fa12b19d02180573114114e1ea127964180642429622f4295ee34a9b522a",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 201,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f997cfca58",
+      "sig": "3036021900856e2e2a25d42b359516bcbc3226abf909192f707d377196021900b351d16a7a41f1f6f521ebb413d686bbb4bef6cf949f0055",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 202,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f99ca01835",
+      "sig": "30340218724ef41b917fe86145b9e28367d2c6b873506a1ad62aea83021813660891086fac28ec570c10c501a8a70e293174750769dd",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 203,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f99edd658f",
+      "sig": "3035021900f2231ef4e42e256aa57df89c0e6a7ea3be062119db934a6202185bd658244bb808e539404b5e3ddf62cfda284b09c2d2f47f",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 204,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f99f90599b",
+      "sig": "303602190091db85fce3706593aeb30f66d5393fd60180162fbf40bb150219009b95d4e69b178469e116a6d2e44fcb01315775bd864a72d1",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 205,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9a393011c",
+      "sig": "3034021822d4687bb877601f454ed33dafbed4d7f50b365ed28636c00218580895fa79a61dc8956527969e77d74da92f77cec2efceae",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 206,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9a795cbbb",
+      "sig": "303502183ce42c63a8f1b105cc2cc22c27227dab27a26b342acffb77021900f083ed52c049a2aa623bf1cbfa5dfdbbe19d95d08abf5248",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 207,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9ad5a11d2",
+      "sig": "3036021900e17224d19cc0cab0c8786f91612e9c24a4acf917bc346d170219009af45ff2ec68e38775b6b087e755b1df695c531e6808d602",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 208,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9ad71c057",
+      "sig": "303502181276f342ab1eaf5f0ca72864d8742e124e1caeaf74cfa75e021900d21684106a5eb8a8a3613774018565adfe53dda95bd12818",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 209,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9ae096c72",
+      "sig": "3036021900c079479d1a5493684cfef5cdec133bf41d29f4b13b572a3502190088cc92d705d29611b384ec65d8674f4b3585b2894f53cafa",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 210,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9b6e51743",
+      "sig": "30340218567bb4f181ea53b423a0d041beeae7cd9f9608a1a5207653021828cacdf397979e2961d0ebcb5c96c60abfc04b792783ab06",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 211,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9c1f217d1",
+      "sig": "3035021900a23b000567c027ec318d1b2b89b9b78c015dc15c8ea11cc7021848a65dc4c74e5e4038e11962b137b24e4c4f73c6b729ce5f",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 212,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9c5a1c6d9",
+      "sig": "3035021870f387dc695779ec32f6a230aecf03f0a32ee9f69f415bbe021900ba2beac6df9fb7d348425319d7af4bdf6f1134307ecc490f",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 213,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9cbd622c5",
+      "sig": "30340218792eaf06a03ff8a7e1a435fa065e35efdba3e6c3d3e94ed9021866b38c4a1dd05621eb3aa1ba46d415d8dc188a8684a58c07",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 214,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9ddce35f4",
+      "sig": "3036021900f2b6d5ee74c3e99a6562d9e94abb431fb82d9c69001c71b5021900e96592e2a5728f61317646c21f6cf7251a590202710047b6",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 215,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9e2edd394",
+      "sig": "30360219008c8421f3f8703b20106afa9cadcdbf971776e5b9659133ad021900c552dc119c1a98c3460f4f863da05f9705b2c587e11dd795",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 216,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9ea5e32e5",
+      "sig": "30360219008be015d2b004591785febdb5e8c2c33592cb954d301dcc4e021900835ffbe3d9d1da6b2d79fece8b4e876a3aca250b017fcce3",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 217,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9ed96b76b",
+      "sig": "3036021900c9d89e659dbe0ba8a276b33e89bc3c3957ac44cd0653cde7021900807a4ce92ef6a9706d2ffc57674a1464b40e27f45068e938",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 218,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9ee744b06",
+      "sig": "3035021878ddf5a43eb0bb2ab850116f8e5cee67255720a625b9a564021900c6a0c6839e5ebf415bf76286ce64d5ff3fd1019c75a64661",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 219,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9f200fec0",
+      "sig": "3035021900b19ae97c785dbface3f24d94128a1fc2ed4c148d7c29516602182dacbb4e42d733cdc3539926b5d4f589550a6364eb29eef8",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 220,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9f8b8486a",
+      "sig": "3034021875525be53907e9b9effc16e4e8413545487047b86ab60ea102180149bbb2c48fefdb7627c360fcd8c5039f44eaa30b1eaaa7",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 221,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9fc0538a2",
+      "sig": "3035021837a09e0d38203626618d733d1799ae2a9c7b77854d2a66440219009b4f3ec3f3a5f11e0147c7349136b5fa8b4763d6fd1753bc",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 222,
+      "publicKeyUncompressed": "041213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629cbb08224238e04962be20d26e574a6df1343dafbe4fe30f83",
+      "publicKeyCompressed": "031213439443ebefd0b15053c6f9e53bbe86fbf5f9ef73629c",
+      "msg": "1401f6f9fe686bf2",
+      "sig": "3035021850a6d54c978b4e5a9438ce5782ff3186324cf4a2a2992580021900f06bc5701ec9ac693298afa5dd319a7b43ae531ae84ab2fe",
+      "comment": "special hash:pattern",
+      "valid": true,
+      "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 223,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "313402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "increased tag number of signature by 1 (not a list)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 224,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "2f3402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "decreased tag number of signature by 1 (Unknown tag)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 225,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3f90808080103402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "32-bit integer overflow in tag number of signature (Unknown tag)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 226,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3f828080808080808080103402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "64-bit integer overflow in tag number of signature (Unknown tag)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 227,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3f81ffffffffffffffff7f3402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "replaced tag number by 2**64-1 in signature (Unknown tag)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 228,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3f3402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "replaced tag number by 0 in signature (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 229,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "703402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "modified tag class of signature (not a list)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 230,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3f103402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "using long encoding for short tag of signature (Not DER)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 231,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303403187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "increased tag number of r by 1 (Invalid Bitstring)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 232,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303401187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "decreased tag number of r by 1 (Invalid Boolean)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 233,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30391f9080808002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "32-bit integer overflow in tag number of r (('Unknown class', 4294967298))",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 234,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303e1f82808080808080808002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "64-bit integer overflow in tag number of r (('Unknown class', 18446744073709551618))",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 235,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303e1f81ffffffffffffffff7f187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "replaced tag number by 2**64-1 in r (('Unknown class', 18446744073709551615))",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 236,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30341f187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "replaced tag number by 0 in r (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 237,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303442187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "modified tag class of r ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 238,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30351f02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "using long encoding for short tag of r (Not DER)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 239,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30350219007c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "prepending byte to r (Invalid encoding)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 240,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3036021a7c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242000002183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "appending bytes to r (r not in range)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 241,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3034021800000000000000000000000000000000000000000000000002183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "changing all bytes of r to 0 (Invalid encoding)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 242,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30340218ffffffffffffffffffffffffffffffffffffffffffffffff02183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "changing all bytes of r to 0xff (invalid encoding)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 243,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "301c020002183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "dropping all bytes of r (Invalid Integer)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 244,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303302173f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "dropping first byte of r (invalid signature)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 245,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303302177c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "dropping last byte of r (invalid signature)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 246,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402007c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size changed to 0 (Invalid Integer)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 247,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3034027f7c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size changed to 127 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 248,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303802847fffffff7c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size of r changed to 2**31-1 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 249,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30380284ffffffff7c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size of r changed to 2**32-1 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 250,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3039028501000000187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "32-bit overflow in size of r (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 251,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303d02890100000000000000187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "64-bit overflow in size of r (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 252,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30350281187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "using long size encoding for r (Not DER)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 253,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3038228002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242000002183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "attempting indefinite encoding for r (Cannot construct {clz})",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 254,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303622807c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242000002183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "invalid indefinite encoding for r (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 255,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "301a02183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "dropping element 0 of signature (wrong length of sequence)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 256,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "304e02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "duplicating element 0 of signature (wrong length of sequence)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 257,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24203183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "increased tag number of s by 1 (Invalid Bitstring)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 258,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24201183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "decreased tag number of s by 1 (Invalid Boolean)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 259,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303902187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2421f9080808002183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "32-bit integer overflow in tag number of s (('Unknown class', 4294967298))",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 260,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303e02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2421f82808080808080808002183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "64-bit integer overflow in tag number of s (('Unknown class', 18446744073709551618))",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 261,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303e02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2421f81ffffffffffffffff7f183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "replaced tag number by 2**64-1 in s (('Unknown class', 18446744073709551615))",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 262,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2421f183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "replaced tag number by 0 in s (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 263,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24242183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "modified tag class of s ((r,s) must be integer pair)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 264,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303502187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2421f02183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "using long encoding for short tag of s (Not DER)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 265,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303502187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2420219003459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "prepending byte to s (Invalid encoding)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 266,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303602187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242021a3459f20a0d9acb9a73cd8445301a693403b81646022408670000",
+      "comment": "appending bytes to s (s not in range)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 267,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2420218000000000000000000000000000000000000000000000000",
+      "comment": "changing all bytes of s to 0 (Invalid encoding)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 268,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2420218ffffffffffffffffffffffffffffffffffffffffffffffff",
+      "comment": "changing all bytes of s to 0xff (invalid encoding)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 269,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "301c02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2420200",
+      "comment": "dropping all bytes of s (Invalid Integer)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 270,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303302187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242021759f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "dropping first byte of s (invalid signature)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 271,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303302187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202173459f20a0d9acb9a73cd8445301a693403b81646022408",
+      "comment": "dropping last byte of s (invalid signature)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 272,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202003459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size changed to 0 (Invalid Integer)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 273,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242027f3459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size changed to 127 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 274,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303802187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202847fffffff3459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size of s changed to 2**31-1 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 275,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303802187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2420284ffffffff3459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size of s changed to 2**32-1 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 276,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303902187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242028501000000183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "32-bit overflow in size of s (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 277,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303d02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202890100000000000000183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "64-bit overflow in size of s (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 278,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303502187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d2420281183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "using long size encoding for s (Not DER)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 279,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303802187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242228002183459f20a0d9acb9a73cd8445301a693403b81646022408670000",
+      "comment": "attempting indefinite encoding for s (Cannot construct {clz})",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 280,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303602187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24222803459f20a0d9acb9a73cd8445301a693403b81646022408670000",
+      "comment": "invalid indefinite encoding for s (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 281,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "301a02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d242",
+      "comment": "dropping element 1 of signature (wrong length of sequence)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 282,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "304e02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b816460224086702183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "duplicating element 1 of signature (wrong length of sequence)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 283,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303602187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b81646022408670500",
+      "comment": "appending NULL to signature (wrong length of sequence)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 284,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303802187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867a1020500",
+      "comment": "appending context specific element to signature (wrong length of sequence)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 285,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30350002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "prepending byte to signature (invalid tag:0002187c3f4f3d6d1d9584)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 286,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303602187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b81646022408670000",
+      "comment": "appending bytes to signature (invalid tag:3403b81646022408670000)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 287,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "comment": "changing all bytes of signature to 0 (invalid tag:0000000000000000000000)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 288,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3034ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "comment": "changing all bytes of signature to 0xff (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 289,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3000",
+      "comment": "dropping all bytes of signature (wrong length of sequence)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 290,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3033187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "dropping first byte of signature (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 291,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "303302187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b81646022408",
+      "comment": "dropping last byte of signature (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 292,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "300002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size changed to 0 (unparsed bytes in input)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 293,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "307f02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size changed to 127 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 294,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30847fffffff02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size of signature changed to 2**31-1 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 295,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3084ffffffff02187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "size of signature changed to 2**32-1 (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 296,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "3085010000003402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "32-bit overflow in size of signature (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 297,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "308901000000000000003402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "64-bit overflow in size of signature (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 298,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "30813402187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "using long size encoding for signature (Not DER)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 299,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "308002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b81646022408670000",
+      "comment": "using indefinite encoding for signature (Not DER)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 300,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "308002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b8164602240867",
+      "comment": "using indefinite encoding without delimiter for signature (Not enough bytes)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 301,
+      "publicKeyUncompressed": "04f05d15713e550cce3787931e865252f84ad4748d41e7c5f39f8bc2687a8431effe9e324efcf26d84804ec5de13782ad0",
+      "publicKeyCompressed": "02f05d15713e550cce3787931e865252f84ad4748d41e7c5f3",
+      "msg": "54657374",
+      "sig": "308002187c3f4f3d6d1d958467f3a1fc8dfa708f787f3c0241e6d24202183459f20a0d9acb9a73cd8445301a693403b81646022408670001",
+      "comment": "using indefinite encoding with invalid delimiter for signature (invalid tag:3403b81646022408670001)",
+      "valid": false,
+      "flags": ["ModifiedDer"]
+    }
+  ]
+}
