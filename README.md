@@ -10,3 +10,8 @@ algorithm parameters that should be covered.
 ## Recent changes
 2024/4/5: Added two files with raw ECDSA signatures. The signatures in these files are triples (r, s, id), where
 r,s are the two scalars of the ECDSA signature and id is the recovery_id that can be used to recover the public key. 
+
+2024/9/14: Added preliminary files with test vectors. About 66% of the files have been tested against independent libraries.
+tables/all_tests.json is a file that contains the current status.
+
+2024/9/22: Changed the directory structure. Updated the test vectors.
