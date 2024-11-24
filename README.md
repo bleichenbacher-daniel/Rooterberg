@@ -33,3 +33,10 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
 * Added test vectors for ECDH with JWK keys.
 * Added test vectors edge cases during CRT computation of RSA-OAEP.
 * Added test vectors for SPECK.
+
+2024/11/10, v. 0.53
+* Added more test vectors for RFC 6979 based signatures.
+
+2024/11/24 v. 0.54
+* Updated the test setup.
+* Added more pseudorandom test vectors (npm elliptic previously failed only one test vector even though 1 out of every 256 signatures was incorrect).
