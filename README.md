@@ -40,3 +40,10 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
 2024/11/24 v. 0.54
 * Updated the test setup.
 * Added more pseudorandom test vectors (npm elliptic previously failed only one test vector even though 1 out of every 256 signatures was incorrect).
+
+2024/12/8 v. 0.55
+* Added test vectors for the Rabbit stream cipher (RFC 4503).
+  One open question is the endianness of key, iv and data.
+  While RFC 4503 uses big endian encoding, all implementations I've tested use little endian encoding.
+  Hence the test vectors use little endian encoding too.
+* Added test vectors for GCM-SST (draft-mattsson-cfrg-aes-gcm-sst-07)
