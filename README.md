@@ -47,3 +47,11 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
   While RFC 4503 uses big endian encoding, all implementations I've tested use little endian encoding.
   Hence the test vectors use little endian encoding too.
 * Added test vectors for GCM-SST (draft-mattsson-cfrg-aes-gcm-sst-07)
+
+2024/12/22 v. 0.56
+* Added invalid test cases to IND-CPA ciphers with padding.
+* Changed test vector format for IND-CPA ciphers. They now include a boolean field "valid".
+* Added test vectors for DSA verification
+* Added test vectors for HC-256
+* Improved comments of RSA-PKCS #1 test vectors.
+* Added tests against pycryptodome. 
