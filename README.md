@@ -39,7 +39,8 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
 
 2024/11/24 v. 0.54
 * Updated the test setup.
-* Added more pseudorandom test vectors (npm elliptic previously failed only one test vector even though 1 out of every 256 signatures was incorrect).
+* Added more pseudorandom test vectors (npm elliptic previously failed only one test vector even
+  though 1 out of every 256 signatures was incorrect).
 
 2024/12/8 v. 0.55
 * Added test vectors for the Rabbit stream cipher (RFC 4503).
@@ -55,3 +56,26 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
 * Added test vectors for HC-256
 * Improved comments of RSA-PKCS #1 test vectors.
 * Added tests against pycryptodome. 
+
+2021/1/5 v. 0.57
+* Simplified and unified test vectors for public key crypto primitives. Tests that do not target
+  the encoding of the keys can contain the keys in multiple formats. Public keys typically use
+  the encodings "PublicKeySpki": the DER-encoding of the SubjectPublicKeyInfo (in hexadecimal),
+  and "PublicKeyPem": the PEM-encoding of the public key. Private keys are typically encoded
+  as "PrivateKeyPkcs8": the DER-encoding of the private key and "PrivateKeyPem". In some files
+  this information is still missing. They will be added when needed (i.e. when there are tests
+  that can verify the correctness of the encoding.)
+* Added test cases for PKCS #8 decryption. The format for the test vectors will very likely
+  change, since there are a number of open questions. For example, the field "key_type" was added
+  because some libraries require the knowledge of the key type of the encrypted key before parsing.
+  It is also unclear to what degree a test can expect a key validation of the decrypted key.
+  Stricter tests could be addded if a full key validation could be assumed. The test vector are
+  are sorted by the symmetric algorithm. This should allow adding additional symmetric encryption
+  schemes without affecting existing tests. 
+* Added edge cases for RSA PKCS #1 decryption. Most of the new test vectors test edge cases that
+  occur when the decryption uses CRT.
+* Added test vectors for XSalsa20-Poly1305. Only authenticated encryption with no AAD is supported.
+* Added flags to test vectors with weak DES keys. Some libraries reject such test vectors.
+  All test vectors have been changed so that the key bytes have odd parity.
+* Rewrote the ASN.1 module. Hopefully this did not change the test vectors.
+* Added more fuzzing for ASN.1 encoding. 

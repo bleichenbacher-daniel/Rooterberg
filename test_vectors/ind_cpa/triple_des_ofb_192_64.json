@@ -8,11 +8,15 @@
     "cipher": "TripleDes",
     "mode": "Ofb"
   },
-  "version": "0.56",
+  "version": "0.57",
   "description": [],
   "numTests": 59,
   "references": [],
   "notes": {
+    "EqualSubkey": {
+      "type": "SPECIAL_CASE",
+      "desc": "If subkey1 == subkey2 or subkey2 == subkey3 then these subkeys cancel each other out. Some implementations check for such cases and reject the keys."
+    },
     "FixedCiphertext": {
       "type": "GENERATION",
       "desc": "The test vector was derived from a fixed ciphertext."
@@ -20,62 +24,86 @@
     "Pseudorandom": {
       "type": "GENERATION",
       "desc": "The test vector has been generated pseudorandomly."
+    },
+    "WeakKey": {
+      "type": "SPECIAL_CASE",
+      "desc": "A subkey is a weak DES key."
     }
   },
   "tests": [
     {
       "tcId": 1,
-      "key": "000000000000000000000000000000000000000000000000",
+      "key": "010101010101010101010101010101010101010101010101",
       "iv": "0000000000000000",
       "msg": "0000000000000000",
       "ct": "8ca64de9c1b123a7",
       "valid": true,
       "comment": "Basic",
-      "flags": ["Pseudorandom"]
+      "flags": [
+        "Pseudorandom",
+        "WeakKey",
+        "EqualSubkey"
+      ]
     },
     {
       "tcId": 2,
-      "key": "000000000000000000000000000000000000000000000000",
+      "key": "010101010101010101010101010101010101010101010101",
       "iv": "0000000000000000",
       "msg": "000102030405060708090a0b0c0d0e0f",
       "ct": "8ca74feac5b425a008090a0b0c0d0e0f",
       "valid": true,
       "comment": "Basic",
-      "flags": ["Pseudorandom"]
+      "flags": [
+        "Pseudorandom",
+        "WeakKey",
+        "EqualSubkey"
+      ]
     },
     {
       "tcId": 3,
-      "key": "000000000000000000000000000000000000000000000000",
+      "key": "010101010101010101010101010101010101010101010101",
       "iv": "0000000000000000",
       "msg": "ffffffffffffffffffffffffffffffffffffffff",
       "ct": "7359b2163e4edc58ffffffffffffffff7359b216",
       "valid": true,
       "comment": "Basic",
-      "flags": ["Pseudorandom"]
+      "flags": [
+        "Pseudorandom",
+        "WeakKey",
+        "EqualSubkey"
+      ]
     },
     {
       "tcId": 4,
-      "key": "000000000000000000000000000000000000000000000000",
+      "key": "010101010101010101010101010101010101010101010101",
       "iv": "0000000000000000",
       "msg": "0000000000000000000000000000000000000000000000000000000000000000",
       "ct": "8ca64de9c1b123a700000000000000008ca64de9c1b123a70000000000000000",
       "valid": true,
       "comment": "Basic",
-      "flags": ["Pseudorandom"]
+      "flags": [
+        "Pseudorandom",
+        "WeakKey",
+        "EqualSubkey"
+      ]
     },
     {
       "tcId": 5,
-      "key": "000000000000000000000000000000000000000000000000",
+      "key": "010101010101010101010101010101010101010101010101",
       "iv": "0000000000000000",
       "msg": "0101010101010101010101010101010101010101010101010101010101010101",
       "ct": "8da74ce8c0b022a601010101010101018da74ce8c0b022a60101010101010101",
       "valid": true,
       "comment": "Basic",
-      "flags": ["Pseudorandom"]
+      "flags": [
+        "Pseudorandom",
+        "WeakKey",
+        "EqualSubkey"
+      ]
     },
     {
       "tcId": 6,
-      "key": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "key": "010102020404070708080b0b0d0d0e0e1010131315151616",
       "iv": "0001020304050607",
       "msg": "0000000000000000",
       "ct": "58ed248f77f6b19e",
@@ -85,7 +113,7 @@
     },
     {
       "tcId": 7,
-      "key": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "key": "010102020404070708080b0b0d0d0e0e1010131315151616",
       "iv": "0001020304050607",
       "msg": "000102030405060708090a0b0c0d0e0f",
       "ct": "58ec268c73f3b7994fd0bd414357e862",
@@ -95,7 +123,7 @@
     },
     {
       "tcId": 8,
-      "key": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "key": "010102020404070708080b0b0d0d0e0e1010131315151616",
       "iv": "0001020304050607",
       "msg": "ffffffffffffffffffffffffffffffffffffffff",
       "ct": "a712db7088094e61b82648b5b0a51992aed24b71",
@@ -105,7 +133,7 @@
     },
     {
       "tcId": 9,
-      "key": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "key": "010102020404070708080b0b0d0d0e0e1010131315151616",
       "iv": "0001020304050607",
       "msg": "0000000000000000000000000000000000000000000000000000000000000000",
       "ct": "58ed248f77f6b19e47d9b74a4f5ae66d512db48e4881f4954c49336a93a8a37b",
@@ -115,7 +143,7 @@
     },
     {
       "tcId": 10,
-      "key": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "key": "010102020404070708080b0b0d0d0e0e1010131315151616",
       "iv": "0001020304050607",
       "msg": "0101010101010101010101010101010101010101010101010101010101010101",
       "ct": "59ec258e76f7b09f46d8b64b4e5be76c502cb58f4980f5944d48326b92a9a27a",
@@ -125,7 +153,7 @@
     },
     {
       "tcId": 11,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "0000000000000000",
       "msg": "fa9c91d07a3550a3fa07b51f0ce088f8cdbd3dfbdf830140ad3e025c5c154957",
       "ct": "0000000000000000000000000000000000000000000000000000000000000000",
@@ -135,7 +163,7 @@
     },
     {
       "tcId": 12,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "0000000000000000",
       "msg": "05636e2f85caaf5c05f84ae0f31f77073242c204207cfebf52c1fda3a3eab6a8",
       "ct": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
@@ -145,7 +173,7 @@
     },
     {
       "tcId": 13,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "",
       "ct": "",
@@ -155,7 +183,7 @@
     },
     {
       "tcId": 14,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69",
       "ct": "21",
@@ -165,7 +193,7 @@
     },
     {
       "tcId": 15,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb",
       "ct": "21d3",
@@ -175,7 +203,7 @@
     },
     {
       "tcId": 16,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f",
       "ct": "21d375",
@@ -185,7 +213,7 @@
     },
     {
       "tcId": 17,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f",
       "ct": "21d37540",
@@ -195,7 +223,7 @@
     },
     {
       "tcId": 18,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81",
       "ct": "21d37540f2",
@@ -205,7 +233,7 @@
     },
     {
       "tcId": 19,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b9",
       "ct": "21d37540f22d",
@@ -215,7 +243,7 @@
     },
     {
       "tcId": 20,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960",
       "ct": "21d37540f22d31",
@@ -225,7 +253,7 @@
     },
     {
       "tcId": 21,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2",
       "ct": "21d37540f22d31a8",
@@ -235,7 +263,7 @@
     },
     {
       "tcId": 22,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a7",
       "ct": "21d37540f22d31a85e",
@@ -245,7 +273,7 @@
     },
     {
       "tcId": 23,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f",
       "ct": "21d37540f22d31a85eac",
@@ -255,7 +283,7 @@
     },
     {
       "tcId": 24,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f99",
       "ct": "21d37540f22d31a85eac01",
@@ -265,7 +293,7 @@
     },
     {
       "tcId": 25,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a",
       "ct": "21d37540f22d31a85eac0122",
@@ -275,7 +303,7 @@
     },
     {
       "tcId": 26,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a97",
       "ct": "21d37540f22d31a85eac0122f0",
@@ -285,7 +313,7 @@
     },
     {
       "tcId": 27,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e",
       "ct": "21d37540f22d31a85eac0122f0e4",
@@ -295,7 +323,7 @@
     },
     {
       "tcId": 28,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34",
       "ct": "21d37540f22d31a85eac0122f0e45c",
@@ -305,7 +333,7 @@
     },
     {
       "tcId": 29,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc",
       "ct": "21d37540f22d31a85eac0122f0e45c15",
@@ -315,7 +343,7 @@
     },
     {
       "tcId": 30,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad",
@@ -325,7 +353,7 @@
     },
     {
       "tcId": 31,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc4404",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73",
@@ -335,7 +363,7 @@
     },
     {
       "tcId": 32,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043c",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5",
@@ -345,7 +373,7 @@
     },
     {
       "tcId": 33,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b595",
@@ -355,7 +383,7 @@
     },
     {
       "tcId": 34,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a5",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952a",
@@ -365,7 +393,7 @@
     },
     {
       "tcId": 35,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb",
@@ -375,7 +403,7 @@
     },
     {
       "tcId": 36,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b5",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3d",
@@ -385,7 +413,7 @@
     },
     {
       "tcId": 37,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd",
@@ -395,7 +423,7 @@
     },
     {
       "tcId": 38,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd97",
@@ -405,7 +433,7 @@
     },
     {
       "tcId": 39,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd96",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739",
@@ -415,7 +443,7 @@
     },
     {
       "tcId": 40,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b7",
@@ -425,7 +453,7 @@
     },
     {
       "tcId": 41,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747",
@@ -435,7 +463,7 @@
     },
     {
       "tcId": 42,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e616",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb",
@@ -445,7 +473,7 @@
     },
     {
       "tcId": 43,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164e",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb50",
@@ -455,7 +483,7 @@
     },
     {
       "tcId": 44,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507e",
@@ -465,7 +493,7 @@
     },
     {
       "tcId": 45,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd",
@@ -475,7 +503,7 @@
     },
     {
       "tcId": 46,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5f",
@@ -485,7 +513,7 @@
     },
     {
       "tcId": 47,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd",
@@ -495,7 +523,7 @@
     },
     {
       "tcId": 48,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c5",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03",
@@ -505,7 +533,7 @@
     },
     {
       "tcId": 49,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c556",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd0335",
@@ -515,7 +543,7 @@
     },
     {
       "tcId": 50,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d",
@@ -525,7 +553,7 @@
     },
     {
       "tcId": 51,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c5564730",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d05",
@@ -535,7 +563,7 @@
     },
     {
       "tcId": 52,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534",
@@ -545,7 +573,7 @@
     },
     {
       "tcId": 53,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d448e037c4667a59df0",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534f4023ab93a5aa57480",
@@ -555,7 +583,7 @@
     },
     {
       "tcId": 54,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d448e037c4667a59df0581c0a518b3de4275eb487a9190a4a",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534f4023ab93a5aa57480d660fda2946dc4752f56123e792879",
@@ -565,7 +593,7 @@
     },
     {
       "tcId": 55,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d448e037c4667a59df0581c0a518b3de4275eb487a9190a4a39",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534f4023ab93a5aa57480d660fda2946dc4752f56123e79287934",
@@ -575,7 +603,7 @@
     },
     {
       "tcId": 56,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d448e037c4667a59df0581c0a518b3de4275eb487a9190a4a3940",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534f4023ab93a5aa57480d660fda2946dc4752f56123e7928793471",
@@ -585,7 +613,7 @@
     },
     {
       "tcId": 57,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d448e037c4667a59df0581c0a518b3de4275eb487a9190a4a39403fb8811ed2bf0cdcbfd969b67bd2b7",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534f4023ab93a5aa57480d660fda2946dc4752f56123e79287934717e9b0cf4cd1b6ede50bc7c5ba4929f",
@@ -595,7 +623,7 @@
     },
     {
       "tcId": 58,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d448e037c4667a59df0581c0a518b3de4275eb487a9190a4a39403fb8811ed2bf0cdcbfd969b67bd2b7186afbd335d5035f099153accb19006ebd09512652d120a40085c03341a656275d1ea9cce9714ae0d573d27a0d5c2ccc",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534f4023ab93a5aa57480d660fda2946dc4752f56123e79287934717e9b0cf4cd1b6ede50bc7c5ba4929f1364a6d125eaa09c9c4461232af58e1695db52057c22fd543b2127f678df301af4f32986c2d46a616031eccf1663f098",
@@ -605,7 +633,7 @@
     },
     {
       "tcId": 59,
-      "key": "42d941786d4b90ac3fbed3dc8d7ccc0856932e40cd68b13e",
+      "key": "43d940796d4a91ad3ebfd3dc8c7ccd0857922f40cd68b03e",
       "iv": "c38e3cc570e7d0d5",
       "msg": "69fb4f8f81b960d2a75f990a975e34cc44043ca1a588b577fd9645e6164ebd00dc39c55647308d448e037c4667a59df0581c0a518b3de4275eb487a9190a4a39403fb8811ed2bf0cdcbfd969b67bd2b7186afbd335d5035f099153accb19006ebd09512652d120a40085c03341a656275d1ea9cce9714ae0d573d27a0d5c2cccf6",
       "ct": "21d37540f22d31a85eac0122f0e45c15ad73b5952acb3dbd9739b747bb507edd5fbd03356d0534f4023ab93a5aa57480d660fda2946dc4752f56123e79287934717e9b0cf4cd1b6ede50bc7c5ba4929f1364a6d125eaa09c9c4461232af58e1695db52057c22fd543b2127f678df301af4f32986c2d46a616031eccf1663f09864",
