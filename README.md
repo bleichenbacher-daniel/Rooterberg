@@ -57,7 +57,7 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
 * Improved comments of RSA-PKCS #1 test vectors.
 * Added tests against pycryptodome. 
 
-2021/1/5 v. 0.57
+2025/1/5 v. 0.57
 * Simplified and unified test vectors for public key crypto primitives. Tests that do not target
   the encoding of the keys can contain the keys in multiple formats. Public keys typically use
   the encodings "PublicKeySpki": the DER-encoding of the SubjectPublicKeyInfo (in hexadecimal),
@@ -79,3 +79,9 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
   All test vectors have been changed so that the key bytes have odd parity.
 * Rewrote the ASN.1 module. Hopefully this did not change the test vectors.
 * Added more fuzzing for ASN.1 encoding. 
+
+2025/1/19 v. 0.58
+* Added test vectors for NaCl specific algorithms
+* Added two Aegis variants
+* Added more flags for EdDSA public keys.
+* Added more flags to Xdh keys.
