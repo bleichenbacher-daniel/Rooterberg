@@ -69,7 +69,7 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
   change, since there are a number of open questions. For example, the field "key_type" was added
   because some libraries require the knowledge of the key type of the encrypted key before parsing.
   It is also unclear to what degree a test can expect a key validation of the decrypted key.
-  Stricter tests could be addded if a full key validation could be assumed. The test vector are
+  Stricter tests could be added if a full key validation could be assumed. The test vector are
   are sorted by the symmetric algorithm. This should allow adding additional symmetric encryption
   schemes without affecting existing tests. 
 * Added edge cases for RSA PKCS #1 decryption. Most of the new test vectors test edge cases that
@@ -85,3 +85,12 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
 * Added two Aegis variants
 * Added more flags for EdDSA public keys.
 * Added more flags to Xdh keys.
+
+2025/2/2 v. 0.59
+* Added more Ecdsa tests.
+* Added more tests for Schnorr signatures.
+* Added more tests for Nacl specific algorithms.
+* Changed the format for testing decryption of PKCS8 ciphertexts.
+  The test vectors now contain two results: *privateKeyInfo* contains the full PKCS8 encoding of
+  the encrypted private key. *privateKey* contains only the wrapped private key. This addition has
+  been done for convenience, since some implementations already parse the wrapped key.
