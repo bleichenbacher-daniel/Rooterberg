@@ -94,3 +94,14 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
   The test vectors now contain two results: *privateKeyInfo* contains the full PKCS8 encoding of
   the encrypted private key. *privateKey* contains only the wrapped private key. This addition has
   been done for convenience, since some implementations already parse the wrapped key.
+
+2025/3/16 v. 0.60
+* Added some test vectors for JWT signatures.
+* Replaced some ECDSA signatures that didn't test the intended edge case.
+* Added more ECDSA signatures for arithmetic errors.
+* Added ECDH test vector using PKCS8/SPKI format for keys. So far all the keys use DER encoding.
+  Keys with BER encoding will be added in a later version, as it is unclear if such tests should be 
+  put into separate files.
+* Added a file with test results, sorted by library.
+* Cleanup of EC keys in JWT format.
+  EC key in JWT format can now have either a "use" field or a "key_ops" field.
