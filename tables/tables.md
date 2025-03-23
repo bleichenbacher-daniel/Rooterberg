@@ -10,4 +10,3 @@ The following tables are available:
 * **libraries**: This table contains a list of test results sorted by language and library.
 * **references**: This table contains a list of references.
 * **index**: This table contains an inverted index from references to test vector sets that use a given reference.
- 
