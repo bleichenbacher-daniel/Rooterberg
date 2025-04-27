@@ -8,13 +8,13 @@
     "normalize": false,
     "signature_generation": "Rfc6979"
   },
-  "version": "0.61",
+  "version": "0.62",
   "description": [
     "The underlying elliptic curve is brainpoolP224t1.",
     "The message digest for hashing the input is SHA-224.",
     "Signatures consists of two parts r,s where r,s are encoded as unsigned, bigendian, fixed-length byte arrays."
   ],
-  "numTests": 650,
+  "numTests": 659,
   "references": [{
       "docId": "RFC 5639",
       "title": "Elliptic Curve Cryptography (ECC) Brainpool Standard Curves and Curve Generation"
@@ -31,6 +31,10 @@
     "SpecialHash": {
       "type": "CONSTRUCTED",
       "desc": "The test vector contains a message with a special case hash value."
+    },
+    "SpecialPrivateKey": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a special private key. The main purpose of this test vector is to check for arithmetic errors such as integer overflows."
     }
   },
   "tests": [
@@ -5883,6 +5887,87 @@
       "sig": "1f44c8f70420f8ce52ecfc5ee9266ba1e7733ac68bf9efe2079ed8181985a494ccb596bfa9629b76c81c8beaf38b0ab773d89e8837a30126",
       "comment": "special hash:pattern",
       "flags": ["SpecialHash"]
+    },
+    {
+      "tcId": 651,
+      "privateKey": "d7c134aa264366862a18302575d0fb98d116bc4b6ddebca3a5a7939e",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041cd7c134aa264366862a18302575d0fb98d116bc4b6ddebca3a5a7939e",
+      "msg": "313233343030",
+      "sig": "34b79b2464497cd21333abbeabde948e817fa541b695cc462be9df0a4930eefc202de6331470dcf8d75d0b769038fdd62b008978651aa4ed",
+      "comment": "private key = n-1",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 652,
+      "privateKey": "80000000000000000000000000000000000000000000000000000000",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c80000000000000000000000000000000000000000000000000000000",
+      "msg": "313233343030",
+      "sig": "13c648e1422e5fd605e1e6e708758805d1ee463e2e3f459835a95b0acdae78c12eb25618c1e8e2f42e4ad8aa7f535b3f1f8cccaaf9a1f874",
+      "comment": "private key = 2^223",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 653,
+      "privateKey": "7fffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c7fffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "msg": "313233343030",
+      "sig": "b66ee622b7af0c0e387c64d624d0a18c3f75f0bb55ab2f7083e7451286c377767eba05a2de0be23dcca0b723ff7b22dc30d2831177292112",
+      "comment": "private key = 2^223-1",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 654,
+      "privateKey": "00000000ffffffffffffffffffffffffffffffffffffffffffffffff",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c00000000ffffffffffffffffffffffffffffffffffffffffffffffff",
+      "msg": "313233343030",
+      "sig": "1a34d2a1e5fa64cb026af5241325b4927aa6fab2f648c19d197cf364950ba5435b1e57be7f36ad086a2a64abf4e1a672b2cfd0d55ddfa303",
+      "comment": "private Key = 2^192-1",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 655,
+      "privateKey": "000000004b59a7d93f553f4fc2234d961f1d7097c353faaaeef36a4a",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c000000004b59a7d93f553f4fc2234d961f1d7097c353faaaeef36a4a",
+      "msg": "313233343030",
+      "sig": "38e9b8e4069b2dce53b0e272db2a55146366e8f715da09e08438aa4bacaa50965b1f5da3e092b974fe7d8c66f850614b1c58e71d33a64fc1",
+      "comment": "192 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 656,
+      "privateKey": "00000000000000005f17bf48b3f2015394f22fc2d58e9bbcf93ec0fd",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c00000000000000005f17bf48b3f2015394f22fc2d58e9bbcf93ec0fd",
+      "msg": "313233343030",
+      "sig": "74c53b6c1d2b38353dde266a5a6a5a0c5f0a5db724d23b401764e9b3899c3a790f661b39a9d962cd1e79d8b582f9f7624d0d95a1b8ada877",
+      "comment": "160 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 657,
+      "privateKey": "000000000000000000000000d1c1241054ca2d95fb2c3e326956000e",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c000000000000000000000000d1c1241054ca2d95fb2c3e326956000e",
+      "msg": "313233343030",
+      "sig": "3f047f78cac1b5a383d03ec9da24c2ed56e2bd1338e19cfe8b6028f60cb957a9b16c6e75ffc56c786090f9bf864626e7c6ce1bf9b5c4d9a4",
+      "comment": "128 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 658,
+      "privateKey": "0000000000000000000000000000000000000000ddea2ca534c12c4d",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c0000000000000000000000000000000000000000ddea2ca534c12c4d",
+      "msg": "313233343030",
+      "sig": "97747ce81d45aae529b97623793a214b9d0f70b795e11bbd5273a065c328091aa08fff7e22befa6b2a9f9810c7bc944434d0dde9e146226d",
+      "comment": "64 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 659,
+      "privateKey": "000000000000000000000000000000000000000000000000eb142d14",
+      "privateKeyPkcs8": "303e020100301406072a8648ce3d020106092b240303020801010604233021020101041c000000000000000000000000000000000000000000000000eb142d14",
+      "msg": "313233343030",
+      "sig": "d6752bfd5daaa422e1da0752bd0428ae9e948c2d334f0355d92296d73e216bc0a7e9e8cc65a84c0959ee4ec19481119d6f8db8405ac2f77a",
+      "comment": "32 bit private key",
+      "flags": ["SpecialPrivateKey"]
     }
   ]
 }

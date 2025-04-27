@@ -8,13 +8,13 @@
     "normalize": false,
     "signature_generation": "Rfc6979"
   },
-  "version": "0.61",
+  "version": "0.62",
   "description": [
     "The underlying elliptic curve is secp256r1.",
     "The message digest for hashing the input is SHA3-256.",
     "Signatures consists of two parts r,s where r,s are encoded as unsigned, bigendian, fixed-length byte arrays."
   ],
-  "numTests": 1056,
+  "numTests": 1065,
   "references": [{
       "docId": "SEC2v1",
       "title": "SEC 2: Recommended Elliptic Curve Domain Parameters",
@@ -38,6 +38,10 @@
       "type": "CONSTRUCTED",
       "desc": "The test vector contains a message that was constructed such that the value k computed by the derivation from RFC 6979 is an edge case.",
       "effect": "Deviating from the correct compuation may leak information about k if an attacker also has access to the expected signature. Such leakage can expose the private key."
+    },
+    "SpecialPrivateKey": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a special private key. The main purpose of this test vector is to check for arithmetic errors such as integer overflows."
     }
   },
   "tests": [
@@ -8935,6 +8939,87 @@
     },
     {
       "tcId": 989,
+      "privateKey": "ffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632550",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420ffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632550",
+      "msg": "313233343030",
+      "sig": "b0c99c86c8bf4ee310343d93229b697fe2ab0107c5a0d1db5f9c55a7ba6803ae0f1e3d73003c4dacde3412f63f8ac94df189aafe2e6c48362e992392c441564d",
+      "comment": "private key = n-1",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 990,
+      "privateKey": "8000000000000000000000000000000000000000000000000000000000000000",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104208000000000000000000000000000000000000000000000000000000000000000",
+      "msg": "313233343030",
+      "sig": "e41d9b877714ca751bf75f257373d5b9914591f425ab18693feffaef04da9e19d81cf6ba4abb6f6ef8938b96eac48de299286d0eb3cb2317f9e7395b414303fc",
+      "comment": "private key = 2^255",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 991,
+      "privateKey": "7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "msg": "313233343030",
+      "sig": "16c6dfd3e29373b4c24dd82a64e528d5dccdcdb5e006f2367a86affd72dfbb3c667cf17de0310633a4e930e62091d1d56b67ef9418e847418bbacba5783634b1",
+      "comment": "private key = 2^255-1",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 992,
+      "privateKey": "00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "msg": "313233343030",
+      "sig": "6a7f1208c5b11b4d82b91af6f35b2801e9a352ce1c626543d2110c035ef002701830c412ce8890d0731b2de9ff9e09e61ba0502f8945fc14f9a49661a8807f22",
+      "comment": "private Key = 2^224-1",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 993,
+      "privateKey": "0000000000000000639d339aee59a13a121690ed62964437ef3bdf376c893712",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104200000000000000000639d339aee59a13a121690ed62964437ef3bdf376c893712",
+      "msg": "313233343030",
+      "sig": "b9762b617d450708855aa911855ac469aa08d74f39748d286edf7ab36ce5d9c3fac44eae993080709ec62ad87100b0790a27a6e1928147e4db3625fcc837a661",
+      "comment": "192 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 994,
+      "privateKey": "000000000000000000000000e8c87e9ffff1def19f1d6d1fc3b0f1eef770d4b7",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420000000000000000000000000e8c87e9ffff1def19f1d6d1fc3b0f1eef770d4b7",
+      "msg": "313233343030",
+      "sig": "e6f9b3719c9896a13cfffbf1fb75cf2ee552fbf5f03e6ec53cb9117022f2b4b2d915556c0abb053fd0b656ca428f880796b20bb50cfa18377b2fe1e5dd6f6ec2",
+      "comment": "160 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 995,
+      "privateKey": "0000000000000000000000000000000046e61bb3c11a175c45992455bcb69f00",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104200000000000000000000000000000000046e61bb3c11a175c45992455bcb69f00",
+      "msg": "313233343030",
+      "sig": "587315973191ace64bb431fd4d0b908306192e6bd1e2511f79bc3e089957728d94a55e8ab217f373aa891984e399e23eef10f749cc590bf93ce7062c990ddd32",
+      "comment": "128 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 996,
+      "privateKey": "0000000000000000000000000000000000000000000000002610305ee75d21ee",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104200000000000000000000000000000000000000000000000002610305ee75d21ee",
+      "msg": "313233343030",
+      "sig": "4b34a8ce21279ae18985489aaf1f3d9dfec5d84d99d04e7468c4c26438e84fb6fc97ab99ec89e115e6e9c0f691db92bc043a764f1f9373ecc8bea6be9f0770cd",
+      "comment": "64 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 997,
+      "privateKey": "00000000000000000000000000000000000000000000000000000000525e470a",
+      "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042000000000000000000000000000000000000000000000000000000000525e470a",
+      "msg": "313233343030",
+      "sig": "90daf24cd9ba383a38c49c1ec0d9dd8a65a3944b18b6fb608195412316bd0f3d8b4360605bd34947840f1e5427424840c93ecf28a1f78ff5447241be75d8159c",
+      "comment": "32 bit private key",
+      "flags": ["SpecialPrivateKey"]
+    },
+    {
+      "tcId": 998,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed4f1a7eb",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed4f1a7eb",
       "msg": "74657374",
@@ -8943,7 +9028,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 990,
+      "tcId": 999,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed3df47d2",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed3df47d2",
       "msg": "74657374",
@@ -8952,7 +9037,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 991,
+      "tcId": 1000,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc97f785cd",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc97f785cd",
       "msg": "74657374",
@@ -8961,7 +9046,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 992,
+      "tcId": 1001,
       "privateKey": "adda783350cd347780e416f6e6774292f28055e1fcc07ed488d7264d58348a73",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420adda783350cd347780e416f6e6774292f28055e1fcc07ed488d7264d58348a73",
       "msg": "74657374",
@@ -8970,7 +9055,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 993,
+      "tcId": 1002,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f52f6f0c6",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f52f6f0c6",
       "msg": "74657374",
@@ -8979,7 +9064,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 994,
+      "tcId": 1003,
       "privateKey": "e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae43203772c3",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae43203772c3",
       "msg": "74657374",
@@ -8988,7 +9073,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 995,
+      "tcId": 1004,
       "privateKey": "74228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e6611977",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042074228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e6611977",
       "msg": "74657374",
@@ -8997,7 +9082,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 996,
+      "tcId": 1005,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed899f5d4",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed899f5d4",
       "msg": "74657374",
@@ -9006,7 +9091,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 997,
+      "tcId": 1006,
       "privateKey": "21bafbff45c8db3e9d0138d2b424610b0e97723902d158da741023a7397ae993",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042021bafbff45c8db3e9d0138d2b424610b0e97723902d158da741023a7397ae993",
       "msg": "74657374",
@@ -9015,7 +9100,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 998,
+      "tcId": 1007,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc9a2f96ac",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc9a2f96ac",
       "msg": "74657374",
@@ -9024,7 +9109,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 999,
+      "tcId": 1008,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ecc02627b",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ecc02627b",
       "msg": "74657374",
@@ -9033,7 +9118,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1000,
+      "tcId": 1009,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f2e0c3610",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f2e0c3610",
       "msg": "74657374",
@@ -9042,7 +9127,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1001,
+      "tcId": 1010,
       "privateKey": "74228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e6611977",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042074228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e6611977",
       "msg": "74657374",
@@ -9051,7 +9136,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1002,
+      "tcId": 1011,
       "privateKey": "e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae432032423d",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae432032423d",
       "msg": "74657374",
@@ -9060,7 +9145,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1003,
+      "tcId": 1012,
       "privateKey": "74228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e7a43f42",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042074228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e7a43f42",
       "msg": "74657374",
@@ -9069,7 +9154,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1004,
+      "tcId": 1013,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed32fff30",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed32fff30",
       "msg": "74657374",
@@ -9078,7 +9163,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1005,
+      "tcId": 1014,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f22631f59",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f22631f59",
       "msg": "74657374",
@@ -9087,7 +9172,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1006,
+      "tcId": 1015,
       "privateKey": "e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae431f809500",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae431f809500",
       "msg": "74657374",
@@ -9096,7 +9181,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1007,
+      "tcId": 1016,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f2559484e",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f2559484e",
       "msg": "74657374",
@@ -9105,7 +9190,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1008,
+      "tcId": 1017,
       "privateKey": "74228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e7bfb4d8",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042074228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e7bfb4d8",
       "msg": "74657374",
@@ -9114,7 +9199,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1009,
+      "tcId": 1018,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed470c0ff",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed470c0ff",
       "msg": "74657374",
@@ -9123,7 +9208,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1010,
+      "tcId": 1019,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f515204ed",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f515204ed",
       "msg": "74657374",
@@ -9132,7 +9217,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1011,
+      "tcId": 1020,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f49f743da",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f49f743da",
       "msg": "74657374",
@@ -9141,7 +9226,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1012,
+      "tcId": 1021,
       "privateKey": "c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd5789753cd",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd5789753cd",
       "msg": "74657374",
@@ -9150,7 +9235,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1013,
+      "tcId": 1022,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ec21cb0e1",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ec21cb0e1",
       "msg": "74657374",
@@ -9159,7 +9244,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1014,
+      "tcId": 1023,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f58474996",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f58474996",
       "msg": "74657374",
@@ -9168,7 +9253,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1015,
+      "tcId": 1024,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41edb99c500",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41edb99c500",
       "msg": "74657374",
@@ -9177,7 +9262,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1016,
+      "tcId": 1025,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f3b81a3f7",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f3b81a3f7",
       "msg": "74657374",
@@ -9186,7 +9271,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1017,
+      "tcId": 1026,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5398006c",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5398006c",
       "msg": "74657374",
@@ -9195,7 +9280,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1018,
+      "tcId": 1027,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed5e467c5",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed5e467c5",
       "msg": "74657374",
@@ -9204,7 +9289,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1019,
+      "tcId": 1028,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41edd2d9a00",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41edd2d9a00",
       "msg": "74657374",
@@ -9213,7 +9298,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1020,
+      "tcId": 1029,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f43d86c64",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f43d86c64",
       "msg": "74657374",
@@ -9222,7 +9307,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1021,
+      "tcId": 1030,
       "privateKey": "02a9deaf53618ce67bb922d1d294d5f299cb54f625af216f49e58226895d96d5",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042002a9deaf53618ce67bb922d1d294d5f299cb54f625af216f49e58226895d96d5",
       "msg": "74657374",
@@ -9231,7 +9316,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1022,
+      "tcId": 1031,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f2168c66a",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f2168c66a",
       "msg": "74657374",
@@ -9240,7 +9325,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1023,
+      "tcId": 1032,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ec97950f7",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ec97950f7",
       "msg": "74657374",
@@ -9249,7 +9334,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1024,
+      "tcId": 1033,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ebb66de0d",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ebb66de0d",
       "msg": "74657374",
@@ -9258,7 +9343,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1025,
+      "tcId": 1034,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f35129de6",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f35129de6",
       "msg": "74657374",
@@ -9267,7 +9352,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1026,
+      "tcId": 1035,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5f789c62",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5f789c62",
       "msg": "74657374",
@@ -9276,7 +9361,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1027,
+      "tcId": 1036,
       "privateKey": "e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae4319dadee6",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420e43d59b1a0756b4971bc8709149bc8429a80495ffd70985347a1ae4319dadee6",
       "msg": "74657374",
@@ -9285,7 +9370,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1028,
+      "tcId": 1037,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc97f785cd",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc97f785cd",
       "msg": "74657374",
@@ -9294,7 +9379,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1029,
+      "tcId": 1038,
       "privateKey": "adda783350cd347780e416f6e6774292f28055e1fcc07ed488d7264d58348a73",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420adda783350cd347780e416f6e6774292f28055e1fcc07ed488d7264d58348a73",
       "msg": "74657374",
@@ -9303,7 +9388,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1030,
+      "tcId": 1039,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ecfefeca1",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ecfefeca1",
       "msg": "74657374",
@@ -9312,7 +9397,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1031,
+      "tcId": 1040,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f4f7360e3",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f4f7360e3",
       "msg": "74657374",
@@ -9321,7 +9406,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1032,
+      "tcId": 1041,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ecc6a6ad2",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ecc6a6ad2",
       "msg": "74657374",
@@ -9330,7 +9415,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1033,
+      "tcId": 1042,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc9ccbfc9a",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc9ccbfc9a",
       "msg": "74657374",
@@ -9339,7 +9424,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1034,
+      "tcId": 1043,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5bc2e5c8",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5bc2e5c8",
       "msg": "74657374",
@@ -9348,7 +9433,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1035,
+      "tcId": 1044,
       "privateKey": "c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd57c92254c",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd57c92254c",
       "msg": "74657374",
@@ -9357,7 +9442,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1036,
+      "tcId": 1045,
       "privateKey": "c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd5784920d1",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd5784920d1",
       "msg": "74657374",
@@ -9366,7 +9451,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1037,
+      "tcId": 1046,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5398006c",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f5398006c",
       "msg": "74657374",
@@ -9375,7 +9460,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1038,
+      "tcId": 1047,
       "privateKey": "c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed5e467c5",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c6e2eaf4b9c8d95ae514ec965c0dd63d65b39d106f7a26af62ffe41ed5e467c5",
       "msg": "74657374",
@@ -9384,7 +9469,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1039,
+      "tcId": 1048,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f29ae4614",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f29ae4614",
       "msg": "74657374",
@@ -9393,7 +9478,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1040,
+      "tcId": 1049,
       "privateKey": "aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f32311f6e",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420aafe2ab8c2a0753b1ce78121d8f06d4fc4c2c8265db5d59f1152466f32311f6e",
       "msg": "74657374",
@@ -9402,7 +9487,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1041,
+      "tcId": 1050,
       "privateKey": "c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd57c987344",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420c40ea3414d6722c13b9a84922d6ca4d979c1927a58c27c74ca09acd57c987344",
       "msg": "74657374",
@@ -9411,7 +9496,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1042,
+      "tcId": 1051,
       "privateKey": "21bafbff45c8db3e9d0138d2b424610b0e97723902d158da741023a738a4c25d",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042021bafbff45c8db3e9d0138d2b424610b0e97723902d158da741023a738a4c25d",
       "msg": "74657374",
@@ -9420,7 +9505,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1043,
+      "tcId": 1052,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc97b25c81",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc97b25c81",
       "msg": "74657374",
@@ -9429,7 +9514,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1044,
+      "tcId": 1053,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc9625d668",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc9625d668",
       "msg": "74657374",
@@ -9438,7 +9523,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1045,
+      "tcId": 1054,
       "privateKey": "74228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e2f544ec",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042074228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e2f544ec",
       "msg": "74657374",
@@ -9447,7 +9532,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1046,
+      "tcId": 1055,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc94537935",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc94537935",
       "msg": "74657374",
@@ -9456,7 +9541,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1047,
+      "tcId": 1056,
       "privateKey": "399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc90d5b4fc",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d030107042730250201010420399bf0f6cf7e9e36f50abcbbe6ae92bc10f537e5e0412e6dd90f9adc90d5b4fc",
       "msg": "74657374",
@@ -9465,7 +9550,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1048,
+      "tcId": 1057,
       "privateKey": "74228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e3cb58a1",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042074228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e3cb58a1",
       "msg": "74657374",
@@ -9474,7 +9559,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1049,
+      "tcId": 1058,
       "privateKey": "02a9deaf53618ce67bb922d1d294d5f299cb54f625af216f49e58226883f73fd",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042002a9deaf53618ce67bb922d1d294d5f299cb54f625af216f49e58226883f73fd",
       "msg": "74657374",
@@ -9483,7 +9568,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1050,
+      "tcId": 1059,
       "privateKey": "7e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d548dec540",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d548dec540",
       "msg": "74657374",
@@ -9492,7 +9577,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1051,
+      "tcId": 1060,
       "privateKey": "7e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d54d0f9513",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d54d0f9513",
       "msg": "74657374",
@@ -9501,7 +9586,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1052,
+      "tcId": 1061,
       "privateKey": "74228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e3beaf02",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042074228ca0939365f2aefb0bbc4a21891bb1d4b4cd0787cda3d6431035e3beaf02",
       "msg": "74657374",
@@ -9510,7 +9595,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1053,
+      "tcId": 1062,
       "privateKey": "7e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d5514faaf8",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d5514faaf8",
       "msg": "74657374",
@@ -9519,7 +9604,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1054,
+      "tcId": 1063,
       "privateKey": "7e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d5503ccb22",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d5503ccb22",
       "msg": "74657374",
@@ -9528,7 +9613,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1055,
+      "tcId": 1064,
       "privateKey": "7e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d548dec540",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d0301070427302502010104207e139cc54d6a316db7ff3799d78737ec769a9cd6feb066da127bd3d548dec540",
       "msg": "74657374",
@@ -9537,7 +9622,7 @@
       "flags": ["SpecialK"]
     },
     {
-      "tcId": 1056,
+      "tcId": 1065,
       "privateKey": "02a9deaf53618ce67bb922d1d294d5f299cb54f625af216f49e58226883f73fd",
       "privateKeyPkcs8": "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042002a9deaf53618ce67bb922d1d294d5f299cb54f625af216f49e58226883f73fd",
       "msg": "74657374",
