@@ -8,14 +8,14 @@
     "normalize": false,
     "signature_generation": "Generic"
   },
-  "version": "0.62",
+  "version": "0.63",
   "description": [
     "The underlying elliptic curve is secp256r1.",
     "The message digest for hashing the input is SHAKE128.",
     "Signatures are the DER encoding of the sequences containing the two integers r and s.",
     "The test vectors assume that only DER encoded signatures are valid. Alternative BER encodings are invalid."
   ],
-  "numTests": 615,
+  "numTests": 624,
   "references": [
     {
       "docId": "RFC 8702",
@@ -36,6 +36,10 @@
     "Basic": {
       "type": "GENERATION",
       "desc": "Basic test vectors use the simplest possible inputs. These inputs often overlap with inputs from standards and RFCs. One goal of such test vectors is to simply detect distinct algorithms."
+    },
+    "CVE-2025-0343": {
+      "type": "CVE",
+      "desc": "The test vector contains a modification similar to the given CVE."
     },
     "InvalidRange": {
       "type": "INVALID",
@@ -97,6 +101,10 @@
     "WrongSignatureEncoding": {
       "type": "CONSTRUCTED",
       "desc": "The test vector contains a valid signature using the wrong encoding. Allowing multiple encoding makes the signatures malleable, which can lead to issues in protocols that expect non-malleable primitives."
+    },
+    "WrongTypeS": {
+      "type": "CONSTRUCTED",
+      "desc": "The test vector contains a signature where s is not an integer."
     }
   },
   "tests": [
@@ -6228,7 +6236,7 @@
       "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
       "msg": "54657374",
       "sig": "0400",
-      "comment": "replaced signature by empyt OctetString",
+      "comment": "replaced signature by empty OctetString",
       "valid": false,
       "flags": ["ModifiedDer"]
     },
@@ -6335,13 +6343,28 @@
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
       "msg": "54657374",
+      "sig": "1046022100bac4c24e809c4b4d31b9bd1b227e4a7e87970b11afecdaadd643719f3360f177022100e4e32a88074229da3a718e1ed820ab6a29ac8f3132cbceab38416ac8d42ce8b7",
+      "comment": "flipped constructed bit of signature",
+      "valid": false,
+      "flags": [
+        "ModifiedDer",
+        "CVE-2025-0343"
+      ]
+    },
+    {
+      "tcId": 521,
+      "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
       "sig": "7046022100bac4c24e809c4b4d31b9bd1b227e4a7e87970b11afecdaadd643719f3360f177022100e4e32a88074229da3a718e1ed820ab6a29ac8f3132cbceab38416ac8d42ce8b7",
       "comment": "modified tag class of signature",
       "valid": false,
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 521,
+      "tcId": 522,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6353,7 +6376,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 522,
+      "tcId": 523,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6365,7 +6388,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 523,
+      "tcId": 524,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6377,19 +6400,19 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 524,
+      "tcId": 525,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
       "msg": "54657374",
       "sig": "30250400022100e4e32a88074229da3a718e1ed820ab6a29ac8f3132cbceab38416ac8d42ce8b7",
-      "comment": "replaced r by empyt OctetString",
+      "comment": "replaced r by empty OctetString",
       "valid": false,
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 525,
+      "tcId": 526,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6401,7 +6424,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 526,
+      "tcId": 527,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6413,7 +6436,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 527,
+      "tcId": 528,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6425,7 +6448,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 528,
+      "tcId": 529,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6437,7 +6460,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 529,
+      "tcId": 530,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6449,7 +6472,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 530,
+      "tcId": 531,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6461,7 +6484,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 531,
+      "tcId": 532,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6473,7 +6496,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 532,
+      "tcId": 533,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6485,7 +6508,22 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 533,
+      "tcId": 534,
+      "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "3046222100bac4c24e809c4b4d31b9bd1b227e4a7e87970b11afecdaadd643719f3360f177022100e4e32a88074229da3a718e1ed820ab6a29ac8f3132cbceab38416ac8d42ce8b7",
+      "comment": "flipped constructed bit of r",
+      "valid": false,
+      "flags": [
+        "ModifiedDer",
+        "CVE-2025-0343"
+      ]
+    },
+    {
+      "tcId": 535,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6497,7 +6535,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 534,
+      "tcId": 536,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6509,7 +6547,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 535,
+      "tcId": 537,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6521,7 +6559,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 536,
+      "tcId": 538,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6533,7 +6571,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 537,
+      "tcId": 539,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6545,7 +6583,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 538,
+      "tcId": 540,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6557,7 +6595,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 539,
+      "tcId": 541,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6569,7 +6607,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 540,
+      "tcId": 542,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6581,7 +6619,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 541,
+      "tcId": 543,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6593,7 +6631,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 542,
+      "tcId": 544,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6605,7 +6643,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 543,
+      "tcId": 545,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6617,7 +6655,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 544,
+      "tcId": 546,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6629,7 +6667,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 545,
+      "tcId": 547,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6641,7 +6679,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 546,
+      "tcId": 548,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6653,7 +6691,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 547,
+      "tcId": 549,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6665,7 +6703,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 548,
+      "tcId": 550,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6677,7 +6715,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 549,
+      "tcId": 551,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6689,7 +6727,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 550,
+      "tcId": 552,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6701,7 +6739,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 551,
+      "tcId": 553,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6713,7 +6751,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 552,
+      "tcId": 554,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6725,7 +6763,22 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 553,
+      "tcId": 555,
+      "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "30482223022100bac4c24e809c4b4d31b9bd1b227e4a7e87970b11afecdaadd643719f3360f177022100e4e32a88074229da3a718e1ed820ab6a29ac8f3132cbceab38416ac8d42ce8b7",
+      "comment": "using constructed encoding for r",
+      "valid": false,
+      "flags": [
+        "ModifiedDer",
+        "CVE-2025-0343"
+      ]
+    },
+    {
+      "tcId": 556,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6737,7 +6790,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 554,
+      "tcId": 557,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6749,7 +6802,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 555,
+      "tcId": 558,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6761,7 +6814,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 556,
+      "tcId": 559,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6773,7 +6826,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 557,
+      "tcId": 560,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6785,19 +6838,19 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 558,
+      "tcId": 561,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
       "msg": "54657374",
       "sig": "3025022100bac4c24e809c4b4d31b9bd1b227e4a7e87970b11afecdaadd643719f3360f1770400",
-      "comment": "replaced s by empyt OctetString",
+      "comment": "replaced s by empty OctetString",
       "valid": false,
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 559,
+      "tcId": 562,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6809,7 +6862,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 560,
+      "tcId": 563,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6821,7 +6874,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 561,
+      "tcId": 564,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6833,7 +6886,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 562,
+      "tcId": 565,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6845,7 +6898,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 563,
+      "tcId": 566,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6857,7 +6910,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 564,
+      "tcId": 567,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6869,7 +6922,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 565,
+      "tcId": 568,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6881,7 +6934,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 566,
+      "tcId": 569,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6893,7 +6946,22 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 567,
+      "tcId": 570,
+      "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "3046022100bac4c24e809c4b4d31b9bd1b227e4a7e87970b11afecdaadd643719f3360f177222100e4e32a88074229da3a718e1ed820ab6a29ac8f3132cbceab38416ac8d42ce8b7",
+      "comment": "flipped constructed bit of s",
+      "valid": false,
+      "flags": [
+        "ModifiedDer",
+        "CVE-2025-0343"
+      ]
+    },
+    {
+      "tcId": 571,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6905,7 +6973,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 568,
+      "tcId": 572,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6917,7 +6985,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 569,
+      "tcId": 573,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6929,7 +6997,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 570,
+      "tcId": 574,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6941,7 +7009,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 571,
+      "tcId": 575,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6953,7 +7021,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 572,
+      "tcId": 576,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6965,7 +7033,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 573,
+      "tcId": 577,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6977,7 +7045,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 574,
+      "tcId": 578,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -6989,7 +7057,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 575,
+      "tcId": 579,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7001,7 +7069,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 576,
+      "tcId": 580,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7013,7 +7081,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 577,
+      "tcId": 581,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7025,7 +7093,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 578,
+      "tcId": 582,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7037,7 +7105,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 579,
+      "tcId": 583,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7049,7 +7117,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 580,
+      "tcId": 584,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7061,7 +7129,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 581,
+      "tcId": 585,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7073,7 +7141,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 582,
+      "tcId": 586,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7085,7 +7153,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 583,
+      "tcId": 587,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7097,7 +7165,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 584,
+      "tcId": 588,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7109,7 +7177,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 585,
+      "tcId": 589,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7121,7 +7189,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 586,
+      "tcId": 590,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7133,7 +7201,22 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 587,
+      "tcId": 591,
+      "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqnkFbG5I7fbUMFpelDzdOzFz58tq\nEVRBpGR2E9OUuk3mreAT9hN5U7pO/haQtJT5YIAQA/q17kXD9Na9y9x1LQ==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "3048022100bac4c24e809c4b4d31b9bd1b227e4a7e87970b11afecdaadd643719f3360f1772223022100e4e32a88074229da3a718e1ed820ab6a29ac8f3132cbceab38416ac8d42ce8b7",
+      "comment": "using constructed encoding for s",
+      "valid": false,
+      "flags": [
+        "ModifiedDer",
+        "CVE-2025-0343"
+      ]
+    },
+    {
+      "tcId": 592,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7145,7 +7228,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 588,
+      "tcId": 593,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7157,7 +7240,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 589,
+      "tcId": 594,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7169,7 +7252,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 590,
+      "tcId": 595,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7181,7 +7264,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 591,
+      "tcId": 596,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7193,7 +7276,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 592,
+      "tcId": 597,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7205,7 +7288,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 593,
+      "tcId": 598,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7217,7 +7300,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 594,
+      "tcId": 599,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7229,7 +7312,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 595,
+      "tcId": 600,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7241,7 +7324,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 596,
+      "tcId": 601,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7253,7 +7336,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 597,
+      "tcId": 602,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7265,7 +7348,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 598,
+      "tcId": 603,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7277,7 +7360,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 599,
+      "tcId": 604,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7289,7 +7372,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 600,
+      "tcId": 605,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7301,7 +7384,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 601,
+      "tcId": 606,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7313,7 +7396,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 602,
+      "tcId": 607,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7325,7 +7408,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 603,
+      "tcId": 608,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7337,7 +7420,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 604,
+      "tcId": 609,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7349,7 +7432,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 605,
+      "tcId": 610,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7361,7 +7444,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 606,
+      "tcId": 611,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7373,7 +7456,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 607,
+      "tcId": 612,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7385,7 +7468,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 608,
+      "tcId": 613,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7397,7 +7480,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 609,
+      "tcId": 614,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7409,7 +7492,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 610,
+      "tcId": 615,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7421,7 +7504,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 611,
+      "tcId": 616,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7433,7 +7516,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 612,
+      "tcId": 617,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7445,7 +7528,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 613,
+      "tcId": 618,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7457,7 +7540,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 614,
+      "tcId": 619,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7469,7 +7552,7 @@
       "flags": ["ModifiedDer"]
     },
     {
-      "tcId": 615,
+      "tcId": 620,
       "publicKeyUncompressed": "04aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
       "publicKeyCompressed": "03aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4d",
       "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004aa79056c6e48edf6d4305a5e943cdd3b3173e7cb6a115441a4647613d394ba4de6ade013f6137953ba4efe1690b494f960801003fab5ee45c3f4d6bdcbdc752d",
@@ -7479,6 +7562,54 @@
       "comment": "indefinite encoding with garbage for signature",
       "valid": false,
       "flags": ["ModifiedDer"]
+    },
+    {
+      "tcId": 621,
+      "publicKeyUncompressed": "04abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyCompressed": "02abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fab",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEq+TybbC0jXlimgCvqfU5eKdgSeQw\nR7pwmxabdE9rj6urIqrtJpfta8jEgLDwUkPxljNTEjsZ5YQ9KyLwyjshgA==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "302502201c71c71c5555555571c71c71c71c71c714fd384c2f029fd5e23116877160597b0101ff",
+      "comment": "s == True",
+      "valid": false,
+      "flags": ["WrongTypeS"]
+    },
+    {
+      "tcId": 622,
+      "publicKeyUncompressed": "04abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyCompressed": "02abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fab",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEq+TybbC0jXlimgCvqfU5eKdgSeQw\nR7pwmxabdE9rj6urIqrtJpfta8jEgLDwUkPxljNTEjsZ5YQ9KyLwyjshgA==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "302502201c71c71c5555555571c71c71c71c71c714fd384c2f029fd5e23116877160597b160131",
+      "comment": "s is the string 1",
+      "valid": false,
+      "flags": ["WrongTypeS"]
+    },
+    {
+      "tcId": 623,
+      "publicKeyUncompressed": "04abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyCompressed": "02abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fab",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEq+TybbC0jXlimgCvqfU5eKdgSeQw\nR7pwmxabdE9rj6urIqrtJpfta8jEgLDwUkPxljNTEjsZ5YQ9KyLwyjshgA==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "302702201c71c71c5555555571c71c71c71c71c714fd384c2f029fd5e23116877160597b1603307831",
+      "comment": "s is the string 0x1",
+      "valid": false,
+      "flags": ["WrongTypeS"]
+    },
+    {
+      "tcId": 624,
+      "publicKeyUncompressed": "04abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyCompressed": "02abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fab",
+      "publicKeySpki": "3059301306072a8648ce3d020106082a8648ce3d03010703420004abe4f26db0b48d79629a00afa9f53978a76049e43047ba709b169b744f6b8fabab22aaed2697ed6bc8c480b0f05243f1963353123b19e5843d2b22f0ca3b2180",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEq+TybbC0jXlimgCvqfU5eKdgSeQw\nR7pwmxabdE9rj6urIqrtJpfta8jEgLDwUkPxljNTEjsZ5YQ9KyLwyjshgA==\n-----END PUBLIC KEY-----",
+      "msg": "54657374",
+      "sig": "302502201c71c71c5555555571c71c71c71c71c714fd384c2f029fd5e23116877160597b040101",
+      "comment": "s is is an octet string",
+      "valid": false,
+      "flags": ["WrongTypeS"]
     }
   ]
 }

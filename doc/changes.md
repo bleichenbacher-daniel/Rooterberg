@@ -97,3 +97,48 @@ r,s are the two scalars of the ECDSA signature and id is the recovery_id that ca
 * Added a file with test results, sorted by library.
 * Cleanup of EC keys in JWT format.
   EC key in JWT format can now have either a "use" field or a "key_ops" field.
+
+2025/4 v. 0.61
+* Adding ECDH test vectors for more curves.
+* Adding DSA signatures using RFC 6979.
+* Adding test vectors for CMAC with alternative block ciphers.
+* Adding PBKDF test vectors using different character sets. Implementations of PBKDF
+  frequently have the property that the inputs are restricted to byte arrays that
+  represent UTF-8 encoded strings or ASCII-encoded string, etc. To simplify testing
+  such implementations, test vectors have been added that use restricted character sets.
+  Flags have been added to describe the type of the inputs.
+* Adding test vectors for RC5/64/12 with 128 bit keys.
+* Adding more test vectors for RSA-PKCS 1.5 signatures. 
+* added more fuzzing to OID encodings.
+* improved flags for RSA-ES-OAEP and  RSA-ES-PKCS1 to distinguish padding modifications from other invalid ciphertexts.
+* added test results against some Java providers.
+
+Format changes:
+* changed the fields mgf_sha to mgfSha, salt_len to saltLen  in the algorithm description of RSA-PSS and RSA-OAEP.
+* changed the fields iter_count to iterCount and dk_len to dkLen for PBKDF.
+
+2025/5 v. 0.62
+* Adding test vectors for XDH with ASN.1 and PEM encoded keys.
+* Adding PEM encoded keys as an alternative. Some Javascript libraries have incomplete documentation,
+  and it is frequently difficult to determine acceptable key formats are. 
+  Generally, when key validation is not part of the test (e.g. signature validation) then
+  a test vector file can contain multiple key formats for convenience. If key validation
+  is part of the test (e.g. ECDH, XDH) then multiple files are generated for multiple formats.
+* Adding test vectors with special case private keys to ECDSA tests.
+* Adding test vectors for secp256k1 with normalized signatures.
+* Adding more tests against Javascript libraries.
+
+2025/7 v. 0.63
+* Changing tag sizes for AES-GCM-SST to match draft-mattsson-cfrg-aes-gcm-sst-15.
+* Adding more flags to test vectors for PKCS #8. This is done to make a better selection
+  depending on the implementation. 
+* Test results now contain a list of flags, which describe the tests vectors that were
+  skipped in the test. The main purpose of these flags is to describe restrictions of the
+  implementation. (A typical example is the limitation of some libraries to passwords that
+  are valid UTF-8 strings.)
+* Additional languages: Testing is now done also against libraries in C# and Swift
+* Additional curves: There a more test vectors for legacy curves using less then 256-bits.
+  While these curves are hopefully no longer in wide use, they sometimes have unusual
+  properties and hence have bugs that are not present in other curves.
+* Additional test vector for BER/DER encoding based on old CVEs.
+* Added tests against Javascript, Swift and C# libraries.
