@@ -31,7 +31,7 @@
 | --- | --- | --- |
 | aegis | [https://docs.rs/aegis/latest/aegis/](https://docs.rs/aegis/latest/aegis/) | 4 |
 | aes | [https://docs.rs/aes/latest/aes/](https://docs.rs/aes/latest/aes/) | 3 |
-| aes_gcm | [https://docs.rs/aes_gcm/latest/aes_gcm/](https://docs.rs/aes_gcm/latest/aes_gcm/) | 21 |
+| aes_gcm | [https://docs.rs/aes_gcm/latest/aes_gcm/](https://docs.rs/aes_gcm/latest/aes_gcm/) | 24 |
 | aes_gcm_siv | [https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/](https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/) | 2 |
 | aes_kw | [https://docs.rs/aes_kw/latest/aes_kw/](https://docs.rs/aes_kw/latest/aes_kw/) | 16 |
 | aes_siv | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
@@ -41,10 +41,10 @@
 | bn254 | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
 | camellia | [https://docs.rs/camellia/latest/camellia/](https://docs.rs/camellia/latest/camellia/) | 3 |
 | cast5 | [https://docs.rs/cast5/latest/cast5/](https://docs.rs/cast5/latest/cast5/) | 1 |
-| cbc | [https://docs.rs/cbc/latest/cbc/](https://docs.rs/cbc/latest/cbc/) | 16 |
+| cbc | [https://docs.rs/cbc/latest/cbc/](https://docs.rs/cbc/latest/cbc/) | 22 |
 | ccm | [https://docs.rs/ccm/latest/ccm/](https://docs.rs/ccm/latest/ccm/) | 27 |
-| cfb8 | [https://docs.rs/cfb8/latest/cfb8/](https://docs.rs/cfb8/latest/cfb8/) | 12 |
-| cfb_mode | [https://docs.rs/cfb_mode/latest/cfb_mode/](https://docs.rs/cfb_mode/latest/cfb_mode/) | 12 |
+| cfb8 | [https://docs.rs/cfb8/latest/cfb8/](https://docs.rs/cfb8/latest/cfb8/) | 16 |
+| cfb_mode | [https://docs.rs/cfb_mode/latest/cfb_mode/](https://docs.rs/cfb_mode/latest/cfb_mode/) | 17 |
 | chacha20poly1305 | [https://docs.rs/chacha20poly1305/latest/chacha20poly1305/](https://docs.rs/chacha20poly1305/latest/chacha20poly1305/) | 2 |
 | cmac | [https://docs.rs/cmac/latest/cmac/](https://docs.rs/cmac/latest/cmac/) | 9 |
 | crypto_box | [https://docs.rs/crypto_box/latest/crypto_box/](https://docs.rs/crypto_box/latest/crypto_box/) | 2 |
@@ -58,6 +58,7 @@
 | hc_256 | [https://docs.rs/hc_256/latest/hc_256/](https://docs.rs/hc_256/latest/hc_256/) | 1 |
 | hkdf | [https://docs.rs/hkdf/latest/hkdf/](https://docs.rs/hkdf/latest/hkdf/) | 11 |
 | hmac | [https://docs.rs/hmac/latest/hmac/](https://docs.rs/hmac/latest/hmac/) | 9 |
+| idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
 | k256 | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
 | ocb3 | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
@@ -87,6 +88,7 @@
 | sm3 | [https://docs.rs/sm3/latest/sm3/](https://docs.rs/sm3/latest/sm3/) | 1 |
 | sm4 | [https://docs.rs/sm4/latest/sm4/](https://docs.rs/sm4/latest/sm4/) | 1 |
 | speck_cipher | [https://docs.rs/speck_cipher/latest/speck_cipher/](https://docs.rs/speck_cipher/latest/speck_cipher/) | 7 |
+| threefish | [https://docs.rs/threefish/latest/threefish/](https://docs.rs/threefish/latest/threefish/) | 3 |
 | twofish | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
 | x25519_dalek | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
 | x448 | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
@@ -94,7 +96,7 @@
 ## Java
 | Name | Url | Tests |
 | --- | --- | --- |
-| BC | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 606 |
+| BC | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 612 |
 | Conscrypt | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
 | SUN | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 30 |
 | SunEC | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 31 |
