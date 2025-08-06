@@ -22,11 +22,6 @@ Rabbit, TripleDesCbcPkcs7, TripleDesCfb64, TripleDesOfb\
 **feedback:** 64, 128\
 **byteOrder:** little
 
-### StreamCipherWithoutIv
-
-**primitive:** Rabbit\
-**keySize:** 128
-
 ### Hash
 
 **primitive:** keccak224, keccak256, keccak384, keccak512, ripemd160, sha-1,

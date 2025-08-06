@@ -11,7 +11,7 @@
 **primitive:** AesGcm, Chacha20Poly1305\
 **keySize:** 128, 192, 256\
 **ivSize:** 64, 96, 128, 256\
-**tagSize:** 64, 96, 128
+**tagSize:** 96, 128
 
 ### IndCpa
 

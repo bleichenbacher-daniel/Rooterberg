@@ -9,9 +9,9 @@
 ### Aead
 
 **primitive:** AesGcm, AesGcmSiv, Chacha20Poly1305\
-**keySize:** 128, 192, 256\
-**ivSize:** 64, 96, 128, 256\
-**tagSize:** 64, 96, 128
+**keySize:** 128, 256\
+**ivSize:** 96\
+**tagSize:** 96, 128
 
 ### IndCpa
 
@@ -51,13 +51,6 @@
 
 **primitive:** HmacSha1, HmacSha224, HmacSha256, HmacSha384, HmacSha512\
 **macSize:** 160, 224, 256, 384, 512
-
-### Pbes2
-
-**primitive:** Pbes2\
-**sha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512\
-**cipher:** Aes\
-**keySize:** 128, 256
 
 ### RsaPkcs1Verify
 

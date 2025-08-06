@@ -70,8 +70,7 @@ CamelliaCbcPkcs7, CamelliaCfb128, CamelliaOfb, Sm4CbcPkcs7, Sm4Cfb128, Sm4Ofb\
 
 ### EcdsaVerify
 
-**curve:** brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp192r1,
-secp224r1, secp256k1, secp256r1, secp384r1, secp521r1\
+**curve:** secp192r1, secp224r1, secp256r1, secp384r1, secp521r1\
 **sha:** SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512\
 **encoding:** P1363\
 **normalize:** False\
@@ -79,8 +78,7 @@ secp224r1, secp256k1, secp256r1, secp384r1, secp521r1\
 
 ### EcdsaSign
 
-**curve:** brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp192r1,
-secp224r1, secp256k1, secp256r1, secp384r1, secp521r1\
+**curve:** secp192r1, secp224r1, secp256r1, secp384r1, secp521r1\
 **sha:** SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512\
 **encoding:** P1363\
 **normalize:** False\

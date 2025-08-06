@@ -12,4 +12,7 @@
 **sha:** SHA-256, SHA-384\
 **encoding:** DER\
 **normalize:** False\
-**signatureGeneration:** Generic
+**signatureGeneration:** Generic\
+The library implements ECDSA over secp256r1 and secp256k1 using SHA-256. Other
+curves and other hash functions could in principle be used. However, this needs
+to be done carefully, since for example hash truncation is not supported.

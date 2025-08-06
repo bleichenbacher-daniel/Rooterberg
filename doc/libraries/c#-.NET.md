@@ -4,6 +4,10 @@
 **Url:**
 [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model)
 
+The .NET cryptography library is a cross-platform library. The availability of
+algorithms depends on the operating system it runs on. Currently (2025) all
+tests are performed on a Windows OS.
+
 ## Performed tests
 
 ### Aead
@@ -11,7 +15,9 @@
 **primitive:** AesCcm, AesGcm\
 **keySize:** 128, 192, 256\
 **ivSize:** 88, 96, 104\
-**tagSize:** 64, 96, 128
+**tagSize:** 64, 96, 128\
+Nonce size for GCM is restricted to 12 bytes. Tag size for GCM must be at least
+12 bytes.
 
 ### IndCpa
 
@@ -22,7 +28,10 @@
 **mode:** Cbc, Cfb\
 **padding:** Pkcs7\
 **paddingSize:** 128\
-**feedback:** 8, 128
+**feedback:** 8, 128\
+The library requires that the size of the input for the CFB mode is a multiple
+of the feedback size. Because of this CFB with PKCS7 padding is tested, but not
+CFB without padding.
 
 ### DsaVerify
 
@@ -41,7 +50,8 @@ secp384r1, secp521r1\
 **sha:** SHA-256, SHA-384, SHA-512\
 **encoding:** DER, P1363\
 **normalize:** False\
-**signatureGeneration:** Generic
+**signatureGeneration:** Generic\
+Support for SHA-3 is platform dependent.
 
 ### Ecdh
 

@@ -14,7 +14,10 @@ SeedGcm, SerpentGcm, SerpentOcb, Sm4Ccm, Sm4Gcm, TwofishEax, TwofishGcm,
 TwofishOcb\
 **keySize:** 128, 192, 256\
 **ivSize:** 64, 88, 96, 104, 120, 128, 256\
-**tagSize:** 64, 80, 96, 128
+**tagSize:** 64, 80, 96, 128\
+OcbBlockCipher allows to sepcify distinct ciphers for encryption and PRF. It is
+unclear if there are protocols using this possibility. Currently (2025) there
+are no tests and test vectors for such variants.
 
 ### IndCpa
 
@@ -30,14 +33,18 @@ TripleDesCfb64, TripleDesCfb8, TripleDesOfb, TwofishCbcPkcs7, XSalsa20\
 **mode:** Cbc, Cfb, Cs3, Ofb\
 **padding:** Iso7816Padding, Pkcs7\
 **paddingSize:** 64, 128\
-**feedback:** 8, 64, 128
+**feedback:** 8, 64, 128\
+There some algorithms that are not well documented. CtsBlockCipher uses the CS3
+ciphertext stealing mode. The block cipher Rabbit uses little endian encoding.
 
 ### BlockCipher
 
 **primitive:** Aes, Aria, Camellia, Cast128, Des, Rc5_32_12_16, Rc5_32_16,
 Rc5_64_12, Rc5_64_20, Rc5_64_24, Rc6_32_20, Rijndael160, Rijndael192,
 Rijndael224, Rijndael256, SM4, Seed, Serpent, TripleDes, Twofish, Xtea\
-**keySize:** 64, 128, 160, 192, 224, 256
+**keySize:** 64, 128, 160, 192, 224, 256\
+Some of the block ciphers use default values that are sometimes not well
+documented. RC5_32 uses 12 roundes. RC6 uses 32-bit words and 20 rounds.
 
 ### DsaVerify
 
@@ -94,7 +101,9 @@ HmacSha512, Kmac128, Kmac256, SeedCmac, SipHash13, SipHash24, SipHash48,
 Sm4Cmac\
 **keySize:** 128, 192, 256\
 **macSize:** 64, 96, 128, 160, 224, 256, 384, 512\
-**customization:** \`\`, `4d794170706c69636174696f6e`
+**customization:** \`\`, `4d794170706c69636174696f6e`\
+The digest size for KMAC is fixed. Its size is twice the security strength.
+I.e., the digest size of KMAC128 is 256 bits.
 
 ### Hkdf
 
