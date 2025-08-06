@@ -1,64 +1,72 @@
 # crypto-browserify
 
-**Language:** javascript\
+**Language:**
+javascript\
 **Url:**
 [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify)
 
 crypto-browserify is a reimplementation of the cryptographic library in node.js.
-Using the same interface as node.js simplifies porting implementations from one
-library to the other.
+Using the same interface as node.js simplifies porting implementations from one library to the other.
 
 ## Performed tests
 
 ### Aead
 
-**primitive:** AesCcm, AesGcm, AesOcb, AriaCcm, AriaGcm, Chacha20Poly1305\
-**keySize:** 128, 192, 256\
-**ivSize:** 64, 88, 96, 104, 120, 128, 256\
-**tagSize:** 64, 96, 128
+| primitive | keySize | ivSize | tagSize |
+| --- | --- | --- | --- |
+| Chacha20Poly1305 | 256 | 96 | 128 |
+| AesGcm | 128, 192, 256 | 64, 96, 128, 256 | 64, 96, 128 |
+| AriaGcm | 128, 192, 256 | 96 | 128 |
+| AesCcm | 128, 192, 256 | 88, 96, 104 | 64, 96, 128 |
+| AriaCcm | 128, 192, 256 | 96, 104 | 64, 128 |
+| AesOcb | 128, 192, 256 | 96, 120 | 128 |
 
 ### IndCpa
 
-**primitive:** AesCbcPkcs7, AesCfb128, AesCfb8, AesOfb, AriaCbcPkcs7,
-AriaCfb128, AriaCfb8, AriaOfb, CamelliaCbcPkcs7, CamelliaCfb128, CamelliaCfb8,
-CamelliaOfb, Sm4CbcPkcs7, Sm4Cfb128, Sm4Ofb\
-**keySize:** 128, 192, 256\
-**ivSize:** 128\
-**cipher:** Aes, Aria, Camellia, SM4\
-**mode:** Cbc, Cfb, Ofb\
-**padding:** Pkcs7\
-**paddingSize:** 128\
-**feedback:** 8, 128
+| primitive | keySize | ivSize | cipher | mode | padding | paddingSize | feedback |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| AesCbcPkcs7 | 128, 192, 256 | 128 | Aes | Cbc | Pkcs7 | 128 | |
+| AriaCbcPkcs7 | 128, 192, 256 | 128 | Aria | Cbc | Pkcs7 | 128 | |
+| CamelliaCbcPkcs7 | 128, 192, 256 | 128 | Camellia | Cbc | Pkcs7 | 128 | |
+| Sm4CbcPkcs7 | 128 | 128 | SM4 | Cbc | Pkcs7 | 128 | |
+| AesCfb8 | 128, 192, 256 | 128 | Aes | Cfb | | | 8 |
+| AesCfb128 | 128, 192, 256 | 128 | Aes | Cfb | | | 128 |
+| AriaCfb8 | 128, 192, 256 | 128 | Aria | Cfb | | | 8 |
+| AriaCfb128 | 128, 192, 256 | 128 | Aria | Cfb | | | 128 |
+| CamelliaCfb8 | 128, 192, 256 | 128 | Camellia | Cfb | | | 8 |
+| CamelliaCfb128 | 128, 192, 256 | 128 | Camellia | Cfb | | | 128 |
+| Sm4Cfb128 | 128 | 128 | SM4 | Cfb | | | 128 |
+| AesOfb | 128, 192, 256 | 128 | Aes | Ofb | | | |
+| AriaOfb | 128, 192, 256 | 128 | Aria | Ofb | | | |
+| CamelliaOfb | 128, 192, 256 | 128 | Camellia | Ofb | | | |
+| Sm4Ofb | 128 | 128 | SM4 | Ofb | | | |
 
 ### EcdsaVerify
 
-**curve:** secp192r1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1\
-**sha:** SHA-224, SHA-256, SHA-384, SHA-512\
-**encoding:** DER\
-**normalize:** False\
-**signatureGeneration:** Generic
+| primitive | curve | sha | encoding | normalize | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Ecdsa | secp192r1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | SHA-224, SHA-256, SHA-384, SHA-512 | DER | False | Generic |
 
 ### Ecdh
 
-**primitive:** Ecdh\
-**curve:** secp160r1, secp192r1, secp224r1, secp256k1, secp256r1, secp384r1,
-secp521r1\
-**encoding:** UNCOMPRESSED
+| primitive | curve | encoding |
+| --- | --- | --- |
+| Ecdh | secp160r1, secp192r1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | UNCOMPRESSED |
 
 ### KeyWrap
 
-**primitive:** AesKw\
-**keySize:** 128, 192, 256
+| primitive | keySize |
+| --- | --- |
+| AesKw | 128, 192, 256 |
 
 ### Pbkdf
 
-**primitive:** Pbkdf\
-**sha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256,
-SHA3-384, SHA3-512
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
 
 ### RsaPkcs1Verify
 
-**primitive:** RsaSsaPkcs1\
-**size:** 1024, 1536, 2048, 3072, 4096\
-**sha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512\
-**encoding:** DER
+| primitive | size | sha | encoding |
+| --- | --- | --- | --- |
+| RsaSsaPkcs1 | 1024, 1536, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 | DER |

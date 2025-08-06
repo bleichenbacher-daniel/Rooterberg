@@ -1,6 +1,7 @@
 # SunEC
 
-**Language:** java\
+**Language:**
+java\
 **Url:**
 [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html)
 
@@ -8,19 +9,19 @@
 
 ### Xdh
 
-**primitive:** x25519, x448\
-**encoding:** DER, RAW
+| primitive | encoding |
+| --- | --- |
+| x25519 | DER, RAW |
+| x448 | DER, RAW |
 
 ### EcdsaVerify
 
-**curve:** secp256r1, secp384r1, secp521r1\
-**sha:** SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512\
-**encoding:** DER, P1363\
-**normalize:** False\
-**signatureGeneration:** Generic
+| primitive | curve | sha | encoding | normalize | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Ecdsa | secp256r1, secp384r1, secp521r1 | SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512 | DER, P1363 | False | Generic |
 
 ### Ecdh
 
-**primitive:** Ecdh\
-**curve:** secp256r1, secp384r1, secp521r1\
-**encoding:** DER
+| primitive | curve | encoding |
+| --- | --- | --- |
+| Ecdh | secp256r1, secp384r1, secp521r1 | DER |

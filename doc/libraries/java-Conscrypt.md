@@ -1,6 +1,7 @@
 # Conscrypt
 
-**Language:** java\
+**Language:**
+java\
 **Url:**
 [https://github.com/google/conscrypt](https://github.com/google/conscrypt)
 
@@ -8,64 +9,72 @@
 
 ### Aead
 
-**primitive:** AesGcm, AesGcmSiv, Chacha20Poly1305\
-**keySize:** 128, 256\
-**ivSize:** 96\
-**tagSize:** 96, 128
+| primitive | keySize | ivSize | tagSize |
+| --- | --- | --- | --- |
+| Chacha20Poly1305 | 256 | 96 | 128 |
+| AesGcm | 128, 256 | 96 | 96, 128 |
+| AesGcmSiv | 128, 256 | 96 | 128 |
 
 ### IndCpa
 
-**primitive:** AesCbcPkcs7, TripleDesCbcPkcs7\
-**keySize:** 128, 192, 256\
-**ivSize:** 64, 128\
-**cipher:** Aes, TripleDes\
-**mode:** Cbc\
-**padding:** Pkcs7\
-**paddingSize:** 64, 128
+| primitive | keySize | ivSize | cipher | mode | padding | paddingSize |
+| --- | --- | --- | --- | --- | --- | --- |
+| AesCbcPkcs7 | 128, 192, 256 | 128 | Aes | Cbc | Pkcs7 | 128 |
+| TripleDesCbcPkcs7 | 192 | 64 | TripleDes | Cbc | Pkcs7 | 64 |
 
 ### BlockCipher
 
-**primitive:** Aes\
-**keySize:** 128, 192, 256
+| primitive | keySize |
+| --- | --- |
+| Aes | 128, 192, 256 |
 
 ### EcdsaVerify
 
-**curve:** secp224r1, secp256r1, secp384r1, secp521r1\
-**sha:** SHA-224, SHA-256, SHA-384, SHA-512\
-**encoding:** DER\
-**normalize:** False\
-**signatureGeneration:** Generic
+| primitive | curve | sha | encoding | normalize | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Ecdsa | secp224r1, secp256r1, secp384r1, secp521r1 | SHA-224, SHA-256, SHA-384, SHA-512 | DER | False | Generic |
 
 ### Ecdh
 
-**primitive:** Ecdh\
-**curve:** secp224r1, secp256r1, secp384r1, secp521r1\
-**encoding:** DER
+| primitive | curve | encoding |
+| --- | --- | --- |
+| Ecdh | secp224r1, secp256r1, secp384r1, secp521r1 | DER |
 
 ### Hash
 
-**primitive:** md5, sha-1, sha-224, sha-256, sha-384, sha-512\
-**digestSize:** 128, 160, 224, 256, 384, 512
+| primitive | digestSize |
+| --- | --- |
+| md5 | 128 |
+| sha-1 | 160 |
+| sha-224 | 224 |
+| sha-256 | 256 |
+| sha-384 | 384 |
+| sha-512 | 512 |
 
 ### Mac
 
-**primitive:** HmacSha1, HmacSha224, HmacSha256, HmacSha384, HmacSha512\
-**macSize:** 160, 224, 256, 384, 512
+| primitive | macSize |
+| --- | --- |
+| HmacSha1 | 160 |
+| HmacSha224 | 224 |
+| HmacSha256 | 256 |
+| HmacSha384 | 384 |
+| HmacSha512 | 512 |
 
 ### RsaPkcs1Verify
 
-**primitive:** RsaSsaPkcs1\
-**size:** 1024, 1536, 2048, 3072, 4096\
-**sha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512\
-**encoding:** DER
+| primitive | size | sha | encoding |
+| --- | --- | --- | --- |
+| RsaSsaPkcs1 | 1024, 1536, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 | DER |
 
 ### RsaEsPkcs1Decrypt
 
-**size:** 1024, 2048, 3072, 4096
+| primitive | size |
+| --- | --- |
+| RsaEsPkcs1 | 1024, 2048, 3072, 4096 |
 
 ### RsaEsOaepDecrypt
 
-**size:** 1024, 2048, 3072, 4096\
-**sha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512\
-**mgf:** MGF1\
-**mgfSha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512
+| primitive | size | sha | mgf | mgfSha |
+| --- | --- | --- | --- | --- |
+| RsaEsOaep | 1024, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 | MGF1 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 |

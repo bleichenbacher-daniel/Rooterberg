@@ -1,6 +1,7 @@
 # node.js
 
-**Language:** javascript\
+**Language:**
+javascript\
 **Url:**
 [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html)
 
@@ -8,72 +9,83 @@
 
 ### Aead
 
-**primitive:** AesCcm, AesGcm, AesOcb, AriaCcm, AriaGcm, Chacha20Poly1305\
-**keySize:** 128, 192, 256\
-**ivSize:** 64, 88, 96, 104, 120, 128, 256\
-**tagSize:** 64, 96, 128
+| primitive | keySize | ivSize | tagSize |
+| --- | --- | --- | --- |
+| Chacha20Poly1305 | 256 | 96 | 128 |
+| AesGcm | 128, 192, 256 | 64, 96, 128, 256 | 64, 96, 128 |
+| AriaGcm | 128, 192, 256 | 96 | 128 |
+| AesCcm | 128, 192, 256 | 88, 96, 104 | 64, 96, 128 |
+| AriaCcm | 128, 192, 256 | 96, 104 | 64, 128 |
+| AesOcb | 128, 192, 256 | 96, 120 | 128 |
 
 ### IndCpa
 
-**primitive:** AesCbcPkcs7, AesCfb128, AesCfb8, AesOfb, AesXts, AriaCbcPkcs7,
-AriaCfb128, AriaCfb8, AriaOfb, CamelliaCbcPkcs7, CamelliaCfb128, CamelliaCfb8,
-CamelliaOfb, Sm4CbcPkcs7, Sm4Cfb128, Sm4Ofb\
-**keySize:** 128, 192, 256, 512\
-**ivSize:** 128\
-**cipher:** Aes, Aria, Camellia, SM4\
-**mode:** Cbc, Cfb, Ofb, Xts\
-**padding:** Pkcs7\
-**paddingSize:** 128\
-**feedback:** 8, 128
+| primitive | keySize | ivSize | cipher | mode | padding | paddingSize | feedback |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| AesXts | 256, 512 | 128 | Aes | Xts | | | |
+| AesCbcPkcs7 | 128, 192, 256 | 128 | Aes | Cbc | Pkcs7 | 128 | |
+| AriaCbcPkcs7 | 128, 192, 256 | 128 | Aria | Cbc | Pkcs7 | 128 | |
+| CamelliaCbcPkcs7 | 128, 192, 256 | 128 | Camellia | Cbc | Pkcs7 | 128 | |
+| Sm4CbcPkcs7 | 128 | 128 | SM4 | Cbc | Pkcs7 | 128 | |
+| AesCfb8 | 128, 192, 256 | 128 | Aes | Cfb | | | 8 |
+| AesCfb128 | 128, 192, 256 | 128 | Aes | Cfb | | | 128 |
+| AriaCfb8 | 128, 192, 256 | 128 | Aria | Cfb | | | 8 |
+| AriaCfb128 | 128, 192, 256 | 128 | Aria | Cfb | | | 128 |
+| CamelliaCfb8 | 128, 192, 256 | 128 | Camellia | Cfb | | | 8 |
+| CamelliaCfb128 | 128, 192, 256 | 128 | Camellia | Cfb | | | 128 |
+| Sm4Cfb128 | 128 | 128 | SM4 | Cfb | | | 128 |
+| AesOfb | 128, 192, 256 | 128 | Aes | Ofb | | | |
+| AriaOfb | 128, 192, 256 | 128 | Aria | Ofb | | | |
+| CamelliaOfb | 128, 192, 256 | 128 | Camellia | Ofb | | | |
+| Sm4Ofb | 128 | 128 | SM4 | Ofb | | | |
 
 ### EcdsaVerify
 
-**curve:** brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1,
-brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, prime192v2,
-prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1,
-secp256r1, secp384r1, secp521r1\
-**sha:** SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512\
-**encoding:** DER, JWK, P1363\
-**normalize:** False, True\
-**signatureGeneration:** Generic
+| primitive | curve | sha | encoding | normalize | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Ecdsa | brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512 | DER, JWK, P1363 | False, True | Generic |
 
 ### Ecdh
 
-**primitive:** Ecdh\
-**curve:** brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1,
-brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1,
-brainpoolP512r1, brainpoolP512t1, secp160r1, secp192r1, secp224r1, secp256k1,
-secp256r1, secp384r1, secp521r1, sm2\
-**encoding:** UNCOMPRESSED
+| primitive | curve | encoding |
+| --- | --- | --- |
+| Ecdh | brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, secp160r1, secp192r1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1, sm2 | UNCOMPRESSED |
 
 ### KeyWrap
 
-**primitive:** AesKw\
-**keySize:** 128, 192, 256
+| primitive | keySize |
+| --- | --- |
+| AesKw | 128, 192, 256 |
 
 ### Pbkdf
 
-**primitive:** Pbkdf\
-**sha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256,
-SHA3-384, SHA3-512
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
 
 ### Hkdf
 
-**primitive:** HkdfSha1, HkdfSha224, HkdfSha256, HkdfSha384, HkdfSha3_224,
-HkdfSha3_256, HkdfSha3_384, HkdfSha3_512, HkdfSha512\
-**sha:** SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256,
-SHA3-384, SHA3-512
+| primitive | sha |
+| --- | --- |
+| HkdfSha1 | SHA-1 |
+| HkdfSha224 | SHA-224 |
+| HkdfSha256 | SHA-256 |
+| HkdfSha384 | SHA-384 |
+| HkdfSha512 | SHA-512 |
+| HkdfSha3_224 | SHA3-224 |
+| HkdfSha3_256 | SHA3-256 |
+| HkdfSha3_384 | SHA3-384 |
+| HkdfSha3_512 | SHA3-512 |
 
 ### Pkcs8Decrypt
 
-**primitive:** Pkcs8, Pkcs8Scrypt\
-**sha:** SHA-1, SHA-256\
-**cipher:** AES-CBC-128, AES-CBC-192, AES-CBC-256, AES-CFB-128, AES-CFB-192,
-AES-CFB-256, AES-OFB-128, AES-OFB-192, AES-OFB-256, DES-EDE3-CBC
+| primitive | sha | cipher |
+| --- | --- | --- |
+| Pkcs8 | SHA-1, SHA-256 | AES-CBC-128, AES-CBC-192, AES-CBC-256, AES-CFB-128, AES-CFB-192, AES-CFB-256, AES-OFB-128, AES-OFB-192, AES-OFB-256, DES-EDE3-CBC |
+| Pkcs8Scrypt | | AES-CBC-128, AES-CBC-192, AES-CBC-256 |
 
 ### RsaPkcs1Verify
 
-**primitive:** RsaSsaPkcs1\
-**size:** 1024, 1536, 2048, 3072, 4096\
-**sha:** SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512\
-**encoding:** DER
+| primitive | size | sha | encoding |
+| --- | --- | --- | --- |
+| RsaSsaPkcs1 | 1024, 1536, 2048, 3072, 4096 | SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512 | DER |

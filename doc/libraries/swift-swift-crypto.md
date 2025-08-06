@@ -1,62 +1,63 @@
 # swift-crypto
 
-**Language:** swift\
+**Language:**
+swift\
 **Url:**
 [https://github.com/apple/swift-crypto](https://github.com/apple/swift-crypto)
 
-This is a reimplementation of Apple's CryptoKit. Uses BoringSSL as underlying
-crypto library.
+This is a reimplementation of Apple's CryptoKit.
+Uses BoringSSL as underlying crypto library.
 
 ## Performed tests
 
 ### Aead
 
-**primitive:** AesGcm, AesGcmSiv, Chacha20Poly1305\
-**keySize:** 128, 192, 256\
-**ivSize:** 96, 128, 256\
-**tagSize:** 128
+| primitive | keySize | ivSize | tagSize |
+| --- | --- | --- | --- |
+| Chacha20Poly1305 | 256 | 96 | 128 |
+| AesGcm | 128, 192, 256 | 96, 128, 256 | 128 |
+| AesGcmSiv | 128, 256 | 96 | 128 |
 
 ### Xdh
 
-**primitive:** x25519\
-**encoding:** RAW
+| primitive | encoding |
+| --- | --- |
+| x25519 | RAW |
 
 ### EcdsaVerify
 
-**curve:** secp256r1, secp384r1, secp521r1\
-**sha:** SHA-256, SHA-384, SHA-512\
-**encoding:** DER\
-**normalize:** False\
-**signatureGeneration:** Generic
+| primitive | curve | sha | encoding | normalize | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Ecdsa | secp256r1, secp384r1, secp521r1 | SHA-256, SHA-384, SHA-512 | DER | False | Generic |
 
 ### EddsaVerify
 
-**curve:** edwards25519\
-**cofactored:** False\
-**encoding:** RAW
+| primitive | curve | cofactored | encoding |
+| --- | --- | --- | --- |
+| Eddsa | edwards25519 | False | RAW |
 
 ### Ecdh
 
-**primitive:** Ecdh\
-**curve:** secp256r1, secp384r1, secp521r1\
-**encoding:** DER
+| primitive | curve | encoding |
+| --- | --- | --- |
+| Ecdh | secp256r1, secp384r1, secp521r1 | DER |
 
 ### KeyWrap
 
-**primitive:** AesKw\
-**keySize:** 128, 192, 256
+| primitive | keySize |
+| --- | --- |
+| AesKw | 128, 192, 256 |
 
 ### Mac
 
-**primitive:** HmacSha256, HmacSha384, HmacSha512\
-**macSize:** 256, 384, 512
+| primitive | macSize |
+| --- | --- |
+| HmacSha256 | 256 |
+| HmacSha384 | 384 |
+| HmacSha512 | 512 |
 
 ### RsaPssVerify
 
-**primitive:** RsaSsaPss\
-**size:** 2048, 3072, 4096\
-**sha:** SHA-256\
-**mgf:** MGF1\
-**mgfSha:** SHA-256\
-**saltLen:** 32\
-**encoding:** DER
+| primitive | size | sha | mgf | mgfSha | saltLen | encoding |
+| --- | --- | --- | --- | --- | --- | --- |
+| RsaSsaPss | 2048, 3072, 4096 | SHA-256 | MGF1 | SHA-256 | 32 | DER |
