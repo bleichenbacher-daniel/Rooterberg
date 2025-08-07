@@ -4,22 +4,22 @@
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| @noble/ciphers | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
-| @noble/curves | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 44 |
-| @polkadot/wasm-crypto | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
+| [@noble/ciphers](libraries/js-@noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
+| [@noble/curves](libraries/js-@noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 44 |
+| [@polkadot/wasm-crypto](libraries/js-@polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [crypto-browserify](libraries/js-crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 141 |
 | [crypto-js](libraries/js-crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
 | [crypto.subtle](libraries/js-crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 75 |
-| ecc-jsbn | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
+| [ecc-jsbn](libraries/js-ecc-jsbn.md) | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
 | [elliptic](libraries/js-elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 32 |
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
-| miscreant | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
+| [miscreant](libraries/js-miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
 | [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 255 |
 | secp256k1 | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
-| tweetnacl | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
+| [tweetnacl](libraries/js-tweetnacl.md) | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
 
 ## Python
 
@@ -122,5 +122,5 @@
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| CryptoSwift | [https://github.com/krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) | 78 |
+| [CryptoSwift](libraries/swift-CryptoSwift.md) | [https://github.com/krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) | 78 |
 | [swift-crypto](libraries/swift-swift-crypto.md) | [https://github.com/apple/swift-crypto](https://github.com/apple/swift-crypto) | 32 |
