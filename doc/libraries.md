@@ -1,12 +1,35 @@
 # Tested libraries
 
+This page lists the libraries that are currently tested.
+The main focus at this point is determining compatibility with standards.
+Frequently, libraries do not specify all the algorithm parameters that are being used.
+At this point no test results are being included.
+
+## C\#
+
+| Name | Url | Tests |
+| --- | --- | --- |
+| [.NET](libraries/cs-dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
+| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 638 |
+
+## Java
+
+| Name | Url | Tests |
+| --- | --- | --- |
+| [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 615 |
+| [Conscrypt](libraries/java-conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
+| [SUN](libraries/java-sun.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 30 |
+| [SunEC](libraries/java-sunec.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 31 |
+| [SunJCE](libraries/java-sunjce.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 107 |
+| [SunRsaSign](libraries/java-sunrsasign.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 67 |
+
 ## Javascript
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [@noble/ciphers](libraries/js-@noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
-| [@noble/curves](libraries/js-@noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 44 |
-| [@polkadot/wasm-crypto](libraries/js-@polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
+| [@noble/ciphers](libraries/js-noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
+| [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 44 |
+| [@polkadot/wasm-crypto](libraries/js-polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [crypto-browserify](libraries/js-crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 141 |
 | [crypto-js](libraries/js-crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
@@ -18,6 +41,7 @@
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
 | [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 255 |
 | secp256k1 | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
+| sjcl | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 7 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
 | [tweetnacl](libraries/js-tweetnacl.md) | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
 
@@ -35,7 +59,7 @@
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| aegis | [https://docs.rs/aegis/latest/aegis/](https://docs.rs/aegis/latest/aegis/) | 4 |
+| [aegis](libraries/rs-aegis.md) | [https://docs.rs/aegis/latest/aegis/](https://docs.rs/aegis/latest/aegis/) | 4 |
 | aes | [https://docs.rs/aes/latest/aes/](https://docs.rs/aes/latest/aes/) | 3 |
 | [aes_gcm](libraries/rs-aes_gcm.md) | [https://docs.rs/aes_gcm/latest/aes_gcm/](https://docs.rs/aes_gcm/latest/aes_gcm/) | 24 |
 | aes_gcm_siv | [https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/](https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/) | 2 |
@@ -48,17 +72,17 @@
 | camellia | [https://docs.rs/camellia/latest/camellia/](https://docs.rs/camellia/latest/camellia/) | 3 |
 | cast5 | [https://docs.rs/cast5/latest/cast5/](https://docs.rs/cast5/latest/cast5/) | 1 |
 | cbc | [https://docs.rs/cbc/latest/cbc/](https://docs.rs/cbc/latest/cbc/) | 22 |
-| ccm | [https://docs.rs/ccm/latest/ccm/](https://docs.rs/ccm/latest/ccm/) | 27 |
+| [ccm](libraries/rs-ccm.md) | [https://docs.rs/ccm/latest/ccm/](https://docs.rs/ccm/latest/ccm/) | 27 |
 | cfb8 | [https://docs.rs/cfb8/latest/cfb8/](https://docs.rs/cfb8/latest/cfb8/) | 16 |
 | cfb_mode | [https://docs.rs/cfb_mode/latest/cfb_mode/](https://docs.rs/cfb_mode/latest/cfb_mode/) | 17 |
 | chacha20poly1305 | [https://docs.rs/chacha20poly1305/latest/chacha20poly1305/](https://docs.rs/chacha20poly1305/latest/chacha20poly1305/) | 2 |
 | cmac | [https://docs.rs/cmac/latest/cmac/](https://docs.rs/cmac/latest/cmac/) | 9 |
 | crypto_box | [https://docs.rs/crypto_box/latest/crypto_box/](https://docs.rs/crypto_box/latest/crypto_box/) | 2 |
-| crypto_secretbox | [https://docs.rs/crypto_secretbox/latest/crypto_secretbox/](https://docs.rs/crypto_secretbox/latest/crypto_secretbox/) | 1 |
-| cts | [https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/) | 6 |
+| [crypto_secretbox](libraries/rs-crypto_secretbox.md) | [https://docs.rs/crypto_secretbox/latest/crypto_secretbox/](https://docs.rs/crypto_secretbox/latest/crypto_secretbox/) | 1 |
+| [cts](libraries/rs-cts.md) | [https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/) | 6 |
 | des | [https://docs.rs/des/latest/des/](https://docs.rs/des/latest/des/) | 5 |
 | dsa | [https://docs.rs/dsa/latest/dsa/](https://docs.rs/dsa/latest/dsa/) | 9 |
-| eax | [https://docs.rs/eax/latest/eax/](https://docs.rs/eax/latest/eax/) | 9 |
+| [eax](libraries/rs-eax.md) | [https://docs.rs/eax/latest/eax/](https://docs.rs/eax/latest/eax/) | 9 |
 | ed25519_dalek | [https://docs.rs/ed25519_dalek/latest/ed25519_dalek/](https://docs.rs/ed25519_dalek/latest/ed25519_dalek/) | 2 |
 | fpe | [https://docs.rs/fpe/latest/fpe/](https://docs.rs/fpe/latest/fpe/) | 108 |
 | hc_256 | [https://docs.rs/hc_256/latest/hc_256/](https://docs.rs/hc_256/latest/hc_256/) | 1 |
@@ -67,7 +91,7 @@
 | idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
 | k256 | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
-| ocb3 | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
+| [ocb3](libraries/rs-ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
 | ofb | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |
 | p192 | [https://docs.rs/p192/latest/p192/](https://docs.rs/p192/latest/p192/) | 1 |
 | p224 | [https://docs.rs/p224/latest/p224/](https://docs.rs/p224/latest/p224/) | 4 |
@@ -89,38 +113,20 @@
 | sha1 | [https://docs.rs/sha1/latest/sha1/](https://docs.rs/sha1/latest/sha1/) | 1 |
 | sha2 | [https://docs.rs/sha2/latest/sha2/](https://docs.rs/sha2/latest/sha2/) | 6 |
 | sha3 | [https://docs.rs/sha3/latest/sha3/](https://docs.rs/sha3/latest/sha3/) | 8 |
-| siphasher | [https://docs.rs/siphasher/latest/siphasher/](https://docs.rs/siphasher/latest/siphasher/) | 4 |
+| [siphasher](libraries/rs-siphasher.md) | [https://docs.rs/siphasher/latest/siphasher/](https://docs.rs/siphasher/latest/siphasher/) | 4 |
 | sm2 | [https://docs.rs/sm2/latest/sm2/](https://docs.rs/sm2/latest/sm2/) | 2 |
 | sm3 | [https://docs.rs/sm3/latest/sm3/](https://docs.rs/sm3/latest/sm3/) | 1 |
 | sm4 | [https://docs.rs/sm4/latest/sm4/](https://docs.rs/sm4/latest/sm4/) | 1 |
-| speck_cipher | [https://docs.rs/speck_cipher/latest/speck_cipher/](https://docs.rs/speck_cipher/latest/speck_cipher/) | 7 |
+| [speck_cipher](libraries/rs-speck_cipher.md) | [https://docs.rs/speck_cipher/latest/speck_cipher/](https://docs.rs/speck_cipher/latest/speck_cipher/) | 7 |
 | threefish | [https://docs.rs/threefish/latest/threefish/](https://docs.rs/threefish/latest/threefish/) | 3 |
 | twofish | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
 | x25519_dalek | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
 | x448 | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
-| xts_mode | [https://docs.rs/xts-mode/latest/xts_mode/](https://docs.rs/xts-mode/latest/xts_mode/) | 10 |
-
-## Java
-
-| Name | Url | Tests |
-| --- | --- | --- |
-| [BC](libraries/java-BC.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 612 |
-| [Conscrypt](libraries/java-Conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
-| [SUN](libraries/java-SUN.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 30 |
-| [SunEC](libraries/java-SunEC.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 31 |
-| [SunJCE](libraries/java-SunJCE.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 107 |
-| [SunRsaSign](libraries/java-SunRsaSign.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 67 |
-
-## C\#
-
-| Name | Url | Tests |
-| --- | --- | --- |
-| [.NET](libraries/c#-.NET.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
-| [BC_CSHARP](libraries/c#-BC_CSHARP.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 638 |
+| [xts_mode](libraries/rs-xts_mode.md) | [https://docs.rs/xts-mode/latest/xts_mode/](https://docs.rs/xts-mode/latest/xts_mode/) | 10 |
 
 ## Swift
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [CryptoSwift](libraries/swift-CryptoSwift.md) | [https://github.com/krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) | 78 |
+| [CryptoSwift](libraries/swift-cryptoswift.md) | [https://github.com/krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) | 78 |
 | [swift-crypto](libraries/swift-swift-crypto.md) | [https://github.com/apple/swift-crypto](https://github.com/apple/swift-crypto) | 32 |

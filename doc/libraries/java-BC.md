@@ -99,6 +99,7 @@ However, in a number of cases there is no JCA interface available and tests spec
 | Xtea | 128 |
 | Kuznyechik | 256 |
 | Cast128 | 128 |
+| Idea | 128 |
 | Des | 64 |
 | TripleDes | 192 |
 | Rijndael160 | 128, 192, 256 |
@@ -230,6 +231,8 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | primitive | size | sha | mgf | mgfSha | saltLen | encoding |
 | --- | --- | --- | --- | --- | --- | --- |
 | RsaSsaPss | 1024, 1536, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHAKE128, SHAKE256 | MGF1, SHAKE | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHAKE128, SHAKE256 | 0, 20, 28, 32, 48, 64 | DER |
+
+The hash algorithm for hashing and MGF1 must be the same.
 
 ### RsaEsPkcs1Decrypt
 
