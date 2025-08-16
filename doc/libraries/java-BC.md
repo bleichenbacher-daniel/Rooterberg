@@ -40,10 +40,10 @@ However, in a number of cases there is no JCA interface available and tests spec
 
 ### Xdh
 
-| primitive | encoding |
-| --- | --- |
-| x25519 | DER |
-| x448 | DER |
+| primitive | curve | encoding |
+| --- | --- | --- |
+| x25519 | curve25519 | DER |
+| x448 | curve448 | DER |
 
 ### IndCpa
 

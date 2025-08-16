@@ -20,9 +20,9 @@ Uses BoringSSL as underlying crypto library.
 
 ### Xdh
 
-| primitive | encoding |
-| --- | --- |
-| x25519 | RAW |
+| primitive | curve | encoding |
+| --- | --- | --- |
+| x25519 | curve25519 | RAW |
 
 ### EcdsaVerify
 

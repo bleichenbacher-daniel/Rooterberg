@@ -23,10 +23,10 @@ The tests are based on the version using 'pip install cryptography'.
 
 ### Xdh
 
-| primitive | encoding |
-| --- | --- |
-| x25519 | PEM, RAW |
-| x448 | PEM, RAW |
+| primitive | curve | encoding |
+| --- | --- | --- |
+| x25519 | curve25519 | PEM, RAW |
+| x448 | curve448 | PEM, RAW |
 
 ### Daead
 
@@ -133,6 +133,16 @@ The tests are based on the version using 'pip install cryptography'.
 | primitive |
 | --- |
 | Pbkdf |
+
+### Kdf
+
+| primitive | sha |
+| --- | --- |
+| X963KdfSha1 | SHA-1 |
+| X963KdfSha224 | SHA-224 |
+| X963KdfSha256 | SHA-256 |
+| X963KdfSha384 | SHA-384 |
+| X963KdfSha512 | SHA-512 |
 
 ### Hkdf
 

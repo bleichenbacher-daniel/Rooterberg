@@ -10,7 +10,7 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [.NET](libraries/cs-dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
-| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 638 |
+| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 655 |
 
 ## Java
 
@@ -39,9 +39,9 @@ At this point no test results are being included.
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
 | [miscreant](libraries/js-miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
-| [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 255 |
+| [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 275 |
 | secp256k1 | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
-| sjcl | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 7 |
+| sjcl | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 13 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
 | [tweetnacl](libraries/js-tweetnacl.md) | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
 
@@ -49,7 +49,7 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 312 |
+| [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 317 |
 | [pycryptodome](libraries/py-pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 346 |
 | pyjwt | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 15 |
 | pynacl | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 2 |
@@ -79,25 +79,25 @@ At this point no test results are being included.
 | cmac | [https://docs.rs/cmac/latest/cmac/](https://docs.rs/cmac/latest/cmac/) | 9 |
 | crypto_box | [https://docs.rs/crypto_box/latest/crypto_box/](https://docs.rs/crypto_box/latest/crypto_box/) | 2 |
 | [crypto_secretbox](libraries/rs-crypto_secretbox.md) | [https://docs.rs/crypto_secretbox/latest/crypto_secretbox/](https://docs.rs/crypto_secretbox/latest/crypto_secretbox/) | 1 |
-| [cts](libraries/rs-cts.md) | [https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/) | 6 |
+| [cts](libraries/rs-cts.md) | [https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/) | 9 |
 | des | [https://docs.rs/des/latest/des/](https://docs.rs/des/latest/des/) | 5 |
 | dsa | [https://docs.rs/dsa/latest/dsa/](https://docs.rs/dsa/latest/dsa/) | 9 |
 | [eax](libraries/rs-eax.md) | [https://docs.rs/eax/latest/eax/](https://docs.rs/eax/latest/eax/) | 9 |
-| ed25519_dalek | [https://docs.rs/ed25519_dalek/latest/ed25519_dalek/](https://docs.rs/ed25519_dalek/latest/ed25519_dalek/) | 2 |
+| [ed25519_dalek](libraries/rs-ed25519_dalek.md) | [https://docs.rs/ed25519_dalek/latest/ed25519_dalek/](https://docs.rs/ed25519_dalek/latest/ed25519_dalek/) | 2 |
 | fpe | [https://docs.rs/fpe/latest/fpe/](https://docs.rs/fpe/latest/fpe/) | 108 |
 | hc_256 | [https://docs.rs/hc_256/latest/hc_256/](https://docs.rs/hc_256/latest/hc_256/) | 1 |
 | hkdf | [https://docs.rs/hkdf/latest/hkdf/](https://docs.rs/hkdf/latest/hkdf/) | 11 |
 | hmac | [https://docs.rs/hmac/latest/hmac/](https://docs.rs/hmac/latest/hmac/) | 9 |
 | idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
-| k256 | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
+| [k256](libraries/rs-k256.md) | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
 | [ocb3](libraries/rs-ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
 | ofb | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |
 | p192 | [https://docs.rs/p192/latest/p192/](https://docs.rs/p192/latest/p192/) | 1 |
-| p224 | [https://docs.rs/p224/latest/p224/](https://docs.rs/p224/latest/p224/) | 4 |
-| p256 | [https://docs.rs/p256/latest/p256/](https://docs.rs/p256/latest/p256/) | 4 |
-| p384 | [https://docs.rs/p384/latest/p384/](https://docs.rs/p384/latest/p384/) | 4 |
-| p521 | [https://docs.rs/p521/latest/p521/](https://docs.rs/p521/latest/p521/) | 4 |
+| [p224](libraries/rs-p224.md) | [https://docs.rs/p224/latest/p224/](https://docs.rs/p224/latest/p224/) | 4 |
+| [p256](libraries/rs-p256.md) | [https://docs.rs/p256/latest/p256/](https://docs.rs/p256/latest/p256/) | 4 |
+| [p384](libraries/rs-p384.md) | [https://docs.rs/p384/latest/p384/](https://docs.rs/p384/latest/p384/) | 4 |
+| [p521](libraries/rs-p521.md) | [https://docs.rs/p521/latest/p521/](https://docs.rs/p521/latest/p521/) | 4 |
 | pbkdf2 | [https://docs.rs/pbkdf2/latest/pbkdf2/](https://docs.rs/pbkdf2/latest/pbkdf2/) | 11 |
 | pcbc | [https://docs.rs/pcbc/latest/pcbc/](https://docs.rs/pcbc/latest/pcbc/) | 3 |
 | pkcs8 | [https://docs.rs/pkcs8/latest/pkcs8/](https://docs.rs/pkcs8/latest/pkcs8/) | 9 |
@@ -120,8 +120,8 @@ At this point no test results are being included.
 | [speck_cipher](libraries/rs-speck_cipher.md) | [https://docs.rs/speck_cipher/latest/speck_cipher/](https://docs.rs/speck_cipher/latest/speck_cipher/) | 7 |
 | threefish | [https://docs.rs/threefish/latest/threefish/](https://docs.rs/threefish/latest/threefish/) | 3 |
 | twofish | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
-| x25519_dalek | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
-| x448 | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
+| [x25519_dalek](libraries/rs-x25519_dalek.md) | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
+| [x448](libraries/rs-x448.md) | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
 | [xts_mode](libraries/rs-xts_mode.md) | [https://docs.rs/xts-mode/latest/xts_mode/](https://docs.rs/xts-mode/latest/xts_mode/) | 10 |
 
 ## Swift

@@ -100,12 +100,16 @@ The block cipher Rabbit uses little endian encoding.
 | Rc5_32_12_16 | 128 |
 | Xtea | 128 |
 | Cast128 | 128 |
+| Idea | 128 |
 | Des | 64 |
 | TripleDes | 192 |
 | Rijndael160 | 128, 192, 256 |
 | Rijndael192 | 128, 192, 256 |
 | Rijndael224 | 128, 192, 256 |
 | Rijndael256 | 128, 192, 256 |
+| Threefish256 | 256 |
+| Threefish512 | 512 |
+| Threefish1024 | 1024 |
 
 Some of the block ciphers use default values that are sometimes not well documented.
 RC5_32 uses 12 roundes.
@@ -133,7 +137,7 @@ RC6 uses 32-bit words and 20 rounds.
 
 | primitive | curve | encoding |
 | --- | --- | --- |
-| Ecdh | brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, frp256v1, prime192v2, prime239v1, secp192r1, secp256k1, secp256r1, secp384r1, secp521r1 | PEM |
+| Ecdh | brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, frp256v1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | PEM |
 
 ### KeyWrap
 
@@ -203,7 +207,7 @@ I.e., the digest size of KMAC128 is 256 bits.
 
 | primitive | size | sha | mgf | mgfSha | saltLen | encoding |
 | --- | --- | --- | --- | --- | --- | --- |
-| RsaSsaPss | 1024, 1536, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 | MGF1 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 | 0, 20, 28, 32, 48, 64 | DER |
+| RsaSsaPss | 1024, 1536, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHAKE128, SHAKE256 | MGF1, SHAKE | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHAKE128, SHAKE256 | 0, 20, 28, 32, 48, 64 | DER |
 
 ### RsaEsPkcs1Decrypt
 

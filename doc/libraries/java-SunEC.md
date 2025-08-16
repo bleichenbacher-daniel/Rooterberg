@@ -9,10 +9,10 @@ java\
 
 ### Xdh
 
-| primitive | encoding |
-| --- | --- |
-| x25519 | DER, RAW |
-| x448 | DER, RAW |
+| primitive | curve | encoding |
+| --- | --- | --- |
+| x25519 | curve25519 | DER, RAW |
+| x448 | curve448 | DER, RAW |
 
 ### EcdsaVerify
 
