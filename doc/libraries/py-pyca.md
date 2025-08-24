@@ -164,8 +164,8 @@ The tests are based on the version using 'pip install cryptography'.
 
 | primitive | sha | cipher |
 | --- | --- | --- |
-| Pkcs8 | SHA-1, SHA-256 | AES-CBC-128, AES-CBC-192, AES-CBC-256, AES-GCM-128, AES-GCM-192, AES-GCM-256, DES-EDE3-CBC |
-| Pkcs8Scrypt | | AES-CBC-128, AES-CBC-192, AES-CBC-256, AES-GCM-128, AES-GCM-192, AES-GCM-256 |
+| Pkcs8 | SHA-1, SHA-256 | AES-CBC-128, AES-CBC-192, AES-CBC-256 |
+| Pkcs8Scrypt | | AES-CBC-128, AES-CBC-192, AES-CBC-256 |
 
 ### RsaPkcs1Verify
 

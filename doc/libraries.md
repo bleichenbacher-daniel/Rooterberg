@@ -40,7 +40,7 @@ At this point no test results are being included.
 | [miscreant](libraries/js-miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
 | [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 275 |
-| secp256k1 | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
+| [secp256k1](libraries/js-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
 | sjcl | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 13 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
 | [tweetnacl](libraries/js-tweetnacl.md) | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
@@ -49,10 +49,10 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 317 |
-| [pycryptodome](libraries/py-pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 346 |
+| [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 325 |
+| [pycryptodome](libraries/py-pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 352 |
 | pyjwt | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 15 |
-| pynacl | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 2 |
+| [pynacl](libraries/py-pynacl.md) | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 3 |
 | [starkbank-ecdsa](libraries/py-starkbank-ecdsa.md) | [https://pypi.org/project/starkbank-ecdsa/](https://pypi.org/project/starkbank-ecdsa/) | 4 |
 
 ## Rust
@@ -60,10 +60,10 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [aegis](libraries/rs-aegis.md) | [https://docs.rs/aegis/latest/aegis/](https://docs.rs/aegis/latest/aegis/) | 4 |
-| aes | [https://docs.rs/aes/latest/aes/](https://docs.rs/aes/latest/aes/) | 3 |
+| [aes](libraries/rs-aes.md) | [https://docs.rs/aes/latest/aes/](https://docs.rs/aes/latest/aes/) | 3 |
 | [aes_gcm](libraries/rs-aes_gcm.md) | [https://docs.rs/aes_gcm/latest/aes_gcm/](https://docs.rs/aes_gcm/latest/aes_gcm/) | 24 |
 | aes_gcm_siv | [https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/](https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/) | 2 |
-| aes_kw | [https://docs.rs/aes_kw/latest/aes_kw/](https://docs.rs/aes_kw/latest/aes_kw/) | 16 |
+| [aes_kw](libraries/rs-aes_kw.md) | [https://docs.rs/aes_kw/latest/aes_kw/](https://docs.rs/aes_kw/latest/aes_kw/) | 16 |
 | aes_siv | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
 | aria | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
@@ -119,7 +119,7 @@ At this point no test results are being included.
 | sm4 | [https://docs.rs/sm4/latest/sm4/](https://docs.rs/sm4/latest/sm4/) | 1 |
 | [speck_cipher](libraries/rs-speck_cipher.md) | [https://docs.rs/speck_cipher/latest/speck_cipher/](https://docs.rs/speck_cipher/latest/speck_cipher/) | 7 |
 | threefish | [https://docs.rs/threefish/latest/threefish/](https://docs.rs/threefish/latest/threefish/) | 3 |
-| twofish | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
+| [twofish](libraries/rs-twofish.md) | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
 | [x25519_dalek](libraries/rs-x25519_dalek.md) | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
 | [x448](libraries/rs-x448.md) | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
 | [xts_mode](libraries/rs-xts_mode.md) | [https://docs.rs/xts-mode/latest/xts_mode/](https://docs.rs/xts-mode/latest/xts_mode/) | 10 |

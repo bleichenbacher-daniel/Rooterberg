@@ -126,16 +126,20 @@ then $(a_i k^{-1}, b_i)$ is a  (N, b, c) hidden number problem for *kx*.
 
 ## Vulnerability assessment
 
-Estimating the severity of a bias caused by a side-channel is difficult.
-The precision of the measurements have a large influence on the bias.
-Additionally, relatively small changes in the bias can greatly affect
-the exploitability of the side-channel. At this point we use the following
-rule of thump:
+Estimating the severity of a side-channel is difficult. One method is to use the 
+side-channel information to select a subset of the measurments so that the
+bias is maximized.
+
+This is very unstable method, since the precision of the measurements have a large
+influence on the bias. Relatively small changes in the bias can greatly affect
+the exploitability of the side-channel. 
+
+Even though results are never final we currently use the following rule of thump:
 
 | abs(bias)   | severity |
 | ----------  | -------- |
 | < 0.2       | low      |
-| 0.2 .. 0.45 | medium   |
+| 0.2 .. 0.45 | moderate |
 | > 0.45      | high     |
 
 A bias of $b > 0.45$ was chosen as limit here, since it allows to apply the
