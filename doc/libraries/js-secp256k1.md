@@ -3,7 +3,9 @@
 **Language:**
 javascript\
 **Url:**
-[https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1)
+[https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1)\
+**Tested version:**
+5.0.1
 
 ## Performed tests
 

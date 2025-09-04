@@ -3,7 +3,9 @@
 **Language:**
 rust\
 **Url:**
-[https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/)
+[https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/)\
+**Tested version:**
+0.6.0
 
 ## Performed tests
 

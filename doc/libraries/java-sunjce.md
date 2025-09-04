@@ -3,7 +3,9 @@
 **Language:**
 java\
 **Url:**
-[https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html)
+[https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html)\
+**Tested version:**
+21
 
 ## Performed tests
 
@@ -54,6 +56,8 @@ java\
 | HmacSha256 | 256 |
 | HmacSha384 | 384 |
 | HmacSha512 | 512 |
+| HmacSha512_224 | 224 |
+| HmacSha512_256 | 256 |
 | HmacSha3_224 | 224 |
 | HmacSha3_256 | 256 |
 | HmacSha3_384 | 384 |

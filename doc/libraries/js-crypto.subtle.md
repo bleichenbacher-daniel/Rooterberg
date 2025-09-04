@@ -32,7 +32,7 @@ Currently, all tests run against the version built into node.
 
 | primitive | curve | encoding |
 | --- | --- | --- |
-| Ecdh | brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, secp160r1, secp192r1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1, sm2 | DER, JWK, UNCOMPRESSED |
+| Ecdh | secp256r1, secp384r1, secp521r1 | DER, JWK |
 
 ### RsaPkcs1Verify
 

@@ -3,7 +3,9 @@
 **Language:**
 python\
 **Url:**
-[https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/)
+[https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/)\
+**Tested version:**
+3.22.0
 
 ## Security
 
@@ -20,12 +22,6 @@ Some of the primitives do not have constant time implementations.
 | AesCcm | 128, 192, 256 | 88, 96, 104 | 64, 96, 128 |
 | AesEax | 128, 192, 256 | 128 | 128 |
 | AesOcb | 128, 192, 256 | 96, 120 | 64, 96, 128 |
-
-### AuthEnc
-
-| primitive | keySize | ivSize | tagSize |
-| --- | --- | --- | --- |
-| NaclXSalsa20Poly1305 | 256 | 192 | 128 |
 
 ### Xdh
 
@@ -172,12 +168,6 @@ Some of the primitives do not have constant time implementations.
 | primitive | sha |
 | --- | --- |
 | Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
-
-### Pbes2
-
-| primitive | sha | cipher | keySize |
-| --- | --- | --- | --- |
-| Pbes2 | SHA-1 | Aes | 128 |
 
 ### Scrypt
 

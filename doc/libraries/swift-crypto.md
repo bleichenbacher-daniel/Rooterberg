@@ -48,14 +48,6 @@ Uses BoringSSL as underlying crypto library.
 | --- | --- |
 | AesKw | 128, 192, 256 |
 
-### Mac
-
-| primitive | macSize |
-| --- | --- |
-| HmacSha256 | 256 |
-| HmacSha384 | 384 |
-| HmacSha512 | 512 |
-
 ### RsaPssVerify
 
 | primitive | size | sha | mgf | mgfSha | saltLen | encoding |

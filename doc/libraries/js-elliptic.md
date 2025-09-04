@@ -3,7 +3,9 @@
 **Language:**
 javascript\
 **Url:**
-[https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic)
+[https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic)\
+**Tested version:**
+6.6.1
 
 ## Security
 

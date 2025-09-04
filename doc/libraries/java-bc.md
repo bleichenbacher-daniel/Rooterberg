@@ -3,7 +3,9 @@
 **Language:**
 java\
 **Url:**
-[https://www.bouncycastle.org/](https://www.bouncycastle.org/)
+[https://www.bouncycastle.org/](https://www.bouncycastle.org/)\
+**Tested version:**
+1.8
 
 BouncyCastle can either be used through the JCA interface or by calling the underlying BouncyCastle classes directly.
 Our tests use the JCA interface whenever possible.
@@ -197,6 +199,8 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | HmacSha256 | | 256 |
 | HmacSha384 | | 384 |
 | HmacSha512 | | 512 |
+| HmacSha512_224 | | 224 |
+| HmacSha512_256 | | 256 |
 | HmacSha3_224 | | 224 |
 | HmacSha3_256 | | 256 |
 | HmacSha3_384 | | 384 |
@@ -213,6 +217,12 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | primitive | sha |
 | --- | --- |
 | Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
+
+### Pbes2
+
+| primitive | sha | cipher | keySize |
+| --- | --- | --- | --- |
+| Pbes2 | SHA-1, SHA-256 | Aes | 128, 192, 256 |
 
 ### Fpe
 

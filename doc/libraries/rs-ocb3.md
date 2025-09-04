@@ -3,7 +3,9 @@
 **Language:**
 rust\
 **Url:**
-[https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/)
+[https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/)\
+**Tested version:**
+0.1.0
 
 ## Performed tests
 

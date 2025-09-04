@@ -3,7 +3,9 @@
 **Language:**
 java\
 **Url:**
-[https://github.com/google/conscrypt](https://github.com/google/conscrypt)
+[https://github.com/google/conscrypt](https://github.com/google/conscrypt)\
+**Tested version:**
+1.0
 
 ## Performed tests
 
