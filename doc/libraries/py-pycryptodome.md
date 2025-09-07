@@ -169,6 +169,12 @@ Some of the primitives do not have constant time implementations.
 | --- | --- |
 | Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
 
+### Pbes2
+
+| primitive | sha | cipher | keySize |
+| --- | --- | --- | --- |
+| Pbes2 | SHA-1 | Aes | 128 |
+
 ### Scrypt
 
 | primitive |

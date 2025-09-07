@@ -13,6 +13,7 @@ c#\
 
 | primitive | keySize | ivSize | tagSize |
 | --- | --- | --- | --- |
+| AsconAead128 | 128 | 128 | 128 |
 | Chacha20Poly1305 | 256 | 96 | 128 |
 | AesGcm | 128, 192, 256 | 64, 96, 128, 256 | 64, 96, 128 |
 | AriaGcm | 128, 192, 256 | 96 | 128 |
@@ -166,6 +167,8 @@ RC6 uses 32-bit words and 20 rounds.
 | HmacSha256 | | 256 |
 | HmacSha384 | | 384 |
 | HmacSha512 | | 512 |
+| HmacSha512_224 | | 224 |
+| HmacSha512_256 | | 256 |
 | HmacSha3_224 | | 224 |
 | HmacSha3_256 | | 256 |
 | HmacSha3_384 | | 384 |

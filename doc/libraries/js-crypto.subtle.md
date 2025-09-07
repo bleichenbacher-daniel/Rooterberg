@@ -10,6 +10,12 @@ Currently, all tests run against the version built into node.
 
 ## Performed tests
 
+### Xdh
+
+| primitive | curve | encoding |
+| --- | --- | --- |
+| x25519 | curve25519 | DER |
+
 ### Aead
 
 | primitive | keySize | ivSize | tagSize |

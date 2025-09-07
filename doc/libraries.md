@@ -10,7 +10,7 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [.NET](libraries/cs-dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
-| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 655 |
+| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 658 |
 
 ## Java
 
@@ -33,10 +33,10 @@ At this point no test results are being included.
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [crypto-browserify](libraries/js-crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 141 |
 | [crypto-js](libraries/js-crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
-| [crypto.subtle](libraries/js-crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 75 |
+| [crypto.subtle](libraries/js-crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 76 |
 | [ecc-jsbn](libraries/js-ecc-jsbn.md) | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
 | [elliptic](libraries/js-elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 32 |
-| [js-ascon](libraries/js-ascon.md) | [https://github.com/brainfoolong/js-ascon](https://github.com/brainfoolong/js-ascon) | 1 |
+| [js-ascon](libraries/js-ascon.md) | [https://github.com/brainfoolong/js-ascon](https://github.com/brainfoolong/js-ascon) | 2 |
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
 | [miscreant](libraries/js-miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
@@ -51,7 +51,7 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 327 |
-| [pycryptodome](libraries/py-pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 352 |
+| [pycryptodome](libraries/py-pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 353 |
 | [pyjwt](libraries/py-pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 15 |
 | [pynacl](libraries/py-pynacl.md) | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 3 |
 
@@ -67,6 +67,7 @@ At this point no test results are being included.
 | aes_siv | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
 | aria | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
 | [ascon-aead](libraries/rs-ascon-aead.md) | [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/) | 1 |
+| [ascon-hash](libraries/rs-ascon-hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
 | bls12_381 | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
 | bn254 | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
@@ -90,6 +91,7 @@ At this point no test results are being included.
 | [hmac](libraries/rs-hmac.md) | [https://docs.rs/hmac/latest/hmac/](https://docs.rs/hmac/latest/hmac/) | 11 |
 | idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
 | [k256](libraries/rs-k256.md) | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
+| kangarootwelve | [https://docs.rs/kangarootwelve/latest/kangarootwelve/](https://docs.rs/kangarootwelve/latest/kangarootwelve/) | 1 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
 | [ocb3](libraries/rs-ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
 | ofb | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |
