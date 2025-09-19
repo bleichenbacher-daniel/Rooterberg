@@ -5,7 +5,7 @@ javascript\
 **Url:**
 [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm)\
 **Tested version:**
-7.4.1
+7.4.1, 7.5.1
 
 ## Performed tests
 

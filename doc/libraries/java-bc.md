@@ -5,7 +5,7 @@ java\
 **Url:**
 [https://www.bouncycastle.org/](https://www.bouncycastle.org/)\
 **Tested version:**
-1.8
+1.8, 1.81
 
 BouncyCastle can either be used through the JCA interface or by calling the underlying BouncyCastle classes directly.
 Our tests use the JCA interface whenever possible.

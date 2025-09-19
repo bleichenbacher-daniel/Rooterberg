@@ -21,7 +21,7 @@ work in progress and may change.
 [Libraries](doc/libraries.md): The test vectors are tested against a number of libraries. The document contains a list
 of these libraries.
 
-[Tables](tables/README.md):  Test results are given here. The main intent behind the tests is to check
+[Tables](tables/README.md):  Test results are given here. Currently, the main intent behind the tests is to check
 formats. Frequently, libraries do not specify all the algorithm parameters of their primitives.
 No failing tests are included in these lists.
 
