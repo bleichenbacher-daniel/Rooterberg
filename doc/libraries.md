@@ -27,9 +27,11 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
+| [@bitcoin-js/tiny-secp256k1-asmjs](libraries/js-bitcoin-js-tiny-secp256k1-asmjs.md) | [https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs](https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs) | 5 |
 | [@noble/ciphers](libraries/js-noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
 | [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 44 |
 | [@polkadot/wasm-crypto](libraries/js-polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
+| [bitcoinjs-lib-v5](libraries/js-bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [crypto-browserify](libraries/js-crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 141 |
 | [crypto-js](libraries/js-crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
@@ -41,16 +43,17 @@ At this point no test results are being included.
 | [miscreant](libraries/js-miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
 | [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 278 |
-| [secp256k1](libraries/js-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
+| [secp256k1](libraries/js-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 3 |
 | [sjcl](libraries/js-sjcl.md) | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 13 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
+| [tiny-secp256k1](libraries/js-tiny-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 5 |
 | [tweetnacl](libraries/js-tweetnacl.md) | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
 
 ## Python
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 327 |
+| [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 329 |
 | [pycryptodome](libraries/py-pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 353 |
 | [pyjwt](libraries/py-pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 15 |
 | [pynacl](libraries/py-pynacl.md) | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 3 |

@@ -24,12 +24,6 @@ Ecdh, ECDSA and EdDSA are not constant time.
 | --- | --- | --- | --- | --- | --- |
 | Ecdsa | secp192r1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | SHA-256, SHA-384, SHA-512 | DER | False | Generic |
 
-### EcdsaSign
-
-| primitive | curve | sha | encoding | normalize | signatureGeneration |
-| --- | --- | --- | --- | --- | --- |
-| Ecdsa | secp192r1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | SHA-256, SHA-384, SHA-512 | DER | False | Rfc6979 |
-
 ### EddsaVerify
 
 | primitive | curve | cofactored | encoding |
