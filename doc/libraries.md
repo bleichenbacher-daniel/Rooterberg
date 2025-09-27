@@ -12,12 +12,19 @@ At this point no test results are being included.
 | [.NET](libraries/cs-dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
 | [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 658 |
 
+## Dart
+
+| Name | Url | Tests |
+| --- | --- | --- |
+| [cryptography_plus](libraries/dart-cryptography_plus.md) | [https://pub.dev/packages/cryptography_plus](https://pub.dev/packages/cryptography_plus) | 19 |
+
 ## Java
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 623 |
+| [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 624 |
 | [Conscrypt](libraries/java-conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
+| [SC](libraries/java-sc.md) | [https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle) | 523 |
 | [SUN](libraries/java-sun.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 30 |
 | [SunEC](libraries/java-sunec.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 31 |
 | [SunJCE](libraries/java-sunjce.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 109 |

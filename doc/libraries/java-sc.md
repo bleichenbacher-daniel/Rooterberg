@@ -1,16 +1,20 @@
-# BC
+# SC
 
 **Language:**
 java\
 **Url:**
-[https://www.bouncycastle.org/](https://www.bouncycastle.org/)\
+[https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle)\
 **Tested version:**
-1.8, 1.81
+1.58
 
-BouncyCastle can either be used through the JCA interface or by calling the underlying BouncyCastle classes directly.
-Our tests use the JCA interface whenever possible.
-This results in provider independent test code.
-However, in a number of cases there is no JCA interface available and tests specifically written for BouncyCastle is being used.
+SpongyCastle is a fork of an old version of BouncyCastle.
+The motivation for this fork was to allow applications to use different version of BouncyCastle than the one preinstalled on Android devices.
+SpongyCastle is no longer maintained.
+
+## Security
+
+The library contains known bugs and vulnerabilities, since it is no longer updated.
+Switching to BouncyCastle or an alternative provider is recommended.
 
 ## Performed tests
 
@@ -18,7 +22,6 @@ However, in a number of cases there is no JCA interface available and tests spec
 
 | primitive | keySize | ivSize | tagSize |
 | --- | --- | --- | --- |
-| Chacha20Poly1305 | 256 | 96 | 128 |
 | AesGcm | 128, 192, 256 | 64, 96, 128, 256 | 64, 96, 128 |
 | AriaGcm | 128, 192, 256 | 96 | 128 |
 | CamelliaGcm | 128, 192, 256 | 96 | 128 |
@@ -40,12 +43,7 @@ However, in a number of cases there is no JCA interface available and tests spec
 | TwofishOcb | 256 | 120 | 128 |
 | SerpentOcb | 128, 256 | 120 | 128 |
 
-### Xdh
-
-| primitive | curve | encoding |
-| --- | --- | --- |
-| x25519 | curve25519 | DER |
-| x448 | curve448 | DER |
+SpongyCastle implements an old version of AES-GCM-SIV. This version is not compatible with RFC 8452.
 
 ### IndCpa
 
@@ -99,20 +97,10 @@ However, in a number of cases there is no JCA interface available and tests spec
 | Serpent | 128, 160, 192, 224, 256 |
 | Rc5_32_12_16 | 128 |
 | Xtea | 128 |
-| Kuznyechik | 256 |
 | Cast128 | 128 |
 | Idea | 128 |
 | Des | 64 |
 | TripleDes | 192 |
-| Rijndael160 | 128, 192, 256 |
-| Rijndael192 | 128, 192, 256 |
-| Rijndael224 | 128, 192, 256 |
-| Rijndael256 | 128, 192, 256 |
-| Threefish256 | 256 |
-| Threefish512 | 512 |
-| Threefish1024 | 1024 |
-
-The block ciphers Rijndael (i.e. variants with parameters not included in AES) and Threefish (which is tweakable) are not available through the JCA interface. These block ciphers need to be used by calling explicit BouncyCastle classes.
 
 ### DsaVerify
 
@@ -130,7 +118,7 @@ The block ciphers Rijndael (i.e. variants with parameters not included in AES) a
 
 | primitive | curve | sha | encoding | normalize | signatureGeneration |
 | --- | --- | --- | --- | --- | --- |
-| Ecdsa | brainpoolP192r1, brainpoolP192t1, brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, frp256v1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1, sect233k1, sect233r1, sect283k1 | SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512, SHAKE128, SHAKE256 | DER, P1363 | False | Generic |
+| Ecdsa | brainpoolP192r1, brainpoolP192t1, brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, frp256v1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1, sect233k1, sect233r1, sect283k1 | SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512 | DER, P1363 | False | Generic |
 
 ### EcdsaSign
 
@@ -138,15 +126,9 @@ The block ciphers Rijndael (i.e. variants with parameters not included in AES) a
 | --- | --- | --- | --- | --- | --- |
 | Ecdsa | brainpoolP192r1, brainpoolP192t1, brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, frp256v1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512 | DER | False | Rfc6979 |
 
-BouncyCastle uses the following JCA algorithm names:
-
-| Algorithm name | deterministic | signature format |
-| --- | --- | --- |
-| (DigestName)WithEcdsa | False | DER |
-| (DigestName)WithPlain-Ecdsa | False | P1363 |
-| (DigestName)WithEcddsa | True | DER |
-
-There does not seem to be an algorithm name for deterministic signatures with P1363 encoding.
+The signing operation is not constant time.
+It has a timing side channel that leaks information about k.
+No similar leakage can be observed in new versions of BouncyCastle.
 
 ### Ecdh
 
@@ -182,10 +164,7 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | sha3-384 | 384 |
 | sha3-512 | 512 |
 | sm3 | 256 |
-| shake128 | 256 |
-| shake256 | 512 |
 | blake2b | 512 |
-| blake2s | 256 |
 
 ### Mac
 
@@ -207,10 +186,6 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | HmacSha3_512 | | 512 |
 | SipHash24 | 128 | 64 |
 | SipHash48 | 128 | 64 |
-| SipHash128_24 | 128 | 128 |
-| SipHash128_48 | 128 | 128 |
-| Kmac128 | 128 | 256 |
-| Kmac256 | 256 | 512 |
 
 ### Pbkdf
 
@@ -224,12 +199,6 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | --- | --- | --- | --- |
 | Pbes2 | SHA-1, SHA-256 | Aes | 128, 192, 256 |
 
-### Fpe
-
-| primitive | radix | keySize |
-| --- | --- | --- |
-| AesFf1 | 2, 3, 4, 5, 8, 10, 16, 26, 32, 36, 58, 62, 64, 85, 127, 128, 255, 256 | 128, 192, 256 |
-
 ### RsaPkcs1Verify
 
 | primitive | size | sha | encoding |
@@ -240,9 +209,9 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 
 | primitive | size | sha | mgf | mgfSha | saltLen | encoding |
 | --- | --- | --- | --- | --- | --- | --- |
-| RsaSsaPss | 1024, 1536, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHAKE128, SHAKE256 | MGF1, SHAKE | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHAKE128, SHAKE256 | 0, 20, 28, 32, 48, 64 | DER |
+| RsaSsaPss | 1024, 1536, 2048, 3072, 4096 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 | MGF1 | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 | 0, 20, 28, 32, 48, 64 | DER |
 
-The hash algorithm for hashing and MGF1 must be the same.
+A smaller bug in the verification accepts some invalid signatures.
 
 ### RsaEsPkcs1Decrypt
 
