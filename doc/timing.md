@@ -81,9 +81,15 @@ secret values *k*, allows to estimate the seriousness of a side-channel leak.
 The bias of a random variable $X$ over $Z/(nZ)$ is defined as
 $$\mbox{bias}_n(X)=e^{2\pi i X/n}.$$
 Thus the bias of a sample $S = [s_1, ..., s_m]$ over $Z/(nZ)$ is computed as
-$$\mbox{bias}_n(S)=\sum_{i=1}^m e^{2\pi i s_i / n} / m.$$
+$$\mbox{bias}_n(S)=\sum_{j=1}^m e^{2\pi i s_j / n} / m.$$
 Hence the bias is a complex value with norm <= 1. A uniformly distributed sample has
 a bias of 0.
+
+Examples:
+| Description   | abs(bias) |
+| ----------    | --------  |
+| 1-bit leakage | 0.64      |
+| 2-bit leakage | 0.90      |
 
 ## Hidden number problem
 A hidden number problem for a secret value *x* is a list of tuples (a_i, b_i)
@@ -145,7 +151,7 @@ Even though results are never final we currently use the following rule of thump
 A bias of $b > 0.45$ was chosen as limit here, since it allows to apply the
 Shamir-Schroeppel transformation twice. The resulting hidden number problem
 has a bias of $b^{16} > 2^{-18.5}$, which means that the FFT step can be performed
-with $2^{40}$ or less samples.
+with $2^{40}$ or more samples.
 
 A bias of 0.2 or larger is likely exploitable with 160-bit curves.
 Exploiting a timing channel for larger curves likely requires a bias of 0.45 or

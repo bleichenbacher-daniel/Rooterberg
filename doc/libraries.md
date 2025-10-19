@@ -10,13 +10,14 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [.NET](libraries/cs-dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
-| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 658 |
+| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 663 |
 
 ## Dart
 
 | Name | Url | Tests |
 | --- | --- | --- |
 | [cryptography_plus](libraries/dart-cryptography_plus.md) | [https://pub.dev/packages/cryptography_plus](https://pub.dev/packages/cryptography_plus) | 19 |
+| [pointycastle](libraries/dart-pointycastle.md) | [https://pub.dev/packages/pointycastle](https://pub.dev/packages/pointycastle) | 54 |
 
 ## Java
 
@@ -37,12 +38,14 @@ At this point no test results are being included.
 | [@bitcoin-js/tiny-secp256k1-asmjs](libraries/js-bitcoin-js-tiny-secp256k1-asmjs.md) | [https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs](https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs) | 5 |
 | [@noble/ciphers](libraries/js-noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
 | [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 44 |
+| [@noble/hashes](libraries/js-noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 24 |
 | [@polkadot/wasm-crypto](libraries/js-polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
 | [bitcoinjs-lib-v5](libraries/js-bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [crypto-browserify](libraries/js-crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 141 |
 | [crypto-js](libraries/js-crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
 | [crypto.subtle](libraries/js-crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 76 |
+| curve25519-js | [https://www.npmjs.com/package/curve25519-js](https://www.npmjs.com/package/curve25519-js) | 1 |
 | [ecc-jsbn](libraries/js-ecc-jsbn.md) | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
 | [elliptic](libraries/js-elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 32 |
 | [js-ascon](libraries/js-ascon.md) | [https://github.com/brainfoolong/js-ascon](https://github.com/brainfoolong/js-ascon) | 2 |
@@ -51,7 +54,7 @@ At this point no test results are being included.
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
 | [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 278 |
 | [secp256k1](libraries/js-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 3 |
-| [sjcl](libraries/js-sjcl.md) | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 13 |
+| [sjcl](libraries/js-sjcl.md) | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 52 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
 | [tiny-secp256k1](libraries/js-tiny-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 5 |
 | [tweetnacl](libraries/js-tweetnacl.md) | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
@@ -90,11 +93,12 @@ At this point no test results are being included.
 | chacha20poly1305 | [https://docs.rs/chacha20poly1305/latest/chacha20poly1305/](https://docs.rs/chacha20poly1305/latest/chacha20poly1305/) | 2 |
 | cmac | [https://docs.rs/cmac/latest/cmac/](https://docs.rs/cmac/latest/cmac/) | 9 |
 | crypto_box | [https://docs.rs/crypto_box/latest/crypto_box/](https://docs.rs/crypto_box/latest/crypto_box/) | 2 |
-| [crypto_secretbox](libraries/rs-crypto_secretbox.md) | [https://docs.rs/crypto_secretbox/latest/crypto_secretbox/](https://docs.rs/crypto_secretbox/latest/crypto_secretbox/) | 1 |
+| [crypto_secretbox](libraries/rs-crypto_secretbox.md) | [https://docs.rs/crypto_secretbox/latest/crypto_secretbox/](https://docs.rs/crypto_secretbox/latest/crypto_secretbox/) | 2 |
 | [cts](libraries/rs-cts.md) | [https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/) | 9 |
 | des | [https://docs.rs/des/latest/des/](https://docs.rs/des/latest/des/) | 5 |
 | dsa | [https://docs.rs/dsa/latest/dsa/](https://docs.rs/dsa/latest/dsa/) | 9 |
 | [eax](libraries/rs-eax.md) | [https://docs.rs/eax/latest/eax/](https://docs.rs/eax/latest/eax/) | 9 |
+| [ed25519_dalek](libraries/rs-ed25519_dalek.md) | [https://docs.rs/ed25519_dalek/latest/ed25519_dalek/](https://docs.rs/ed25519_dalek/latest/ed25519_dalek/) | 2 |
 | [fpe](libraries/rs-fpe.md) | [https://docs.rs/fpe/latest/fpe/](https://docs.rs/fpe/latest/fpe/) | 108 |
 | hc_256 | [https://docs.rs/hc_256/latest/hc_256/](https://docs.rs/hc_256/latest/hc_256/) | 1 |
 | hkdf | [https://docs.rs/hkdf/latest/hkdf/](https://docs.rs/hkdf/latest/hkdf/) | 11 |
