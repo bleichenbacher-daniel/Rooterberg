@@ -82,8 +82,8 @@ At this point no test results are being included.
 | [ascon-aead](libraries/rs-ascon-aead.md) | [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/) | 1 |
 | [ascon-hash](libraries/rs-ascon-hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
-| bls12_381 | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
-| bn254 | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
+| [bls12_381](libraries/rs-bls12_381.md) | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
+| [bn254](libraries/rs-bn254.md) | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
 | camellia | [https://docs.rs/camellia/latest/camellia/](https://docs.rs/camellia/latest/camellia/) | 3 |
 | cast5 | [https://docs.rs/cast5/latest/cast5/](https://docs.rs/cast5/latest/cast5/) | 1 |
 | cbc | [https://docs.rs/cbc/latest/cbc/](https://docs.rs/cbc/latest/cbc/) | 22 |
