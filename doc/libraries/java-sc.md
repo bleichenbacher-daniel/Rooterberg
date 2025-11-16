@@ -91,6 +91,7 @@ SpongyCastle implements an old version of AES-GCM-SIV. This version is not compa
 | Aes | 128, 192, 256 |
 | Aria | 128, 192, 256 |
 | Camellia | 128, 192, 256 |
+| Cast256 | 128, 160, 192, 224, 256 |
 | SM4 | 128 |
 | Seed | 128 |
 | Twofish | 128, 192, 256 |

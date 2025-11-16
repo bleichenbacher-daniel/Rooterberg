@@ -10,7 +10,7 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [.NET](libraries/cs-dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
-| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 663 |
+| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 668 |
 
 ## Dart
 
@@ -23,9 +23,9 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 624 |
+| [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 629 |
 | [Conscrypt](libraries/java-conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
-| [SC](libraries/java-sc.md) | [https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle) | 523 |
+| [SC](libraries/java-sc.md) | [https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle) | 528 |
 | [SUN](libraries/java-sun.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 30 |
 | [SunEC](libraries/java-sunec.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 31 |
 | [SunJCE](libraries/java-sunjce.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 109 |
@@ -75,28 +75,32 @@ At this point no test results are being included.
 | [aegis](libraries/rs-aegis.md) | [https://docs.rs/aegis/latest/aegis/](https://docs.rs/aegis/latest/aegis/) | 4 |
 | [aes](libraries/rs-aes.md) | [https://docs.rs/aes/latest/aes/](https://docs.rs/aes/latest/aes/) | 3 |
 | [aes_gcm](libraries/rs-aes_gcm.md) | [https://docs.rs/aes_gcm/latest/aes_gcm/](https://docs.rs/aes_gcm/latest/aes_gcm/) | 24 |
-| aes_gcm_siv | [https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/](https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/) | 2 |
+| [aes_gcm_siv](libraries/rs-aes_gcm_siv.md) | [https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/](https://docs.rs/aes_gcm_siv/latest/aes_gcm_siv/) | 2 |
 | [aes_kw](libraries/rs-aes_kw.md) | [https://docs.rs/aes_kw/latest/aes_kw/](https://docs.rs/aes_kw/latest/aes_kw/) | 16 |
-| aes_siv | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
-| aria | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
+| [aes_siv](libraries/rs-aes_siv.md) | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
+| [aria](libraries/rs-aria.md) | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
 | [ascon-aead](libraries/rs-ascon-aead.md) | [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/) | 1 |
 | [ascon-hash](libraries/rs-ascon-hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
+| bign256 | [https://docs.rs/bign256/latest/bign256/](https://docs.rs/bign256/latest/bign256/) | 1 |
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
 | [bls12_381](libraries/rs-bls12_381.md) | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
 | [bn254](libraries/rs-bn254.md) | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
-| camellia | [https://docs.rs/camellia/latest/camellia/](https://docs.rs/camellia/latest/camellia/) | 3 |
+| [bp256](libraries/rs-bp256.md) | [https://docs.rs/bp256/latest/bp256/](https://docs.rs/bp256/latest/bp256/) | 2 |
+| [bp384](libraries/rs-bp384.md) | [https://docs.rs/bp384/latest/bp384/](https://docs.rs/bp384/latest/bp384/) | 2 |
+| [camellia](libraries/rs-camellia.md) | [https://docs.rs/camellia/latest/camellia/](https://docs.rs/camellia/latest/camellia/) | 3 |
 | cast5 | [https://docs.rs/cast5/latest/cast5/](https://docs.rs/cast5/latest/cast5/) | 1 |
-| cbc | [https://docs.rs/cbc/latest/cbc/](https://docs.rs/cbc/latest/cbc/) | 22 |
+| cast6 | [https://docs.rs/cast6/latest/cast6/](https://docs.rs/cast6/latest/cast6/) | 5 |
+| [cbc](libraries/rs-cbc.md) | [https://docs.rs/cbc/latest/cbc/](https://docs.rs/cbc/latest/cbc/) | 22 |
 | [ccm](libraries/rs-ccm.md) | [https://docs.rs/ccm/latest/ccm/](https://docs.rs/ccm/latest/ccm/) | 27 |
-| cfb8 | [https://docs.rs/cfb8/latest/cfb8/](https://docs.rs/cfb8/latest/cfb8/) | 16 |
-| cfb_mode | [https://docs.rs/cfb_mode/latest/cfb_mode/](https://docs.rs/cfb_mode/latest/cfb_mode/) | 17 |
+| [cfb8](libraries/rs-cfb8.md) | [https://docs.rs/cfb8/latest/cfb8/](https://docs.rs/cfb8/latest/cfb8/) | 16 |
+| [cfb_mode](libraries/rs-cfb_mode.md) | [https://docs.rs/cfb_mode/latest/cfb_mode/](https://docs.rs/cfb_mode/latest/cfb_mode/) | 17 |
 | chacha20poly1305 | [https://docs.rs/chacha20poly1305/latest/chacha20poly1305/](https://docs.rs/chacha20poly1305/latest/chacha20poly1305/) | 2 |
 | cmac | [https://docs.rs/cmac/latest/cmac/](https://docs.rs/cmac/latest/cmac/) | 9 |
-| crypto_box | [https://docs.rs/crypto_box/latest/crypto_box/](https://docs.rs/crypto_box/latest/crypto_box/) | 2 |
+| [crypto_box](libraries/rs-crypto_box.md) | [https://docs.rs/crypto_box/latest/crypto_box/](https://docs.rs/crypto_box/latest/crypto_box/) | 2 |
 | [crypto_secretbox](libraries/rs-crypto_secretbox.md) | [https://docs.rs/crypto_secretbox/latest/crypto_secretbox/](https://docs.rs/crypto_secretbox/latest/crypto_secretbox/) | 2 |
 | [cts](libraries/rs-cts.md) | [https://docs.rs/cts/latest/cts/](https://docs.rs/cts/latest/cts/) | 9 |
 | des | [https://docs.rs/des/latest/des/](https://docs.rs/des/latest/des/) | 5 |
-| dsa | [https://docs.rs/dsa/latest/dsa/](https://docs.rs/dsa/latest/dsa/) | 9 |
+| [dsa](libraries/rs-dsa.md) | [https://docs.rs/dsa/latest/dsa/](https://docs.rs/dsa/latest/dsa/) | 9 |
 | [eax](libraries/rs-eax.md) | [https://docs.rs/eax/latest/eax/](https://docs.rs/eax/latest/eax/) | 9 |
 | [ed25519_dalek](libraries/rs-ed25519_dalek.md) | [https://docs.rs/ed25519_dalek/latest/ed25519_dalek/](https://docs.rs/ed25519_dalek/latest/ed25519_dalek/) | 2 |
 | [fpe](libraries/rs-fpe.md) | [https://docs.rs/fpe/latest/fpe/](https://docs.rs/fpe/latest/fpe/) | 108 |
@@ -108,7 +112,7 @@ At this point no test results are being included.
 | kangarootwelve | [https://docs.rs/kangarootwelve/latest/kangarootwelve/](https://docs.rs/kangarootwelve/latest/kangarootwelve/) | 1 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
 | [ocb3](libraries/rs-ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
-| ofb | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |
+| [ofb](libraries/rs-ofb.md) | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |
 | p192 | [https://docs.rs/p192/latest/p192/](https://docs.rs/p192/latest/p192/) | 1 |
 | [p224](libraries/rs-p224.md) | [https://docs.rs/p224/latest/p224/](https://docs.rs/p224/latest/p224/) | 4 |
 | [p256](libraries/rs-p256.md) | [https://docs.rs/p256/latest/p256/](https://docs.rs/p256/latest/p256/) | 4 |
@@ -124,7 +128,7 @@ At this point no test results are being included.
 | [ring_compat](libraries/rs-ring_compat.md) | [https://docs.rs/ring-compat/latest/ring_compat/](https://docs.rs/ring-compat/latest/ring_compat/) | 2 |
 | ripemd | [https://docs.rs/ripemd/latest/ripemd/](https://docs.rs/ripemd/latest/ripemd/) | 1 |
 | [rsa](libraries/rs-rsa.md) | [https://docs.rs/rsa/latest/rsa/](https://docs.rs/rsa/latest/rsa/) | 35 |
-| salsa20 | [https://docs.rs/salsa20/latest/salsa20/](https://docs.rs/salsa20/latest/salsa20/) | 2 |
+| [salsa20](libraries/rs-salsa20.md) | [https://docs.rs/salsa20/latest/salsa20/](https://docs.rs/salsa20/latest/salsa20/) | 2 |
 | [serpent](libraries/rs-serpent.md) | [https://docs.rs/serpent/latest/serpent/](https://docs.rs/serpent/latest/serpent/) | 5 |
 | sha1 | [https://docs.rs/sha1/latest/sha1/](https://docs.rs/sha1/latest/sha1/) | 1 |
 | sha2 | [https://docs.rs/sha2/latest/sha2/](https://docs.rs/sha2/latest/sha2/) | 6 |
@@ -134,7 +138,7 @@ At this point no test results are being included.
 | sm3 | [https://docs.rs/sm3/latest/sm3/](https://docs.rs/sm3/latest/sm3/) | 1 |
 | sm4 | [https://docs.rs/sm4/latest/sm4/](https://docs.rs/sm4/latest/sm4/) | 1 |
 | [speck_cipher](libraries/rs-speck_cipher.md) | [https://docs.rs/speck_cipher/latest/speck_cipher/](https://docs.rs/speck_cipher/latest/speck_cipher/) | 7 |
-| threefish | [https://docs.rs/threefish/latest/threefish/](https://docs.rs/threefish/latest/threefish/) | 3 |
+| [threefish](libraries/rs-threefish.md) | [https://docs.rs/threefish/latest/threefish/](https://docs.rs/threefish/latest/threefish/) | 3 |
 | [twofish](libraries/rs-twofish.md) | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
 | [x25519_dalek](libraries/rs-x25519_dalek.md) | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
 | [x448](libraries/rs-x448.md) | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
