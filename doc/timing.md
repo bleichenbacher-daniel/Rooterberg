@@ -1,14 +1,20 @@
 # Timing attacks against cryptographic primitives
 
-<--! Intro -->
+<!-- Intro -->
 One set of tests check for side-channels in implementations of cryptographic primitives.
 The primary side-channels analyzed here are timing differences that allow to gain information
 about secret data used in the computation of the primitive. The primary focus at this
 point is to develop simple tests that allow to evaluate a large number of libraries efficiently.
 
+The goal of the tests isn't to detect small timing differences caused by small non-constant
+time operations. Code reviews or statistic code analysis are much more effective at catching
+such mistakes. The goal here is simply to detect libraries with significant oversights and
+libraries that have little or no protection at timing attacks at all.
+
 ## Tested primitives
 
-Currently the project focuses on elliptic curve primitives: ECDSA, ECDH and EdDSA.
+Currently the project focuses on elliptic curve primitives: ECDSA, ECDH and EdDSA as well
+as some uncommon primitives such as (DSA, Schnorr signatures, etc.).
 For ECDSA and EdDSA the main concern is that the side-channels allows to gain information
 about the secret blinding factor *k*. A side-channel can leak for example the bit-length of
 *k*, its Hamming weight, the length of an addition chain or information about the 
@@ -27,12 +33,12 @@ observe. The current setup typically allows to detect implementations with a non
 number of arithmetic operations and implementations that use a non-constant time
 biginteger library.
 
-<--! Setup -->
+<!-- Setup -->
 The general setup of the tests allows to perform the measurement and the respective
 analysis of the result on separate platforms. The timing measurements are written
 to a JSON file, which is being analyzed later.
 
-<--! general strategy -->
+<!-- General strategy -->
 The general strategy behind the analysis of the test results is to minimize the
 number of false positives. The reason for such a strategy is that it allows the
 tests to be run as part of a continuous test.
@@ -47,7 +53,6 @@ a false positive. One strategy that easily allows to avoid false positives is
 to select subsets of the measurements (e.g. the fastest n% of the timings),
 and then to check if the corresponding secret values have distinguishable
 characteristics than the original values. 
-
 
 ## Test failure
 
@@ -77,7 +82,7 @@ One of the main statistic is the computation of the bias of a sample of values.
 Especially for DSA or Schnorr-type signatures determining the bias of the
 secret values *k*, allows to estimate the seriousness of a side-channel leak.
 
-<--! Maybe \mbox needs to be written as \text -->
+<!-- Maybe \mbox needs to be written as \text -->
 The bias of a random variable $X$ over $Z/(nZ)$ is defined as
 $$\mbox{bias}_n(X)=e^{2\pi i X/n}.$$
 Thus the bias of a sample $S = [s_1, ..., s_m]$ over $Z/(nZ)$ is computed as
@@ -183,12 +188,10 @@ Currently the following statistics are tested:
   on the bit-length of the scalar.
 
 
-<--! Key recovery attacks -->
+<!-- Key recovery attacks -->
 ## LLL based attacks 
 LLL-based key recovery attacks require the knowledge of about 3 most significant
-bits. This corresponds to a bias with norm of about 0.97 or more. A one-bit leakage
-corresponds to a bias with norm of 0.64. Such a bias should be relatively easy to exploit
-on a single work station. 
+bits. This corresponds to a bias with norm of about 0.97 or more.
 
 ## FFT based attacks
 My analysis of the DSA algorithm in an old version of the DSS used the observation that the 
