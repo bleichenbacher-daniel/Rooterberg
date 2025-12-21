@@ -10,7 +10,7 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [.NET](libraries/cs-dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 113 |
-| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 668 |
+| [BC_CSHARP](libraries/cs-bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 674 |
 
 ## Dart
 
@@ -23,10 +23,10 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 629 |
+| [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 632 |
 | [Conscrypt](libraries/java-conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
 | [SC](libraries/java-sc.md) | [https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle) | 528 |
-| [SUN](libraries/java-sun.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 30 |
+| [SUN](libraries/java-sun.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 35 |
 | [SunEC](libraries/java-sunec.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 31 |
 | [SunJCE](libraries/java-sunjce.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 109 |
 | [SunRsaSign](libraries/java-sunrsasign.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 67 |
@@ -37,17 +37,18 @@ At this point no test results are being included.
 | --- | --- | --- |
 | [@bitcoin-js/tiny-secp256k1-asmjs](libraries/js-bitcoin-js-tiny-secp256k1-asmjs.md) | [https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs](https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs) | 5 |
 | [@noble/ciphers](libraries/js-noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
-| [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 44 |
+| [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 63 |
 | [@noble/hashes](libraries/js-noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 24 |
 | [@polkadot/wasm-crypto](libraries/js-polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
 | [bitcoinjs-lib-v5](libraries/js-bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
-| [crypto-browserify](libraries/js-crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 141 |
+| [browserify-sign](libraries/js-browserify-sign.md) | [https://www.npmjs.com/package/browserify-sign](https://www.npmjs.com/package/browserify-sign) | 47 |
+| [crypto-browserify](libraries/js-crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 150 |
 | [crypto-js](libraries/js-crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
 | [crypto.subtle](libraries/js-crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 76 |
 | curve25519-js | [https://www.npmjs.com/package/curve25519-js](https://www.npmjs.com/package/curve25519-js) | 1 |
 | [ecc-jsbn](libraries/js-ecc-jsbn.md) | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
-| [elliptic](libraries/js-elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 32 |
+| [elliptic](libraries/js-elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 34 |
 | [js-ascon](libraries/js-ascon.md) | [https://github.com/brainfoolong/js-ascon](https://github.com/brainfoolong/js-ascon) | 2 |
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
 | [miscreant](libraries/js-miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
@@ -80,7 +81,7 @@ At this point no test results are being included.
 | [aes_siv](libraries/rs-aes_siv.md) | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
 | [aria](libraries/rs-aria.md) | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
 | [ascon-aead](libraries/rs-ascon-aead.md) | [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/) | 1 |
-| [ascon-hash](libraries/rs-ascon-hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
+| [ascon_hash](libraries/rs-ascon_hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
 | bign256 | [https://docs.rs/bign256/latest/bign256/](https://docs.rs/bign256/latest/bign256/) | 1 |
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
 | [bls12_381](libraries/rs-bls12_381.md) | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
@@ -110,6 +111,7 @@ At this point no test results are being included.
 | idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
 | [k256](libraries/rs-k256.md) | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
 | kangarootwelve | [https://docs.rs/kangarootwelve/latest/kangarootwelve/](https://docs.rs/kangarootwelve/latest/kangarootwelve/) | 1 |
+| [keccak_asm](libraries/rs-keccak_asm.md) | [https://docs.rs/keccak-asm/latest/keccak_asm/](https://docs.rs/keccak-asm/latest/keccak_asm/) | 8 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
 | [ocb3](libraries/rs-ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
 | [ofb](libraries/rs-ofb.md) | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |

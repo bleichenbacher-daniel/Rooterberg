@@ -41,6 +41,12 @@ Using the same interface as node.js simplifies porting implementations from one 
 | CamelliaOfb | 128, 192, 256 | 128 | Camellia | Ofb | | | |
 | Sm4Ofb | 128 | 128 | SM4 | Ofb | | | |
 
+### DsaVerify
+
+| primitive | pLen | qLen | sha | encoding | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Dsa | 1024, 2048, 3072 | 160, 224, 256 | SHA-1, SHA-224, SHA-256, SHA-512 | DER | Generic |
+
 ### EcdsaVerify
 
 | primitive | curve | sha | encoding | normalize | signatureGeneration |

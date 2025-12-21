@@ -8,8 +8,8 @@ to obtain insight in to what algorithms are supported be different libraries. Al
 do not clearly state the range of algorithm parameters that are supported. Hence an implementer may
 run into incompatibility problems, because libraries may have undocumented differences.
 
-The goal is to receive early feedback on the test vectors, determine if the format is useful, find algorithms and
-algorithm parameters that should be covered.
+[Goals](doc/goals.md): The goal is to receive early feedback on the test vectors, determine if the format is useful,
+find algorithms and algorithm parameters that should be covered.
 
 [Recent changes](doc/changes.md):
 New test vectors are released about once per months. However, there is no fixed schedule.
@@ -25,3 +25,7 @@ of these libraries.
 formats. Frequently, libraries do not specify all the algorithm parameters of their primitives.
 No failing tests are included in these lists.
 
+[Timing tests](doc/timing.md): Some tests for timing side channels are being performed by running different libraries
+and collecting the runtime of critical primitives. Currently implementations of ECDSA, ECDH, EDDSA and XDH and Schnorr
+signatures are included in the tests. The [results](doc/timing_results.md) obtained so far indicate that timing side
+channels are still a serious problem. 

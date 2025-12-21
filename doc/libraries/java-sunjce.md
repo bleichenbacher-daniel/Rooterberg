@@ -5,7 +5,7 @@ java\
 **Url:**
 [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html)\
 **Tested version:**
-21
+21, 25
 
 ## Performed tests
 

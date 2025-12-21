@@ -155,6 +155,14 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | --- | --- | --- |
 | Ecdh | brainpoolP192r1, brainpoolP192t1, brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, frp256v1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1, sect233k1, sect233r1, sect283k1 | DER |
 
+### MlDsaVerify
+
+| primitive |
+| --- |
+| ML-DSA-44 |
+| ML-DSA-65 |
+| ML-DSA-87 |
+
 ### KeyWrap
 
 | primitive | keySize |
