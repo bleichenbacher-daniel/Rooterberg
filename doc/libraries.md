@@ -40,6 +40,7 @@ At this point no test results are being included.
 | [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 69 |
 | [@noble/hashes](libraries/js-noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 24 |
 | [@polkadot/wasm-crypto](libraries/js-polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
+| @scure/bip32 | [https://github.com/paulmillr/scure-bip32](https://github.com/paulmillr/scure-bip32) | 1 |
 | [bitcoinjs-lib-v5](libraries/js-bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [browserify-sign](libraries/js-browserify-sign.md) | [https://www.npmjs.com/package/browserify-sign](https://www.npmjs.com/package/browserify-sign) | 47 |
