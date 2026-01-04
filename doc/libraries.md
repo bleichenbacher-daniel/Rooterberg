@@ -37,7 +37,7 @@ At this point no test results are being included.
 | --- | --- | --- |
 | [@bitcoin-js/tiny-secp256k1-asmjs](libraries/js-bitcoin-js-tiny-secp256k1-asmjs.md) | [https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs](https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs) | 5 |
 | [@noble/ciphers](libraries/js-noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
-| [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 63 |
+| [@noble/curves](libraries/js-noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 69 |
 | [@noble/hashes](libraries/js-noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 24 |
 | [@polkadot/wasm-crypto](libraries/js-polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
 | [bitcoinjs-lib-v5](libraries/js-bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
@@ -48,13 +48,15 @@ At this point no test results are being included.
 | [crypto.subtle](libraries/js-crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 76 |
 | curve25519-js | [https://www.npmjs.com/package/curve25519-js](https://www.npmjs.com/package/curve25519-js) | 1 |
 | [ecc-jsbn](libraries/js-ecc-jsbn.md) | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
+| ed25519-hd-key | [https://github.com/alepop/ed25519-hd-key](https://github.com/alepop/ed25519-hd-key) | 1 |
 | [elliptic](libraries/js-elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 34 |
 | [js-ascon](libraries/js-ascon.md) | [https://github.com/brainfoolong/js-ascon](https://github.com/brainfoolong/js-ascon) | 2 |
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
+| keccak256 | [https://github.com/keccak256js/keccak256](https://github.com/keccak256js/keccak256) | 1 |
 | [miscreant](libraries/js-miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
 | [node-forge](libraries/js-node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 83 |
 | [node.js](libraries/js-node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 278 |
-| [secp256k1](libraries/js-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 3 |
+| [secp256k1](libraries/js-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
 | [sjcl](libraries/js-sjcl.md) | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 52 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
 | [tiny-secp256k1](libraries/js-tiny-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 5 |
@@ -113,6 +115,7 @@ At this point no test results are being included.
 | kangarootwelve | [https://docs.rs/kangarootwelve/latest/kangarootwelve/](https://docs.rs/kangarootwelve/latest/kangarootwelve/) | 1 |
 | [keccak_asm](libraries/rs-keccak_asm.md) | [https://docs.rs/keccak-asm/latest/keccak_asm/](https://docs.rs/keccak-asm/latest/keccak_asm/) | 8 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
+| [ml_dsa](libraries/rs-ml_dsa.md) | [https://docs.rs/ml-dsa/latest/ml_dsa/](https://docs.rs/ml-dsa/latest/ml_dsa/) | 9 |
 | [ocb3](libraries/rs-ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
 | [ofb](libraries/rs-ofb.md) | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |
 | p192 | [https://docs.rs/p192/latest/p192/](https://docs.rs/p192/latest/p192/) | 1 |
@@ -131,6 +134,7 @@ At this point no test results are being included.
 | ripemd | [https://docs.rs/ripemd/latest/ripemd/](https://docs.rs/ripemd/latest/ripemd/) | 1 |
 | [rsa](libraries/rs-rsa.md) | [https://docs.rs/rsa/latest/rsa/](https://docs.rs/rsa/latest/rsa/) | 35 |
 | [salsa20](libraries/rs-salsa20.md) | [https://docs.rs/salsa20/latest/salsa20/](https://docs.rs/salsa20/latest/salsa20/) | 2 |
+| [secp256k1](libraries/rs-secp256k1.md) | [https://docs.rs/secp256k1/latest/secp256k1/](https://docs.rs/secp256k1/latest/secp256k1/) | 1 |
 | [serpent](libraries/rs-serpent.md) | [https://docs.rs/serpent/latest/serpent/](https://docs.rs/serpent/latest/serpent/) | 5 |
 | sha1 | [https://docs.rs/sha1/latest/sha1/](https://docs.rs/sha1/latest/sha1/) | 1 |
 | sha2 | [https://docs.rs/sha2/latest/sha2/](https://docs.rs/sha2/latest/sha2/) | 6 |
@@ -141,6 +145,7 @@ At this point no test results are being included.
 | sm4 | [https://docs.rs/sm4/latest/sm4/](https://docs.rs/sm4/latest/sm4/) | 1 |
 | [speck_cipher](libraries/rs-speck_cipher.md) | [https://docs.rs/speck_cipher/latest/speck_cipher/](https://docs.rs/speck_cipher/latest/speck_cipher/) | 7 |
 | [threefish](libraries/rs-threefish.md) | [https://docs.rs/threefish/latest/threefish/](https://docs.rs/threefish/latest/threefish/) | 3 |
+| [tiny_keccak](libraries/rs-tiny_keccak.md) | [https://docs.rs/tiny-keccak/latest/tiny_keccak/](https://docs.rs/tiny-keccak/latest/tiny_keccak/) | 15 |
 | [twofish](libraries/rs-twofish.md) | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
 | [x25519_dalek](libraries/rs-x25519_dalek.md) | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
 | [x448](libraries/rs-x448.md) | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |

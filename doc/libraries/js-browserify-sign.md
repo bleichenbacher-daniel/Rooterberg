@@ -5,14 +5,12 @@ javascript\
 **Url:**
 [https://www.npmjs.com/package/browserify-sign](https://www.npmjs.com/package/browserify-sign)
 
-browserify-sign is a reimplementation of the cryptographic library in node.js.
-Using the same interface as node.js simplifies porting implementations from one library to the other.
+browserify-sign is a reimplementation of some of the primitives from node.js.
 
 ## Security
 
-browserify-sign is currently using the npm libraries elliptic and bn.js.
-Both libraries have are no longer well mainteined.
-As a result, vulnerabilities are slowly fixed or not at all.
+The library depends on elliptic and bn.js.
+As a result it suffers from some unpatched vulnerabilities and has a large potential for timing attacks.
 
 ## Performed tests
 

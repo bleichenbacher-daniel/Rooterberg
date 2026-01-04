@@ -5,7 +5,7 @@ rust\
 **Url:**
 [https://docs.rs/rsa/latest/rsa/](https://docs.rs/rsa/latest/rsa/)\
 **Tested version:**
-0.9.8
+0.9.9
 
 ## Performed tests
 

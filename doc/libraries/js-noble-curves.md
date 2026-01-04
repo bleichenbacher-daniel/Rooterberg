@@ -18,7 +18,7 @@ javascript\
 
 | primitive | curve | sha | encoding | normalize | signatureGeneration |
 | --- | --- | --- | --- | --- | --- |
-| Ecdsa | secp256k1, secp256r1, secp384r1, secp521r1 | KECCAK256, SHA-256, SHA-384, SHA-512, SHA-512/256, SHA3-256, SHA3-384, SHA3-512 | DER, P1363 | False, True | Generic |
+| Ecdsa | brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp256k1, secp256r1, secp384r1, secp521r1 | KECCAK256, SHA-256, SHA-384, SHA-512, SHA-512/256, SHA3-256, SHA3-384, SHA3-512 | DER, P1363 | False, True | Generic |
 
 ### EcdsaSign
 

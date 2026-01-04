@@ -5,7 +5,7 @@ rust\
 **Url:**
 [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/)\
 **Tested version:**
-0.5.1
+0.5.2
 
 Old versions of the library implement Ascon128, Ascon128a and Ascon80pq.
 These algorithms have been deprecated in favor of the NIST version AsconAead128.
