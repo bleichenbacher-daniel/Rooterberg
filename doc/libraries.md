@@ -23,6 +23,7 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
+| [AmazonCorrettoCryptoProvider](libraries/java-amazoncorrettocryptoprovider.md) | [https://github.com/corretto/amazon-corretto-crypto-provider](https://github.com/corretto/amazon-corretto-crypto-provider) | 122 |
 | [BC](libraries/java-bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 632 |
 | [Conscrypt](libraries/java-conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
 | [SC](libraries/java-sc.md) | [https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle) | 528 |
@@ -67,6 +68,7 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
+| [ecdsa](libraries/py-ecdsa.md) | [https://pypi.org/project/ecdsa/](https://pypi.org/project/ecdsa/) | 100 |
 | [pyca](libraries/py-pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 329 |
 | [pycryptodome](libraries/py-pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 353 |
 | [pyjwt](libraries/py-pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 15 |
@@ -84,8 +86,9 @@ At this point no test results are being included.
 | [aes_siv](libraries/rs-aes_siv.md) | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
 | [aria](libraries/rs-aria.md) | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
 | [ascon-aead](libraries/rs-ascon-aead.md) | [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/) | 1 |
-| [ascon_hash](libraries/rs-ascon_hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
+| [ascon-hash](libraries/rs-ascon-hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
 | bign256 | [https://docs.rs/bign256/latest/bign256/](https://docs.rs/bign256/latest/bign256/) | 1 |
+| bip32 | [https://docs.rs/bip32/latest/bip32/](https://docs.rs/bip32/latest/bip32/) | 1 |
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
 | [bls12_381](libraries/rs-bls12_381.md) | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
 | [bn254](libraries/rs-bn254.md) | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
