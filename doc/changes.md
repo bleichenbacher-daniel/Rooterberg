@@ -142,3 +142,42 @@ Format changes:
   properties and hence have bugs that are not present in other curves.
 * Additional test vector for BER/DER encoding based on old CVEs.
 * Added tests against Javascript, Swift and C# libraries.
+
+2025/10 v. 0.64
+* Added more ECDH test vectors with PEM encoded keys. This format is easiest to use with
+  a number of libraries. Additionally, the format allows to specify more malformed inputs
+  than other formats, and hence achieves a better test coverage.
+* Added ECDH test vectors with compressed public keys. Compressed public keys are less
+  susceptible to invalid curve attacks. Hence testing generally perfers uncompressed keys
+  over compressed keys. Therefore test vectors with compressed keys are only used when
+  alternative interfaces for other key formats are not available.
+* PrivateKey for ECDH tests is now always fixed length big endian hexadecimal.
+* PrivateKeyFixedLength is no longer used for ECDH tests.
+* PrivateKeyFixedLength has beed replaced by PrivateKey in KeyPair tests.
+* Added tests against BouncyCastle C#.
+* Added tests for more Javascript libraries implementating ECDSA over secp256k1.
+* Added tests for Javascript libraries implementing Schnorr signatures.
+* Added tests for Dart libraries.
+* Added tests against more rust crates.
+* Added summaries of the tests against tested libraries.
+* Performed more timing side channel tests.
+* The algorithm description of test vectors for ciphertext stealing now contains a
+  field with the underlying block cipher and the padding mode. This unifies the algorithm
+  description of IND-CPA primitives.
+* The field *signature_generation* was changed to *signatureGeneration* in the description
+  of the algorithm to follow the general style.
+* Added a list of libraries with a list of primitives and parameters tested.
+* Added test vectors for the NIST version of AsconAead128 and AsconHash128.
+* Added test vectors for the NIST versions of Ascon Xof primitives.
+* Added test vectors for HMAC with truncated hashes.
+* Added test vectors for CAST6.
+* Added bign256.
+* Added test vectors for edge cases when using Montgomery reduction in point multiplications.
+
+2025/12 v.0.65
+* Adding more test vectors for ECDSA with normalized signatures. This simplifies testing libraries
+  that normalize their signatures by default.
+* Testing additional libraries: browserify-sign (which is significantly worse than the node.js
+  library it tries to emulate), ascon-hash, keccak-asm.
+* Adding test vectors for ML_DSA.
+* Adding more timing tests.
