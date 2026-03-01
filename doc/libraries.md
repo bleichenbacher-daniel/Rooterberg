@@ -92,6 +92,7 @@ At this point no test results are being included.
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
 | [bls12_381](libraries/rs-bls12_381.md) | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
 | [bn254](libraries/rs-bn254.md) | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
+| [botan](libraries/rs-botan.md) | [https://docs.rs/botan/latest/botan/](https://docs.rs/botan/latest/botan/) | 331 |
 | [bp256](libraries/rs-bp256.md) | [https://docs.rs/bp256/latest/bp256/](https://docs.rs/bp256/latest/bp256/) | 2 |
 | [bp384](libraries/rs-bp384.md) | [https://docs.rs/bp384/latest/bp384/](https://docs.rs/bp384/latest/bp384/) | 2 |
 | [camellia](libraries/rs-camellia.md) | [https://docs.rs/camellia/latest/camellia/](https://docs.rs/camellia/latest/camellia/) | 3 |

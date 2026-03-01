@@ -54,6 +54,7 @@ bits and random signatures).
 | starkbank    | Ecdsa secp256k1 | msb, lsb, bit_length | 150 $\mu s$       |
 | pycryptodome | Ecdsa secp256r1 | msb, lsb, bit_length |   3 $\mu s$       |
 | pycryptodome | Ed25519         | msb, lsb, bit_length |   4 $\mu s$       |
+| pycryptodome | Dsa (2048 bit)  | msb, bit_length      |  20 $\mu s$       |
 
 ## Bias
 
@@ -101,6 +102,8 @@ Maintainer claims, that I have not been using browserify-sign for the tests.
 | browserify-sign | Dsa 2048/256 | msb, lsb, bit_length | 700 $\mu s$       |
 | browserify-sign | Dsa            | 3'984 / 500'000   | 0.45 | known flaw  (Dec 2025)  |
 It looks like results can be improved further.
+
+| pycryptodome | Dsa 2048/256 | 64 / 2'000'000 | 0.99 | reported (Jan 2026) |
 
 Java needs more testing. Tests against SpongyCastle only show a small bias, but the library
 is so old that I'd expect a bigger bias.
