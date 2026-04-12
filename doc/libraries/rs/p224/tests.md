@@ -1,0 +1,25 @@
+# Performed tests for p224
+
+## EcdsaVerify
+
+| primitive | curve | sha | encoding | normalize | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Ecdsa | secp224r1 | SHA-224 | P1363 | False | Generic |
+
+## EcdsaSign
+
+| primitive | curve | sha | encoding | normalize | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Ecdsa | secp224r1 | SHA-224 | P1363 | False | Rfc6979 |
+
+## Ecdh
+
+| primitive | curve | encoding |
+| --- | --- | --- |
+| Ecdh | secp224r1 | UNCOMPRESSED |
+
+## KeyPair
+
+| primitive | curve |
+| --- | --- |
+| key_pair_secp224r1 | secp224r1 |
