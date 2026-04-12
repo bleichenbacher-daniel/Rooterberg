@@ -190,8 +190,16 @@ Currently the following statistics are tested:
 
 <!-- Key recovery attacks -->
 ## LLL based attacks 
+
 LLL-based key recovery attacks require the knowledge of about 3 most significant
 bits. This corresponds to a bias with norm of about 0.97 or more.
+
+<!-- References
+N. A. Howgrave-Graham and N. P. Smart. *Lattice attacks on digital signature schemes.*
+Designs, Codes and Cryptography, 23(3):283–290, 2001
+
+https://www.youtube.com/watch?v=ebVj1sozT48
+-->
 
 ## FFT based attacks
 My analysis of the DSA algorithm in an old version of the DSS used the observation that the 
