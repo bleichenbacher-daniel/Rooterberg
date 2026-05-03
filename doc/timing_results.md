@@ -72,10 +72,10 @@ selected that way. This bias can be used a
 | Javascript| bip-schnorr  | Schnorr secp256k1 | 3'907 / 500'000   | 0.32 | (underlying lib)    |
 |           | browserify-sign | Dsa            | 1'000 / 200'000   | 0.86 | reported (Dec 2025) |
 |           | ecc-jsbn     | Ecdh secp224r1    | 3'125 /  50'000   | 0.33 | reported (Aug 2025) |
-|           | ecc-jsbn     | Ecdh secp256r1    | 3'125 /  50'000   | 0.32 | reported (Aug 2025) |
+|           | ecc-jsbn     | Ecdh secp256r1    | 3'125 /  50'000   | 0.32 | reported (Aug 2025) <!-- https://github.com/aduh95/ecc-jsbn/issues/9 -->|
 |           | ecurve       | Ecdh secp256k1    | 3'125 / 200'000   | 0.38 | reported (Aug 2025) |
 |           | ecurve       | Ecdh secp256r1    | 3'125 / 200'000   | 0.41 | reported (Aug 2025) |
-|           | elliptic     | Ecdh secp256r1    | 3'913 / 500'000   | 0.40 | reported (Aug 2025) |
+|           | elliptic     | Ecdh secp256r1    | 3'913 / 500'000   | 0.40 | reported (Aug 2025)  <!-- GHSA-8fqq-gjm5-jxh9 --> |
 |           | elliptic     | Ecdsa secp192r1   | 7'835 / 500'000   | 0.19 | "                   |
 |           | elliptic     | Ecdsa secp224r1   | 7'812 / 500'000   | 0.19 | "                   |
 |           | elliptic     | Ecdsa secp256k1   | 3'958 / 500'000   | 0.22 | "                   |
@@ -85,10 +85,11 @@ selected that way. This bias can be used a
 |           | sjcl         | Ecdsa secp256r1   |                   | 0.99 | [known since 2023](https://github.com/bitwiseshiftleft/sjcl/issues/438) |
 |           | sjcl         | Ecdsa secp256k1   |                   | 0.99 | "                   |
 | Java      | bouncycastle | Ecdh brainpool256r1 | 1'567 / 200'000 | 0.50 |                     |
-| Python    | pycryptodome | Ed25519           | 2'533 / 5'000'000 | 0.99 | reported (June 2025) |
+| Python    | pycryptodome | Ed25519           | 2'533 / 5'000'000 | 0.99 | reported (June 2025) <!-- GHSA-f98j-f7x2-p99m --> |
 |           | pycryptodome | Ed448             |                   | 0.99 | "                   |
 |           | pycryptodome | Ecdsa secp256r1   | 2'619 / 5'000'000 | 0.28 | "                   |
-|           | starkbank    | Ecdsa secp256k1   | 3'907 / 500'000   | 0.29 | reported (Aug 2025) |
+|           | pycryptodome | Dsa 2048/256      | 64 / 2'000'000    | 0.99 | reported (Jan 2026)  <!-- GHSA-jfx2-m23w-wpmr --> |
+|           | starkbank    | Ecdsa secp256k1   | 3'907 / 500'000   | 0.29 | reported (Aug 2025)  <!-- GHSA-4993-x3xv-8m34 --> | 
 | Dart      | cryptography_plus | Ed25519      | 1'101 / 1'000'000 | 0.12 |                     |
 
 Interestingly, the python library *ecdsa* generates signatures, where the timing leaks
@@ -105,19 +106,18 @@ type of information is easier to determine.
 noble/curves contains a timing channel, that can be reliably detected (i.e. p-value < 1e-9).
 However, the timing difference is rather small, which makes it difficult to determine
 the bias that this side channel generates.
-| noble        | Ecdsa secp256k1   | 3'973 / 500'000   | 0.10 | v. 1.3.x        |
-| noble        | Ecdsa secp256r1   | 7'815 / 500'000   | 0.07 | v. 1.3.x        |
-| noble        | Ecdsa secp384r1   | 15'642 / 500'000  | 0.05 | v. 1.3.x        |
+| noble        | Ecdsa secp256k1   | 3'973 / 500'000   | 0.10 | v. 1.3.*        |
+| noble        | Ecdsa secp256r1   | 7'815 / 500'000   | 0.07 | v. 1.3.*        |
+| noble        | Ecdsa secp384r1   | 15'642 / 500'000  | 0.05 | v. 1.3.*        |
 
 | noble        | Ecdsa secp256k1   | 15'779 / 1'000'000 | 0.04 | v. 2.0.1       |
 | noble        | Ecdsa secp256r1   | 15'683 / 1'000'000 | 0.03 | v. 2.0.1       |
 | noble        | Ecdsa secp384r1   | 15'778 / 1'000'000 | 0.04 | v. 2.0.1       |
 
-| pycryptodome | Dsa 2048/256 | 64 / 2'000'000 | 0.99 | reported (Jan 2026) |
 
 No longer relevant:
 Java needs more testing. Tests against SpongyCastle only show a small bias, but the library
-is so old that I'd expect a bigger bias.
+is so old that I'd expect a larger bias.
 
 | spongycastle | Ecdsa secp256r1   | 36'654 / 500'000  | 0.03 | known flaw          |
 
