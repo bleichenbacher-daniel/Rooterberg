@@ -39,7 +39,7 @@ At this point no test results are being included.
 | [@bitcoin-js/tiny-secp256k1-asmjs](libraries/js/bitcoin-js-tiny-secp256k1-asmjs/bitcoin-js-tiny-secp256k1-asmjs.md) | [https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs](https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs) | 5 |
 | [@noble/ciphers](libraries/js/noble-ciphers/noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
 | [@noble/curves](libraries/js/noble-curves/noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 69 |
-| [@noble/hashes](libraries/js/noble-hashes/noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 24 |
+| [@noble/hashes](libraries/js/noble-hashes/noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 36 |
 | [@polkadot/wasm-crypto](libraries/js/polkadot-wasm-crypto/polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 11 |
 | @scure/bip32 | [https://github.com/paulmillr/scure-bip32](https://github.com/paulmillr/scure-bip32) | 1 |
 | [bitcoinjs-lib-v5](libraries/js/bitcoinjs-lib-v5/bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
@@ -52,11 +52,13 @@ At this point no test results are being included.
 | [ecc-jsbn](libraries/js/ecc-jsbn/ecc-jsbn.md) | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
 | ed25519-hd-key | [https://github.com/alepop/ed25519-hd-key](https://github.com/alepop/ed25519-hd-key) | 1 |
 | [elliptic](libraries/js/elliptic/elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 34 |
+| [jose](libraries/js/jose/jose.md) | [https://www.npmjs.com/package/jose](https://www.npmjs.com/package/jose) | 15 |
 | [js-ascon](libraries/js/js-ascon/js-ascon.md) | [https://github.com/brainfoolong/js-ascon](https://github.com/brainfoolong/js-ascon) | 2 |
+| [jws](libraries/js/jws/jws.md) | [https://www.npmjs.com/package/jws](https://www.npmjs.com/package/jws) | 15 |
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
 | keccak256 | [https://github.com/keccak256js/keccak256](https://github.com/keccak256js/keccak256) | 1 |
 | [miscreant](libraries/js/miscreant/miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
-| [node-forge](libraries/js/node-forge/node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 82 |
+| [node-forge](libraries/js/node-forge/node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 84 |
 | [node.js](libraries/js/node.js/node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 269 |
 | [secp256k1](libraries/js/secp256k1/secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
 | [sjcl](libraries/js/sjcl/sjcl.md) | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 51 |
@@ -71,7 +73,7 @@ At this point no test results are being included.
 | [ecdsa](libraries/py/ecdsa/ecdsa.md) | [https://pypi.org/project/ecdsa/](https://pypi.org/project/ecdsa/) | 100 |
 | [pyca](libraries/py/pyca/pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 317 |
 | [pycryptodome](libraries/py/pycryptodome/pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 343 |
-| [pyjwt](libraries/py/pyjwt/pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 15 |
+| [pyjwt](libraries/py/pyjwt/pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 16 |
 | [pynacl](libraries/py/pynacl/pynacl.md) | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 3 |
 
 ## Rust
@@ -116,10 +118,12 @@ At this point no test results are being included.
 | hkdf | [https://docs.rs/hkdf/latest/hkdf/](https://docs.rs/hkdf/latest/hkdf/) | 11 |
 | [hmac](libraries/rs/hmac/hmac.md) | [https://docs.rs/hmac/latest/hmac/](https://docs.rs/hmac/latest/hmac/) | 11 |
 | idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
+| [jwt_rustcrypto](libraries/rs/jwt_rustcrypto/jwt_rustcrypto.md) | [https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/](https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/) | 16 |
 | [k256](libraries/rs/k256/k256.md) | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
 | kangarootwelve | [https://docs.rs/kangarootwelve/latest/kangarootwelve/](https://docs.rs/kangarootwelve/latest/kangarootwelve/) | 1 |
 | [keccak_asm](libraries/rs/keccak_asm/keccak_asm.md) | [https://docs.rs/keccak-asm/latest/keccak_asm/](https://docs.rs/keccak-asm/latest/keccak_asm/) | 8 |
 | kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
+| libcrux | [https://github.com/cryspen/libcrux](https://github.com/cryspen/libcrux) | 2 |
 | [ml_dsa](libraries/rs/ml_dsa/ml_dsa.md) | [https://docs.rs/ml-dsa/latest/ml_dsa/](https://docs.rs/ml-dsa/latest/ml_dsa/) | 9 |
 | [ocb3](libraries/rs/ocb3/ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
 | [ofb](libraries/rs/ofb/ofb.md) | [https://docs.rs/ofb/latest/ofb/](https://docs.rs/ofb/latest/ofb/) | 9 |

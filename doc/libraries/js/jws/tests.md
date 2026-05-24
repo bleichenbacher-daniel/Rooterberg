@@ -1,4 +1,4 @@
-# Performed tests for pyjwt
+# Performed tests for jws
 
 ## JwsVerify
 
@@ -7,7 +7,6 @@
 | ES256 | ES256 | 256 |
 | ES384 | ES384 | 384 |
 | ES512 | ES512 | 521 |
-| ES256K | ES256K | 256 |
 | RS256 | RS256 | 2048, 3072 |
 | RS384 | RS384 | 2048, 3072 |
 | RS512 | RS512 | 2048, 3072 |

@@ -1,4 +1,4 @@
-# Performed tests for pyjwt
+# Performed tests for jwt_rustcrypto
 
 ## JwsVerify
 

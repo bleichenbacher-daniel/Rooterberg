@@ -33,3 +33,25 @@
 | HmacSha512 | 512 |
 | HmacSha512_224 | 224 |
 | HmacSha512_256 | 256 |
+
+## Scrypt
+
+| primitive |
+| --- |
+| Pbkdf |
+
+## Hkdf
+
+| primitive | sha |
+| --- | --- |
+| HkdfSha1 | SHA-1 |
+| HkdfSha224 | SHA-224 |
+| HkdfSha256 | SHA-256 |
+| HkdfSha384 | SHA-384 |
+| HkdfSha512 | SHA-512 |
+| HkdfSha512_224 | SHA-512/224 |
+| HkdfSha512_256 | SHA-512/256 |
+| HkdfSha3_224 | SHA3-224 |
+| HkdfSha3_256 | SHA3-256 |
+| HkdfSha3_384 | SHA3-384 |
+| HkdfSha3_512 | SHA3-512 |

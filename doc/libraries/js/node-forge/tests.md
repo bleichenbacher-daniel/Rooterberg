@@ -15,6 +15,18 @@
 | AesCfb128 | 128, 192, 256 | 128 | Aes | Cfb | | | 128 |
 | AesOfb | 128, 192, 256 | 128 | Aes | Ofb | | | |
 
+## EddsaVerify
+
+| primitive | curve | cofactored | encoding |
+| --- | --- | --- | --- |
+| Eddsa | edwards25519 | False | RAW |
+
+## EddsaSign
+
+| primitive | curve | cofactored | encoding |
+| --- | --- | --- | --- |
+| Eddsa | edwards25519 | False | RAW |
+
 ## RsaPkcs1Verify
 
 | primitive | size | sha | encoding |
