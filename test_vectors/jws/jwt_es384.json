@@ -8,7 +8,7 @@
   },
   "version": "0.65",
   "description": [],
-  "numTests": 71,
+  "numTests": 72,
   "references": [
     {
       "docId": "RFC 7518",
@@ -27,6 +27,10 @@
     "ModifiedSignature": {
       "type": "CONSTRUCTED",
       "desc": "The token has been modified."
+    },
+    "NoncanonicalSignature": {
+      "type": "CONSTRUCTED",
+      "desc": "The signature is not canonical, i.e. s>n/2. The signature is valid since neither RFC 7515 nor RFC 8812 require canonical signatures."
     }
   },
   "tests": [
@@ -41,8 +45,8 @@
         "kid": "key-gyW3BcEr",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.3IgFmaYNaVPiUk3k5o86cWuJXLcatKg7-71gr-dxX8yDkCIwYnH42_oqLZSFhXibmPTrNu8dwRv8my6hmUB-U8hx6fKOwuBi_P4yoc1Qziq146-eFumbmbjOlbq61eIE",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.xnZLuVuLJf_cooEWTE2Bvcxeeuw-gmnvJH5qfLhFnHDEpPkeyeAbxpH7ll7bFdKbEvyK4j2lHMa-B_eboqD81k_kZw7tba7DocwN92_2w4d2WSbWaEv4WK7m1UJw-zwH",
       "comment": "normal",
       "valid": true,
       "flags": ["Basic"]
@@ -58,8 +62,8 @@
         "kid": "key-gyW3BcEr",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"something\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJzb21ldGhpbmcifQ.NrT67t3ilkTZU56c_HF1QxP9z8ty5c-y_wOa0lcjEo2FHsvmGdCmhXYYULr_ZCJORVmpW47Gw2hj8SBRuqgWpVZmNasbatIMTT6KasE5EWX_N_Y0RfqOhrcTnaZQAGmp",
+      "msg": "{\"sub\":\"some other subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzb21lIG90aGVyIHN1YmplY3QifQ.sXMTMi1F6kpudWqfMiDBXVffgBFjmH0UJthjRMvzcoob0U57wEzdYKudkTyV53OzQNw-G9QyEOhn8Gevk3f6mRjRN5QtLPhAFAmd2AG0mYLqooGKIUhSaVrv87LiX76k",
       "comment": "normal",
       "valid": true,
       "flags": ["Basic"]
@@ -75,8 +79,8 @@
         "kid": "key-gyW3BcEr",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiIifQ.mf-lNJjrFZeGWz-WWGA5bucMEuefUEqVO6L_wR8wUV8ZQDZWnKkD_J7bM3CzmdskkuuZCRlMLLZBpcsrsFE1lUnQPIj5Rt9RqwZNEWVqHVXK-_IE5LBr-8pKWSB14TDt",
+      "msg": "{\"sub\":\"\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiIifQ.WMAFu7RQRWG8PHYQXvihhDILREqiPEpl0GtGdN4p_ucsQm1mqViylN6yGg7zyKXBKWqhDhhUueCmEi3LoWorkg52Cx2uYnrWej2UvjoE59epjH-muzOvY5RwmVmuFTbr",
       "comment": "normal",
       "valid": true,
       "flags": ["Basic"]
@@ -109,8 +113,8 @@
         "kid": "key-gyW3BcEr",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"somewhat longer payload: abcdefghijklmnopqrstuvwxyz\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJzb21ld2hhdCBsb25nZXIgcGF5bG9hZDogYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoifQ.vj0ENCnF9vJP_ZQVpIjAdMhkbL2vOlSdgk2-5xEmfv_NietU7tUttIuRapCSap2nba6gXy0b0Xyb_1rmzhRJI9UoQJAYg3vQMhp-lOi81ocawntvsE1dL4w10cH6_Xm-",
+      "msg": "{\"sub\":\"some longer subject 0123456789abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRSTUVWXYZ\",\"iss\":\"issuer\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzb21lIGxvbmdlciBzdWJqZWN0IDAxMjM0NTY3ODlhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d0FCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaIiwiaXNzIjoiaXNzdWVyIn0.dQWFM2-YHJy43i-5zI5nr22JY3xtlXTILrTqTNT6oerlIHnFbUAhkWij1wol9UlPD1pxOhGQb0vh5B2YprhcZ6tOYPJFURlsqwuIZCdLbT6l90aBzrbeikXkagI5fSf2",
       "comment": "normal",
       "valid": true,
       "flags": ["Basic"]
@@ -126,8 +130,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJIUzI1NiJ9.eyJtc2ciOiJwYXlsb2FkIn0.om7rEbZSmC3mv1HHPZqpW-LBmZtyEH2u5amEzKEsFqFmY_-Nxy-2Fl069Nh-qyof32xSA7QaD1U6U89PzLkIURHqLRRU51P2kk8VsJyzs2LJgemz9kru4sw_ReUhuFXV",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0In0.C7IqCcI8XCUfB8MOBzC1Jfhy0YmgZCoXTcv8tbgglxuqt_aMsehpV2fS9yFVuzNwaLaBzGZaNr_0TpKN-66mSiLo-UGcBZPC3bsrlmrUKrGPWpxh7MfFddEXMRotPm19",
       "comment": "Replaced alg ES384 by HS256",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -143,8 +147,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzI1NiJ9.eyJtc2ciOiJwYXlsb2FkIn0.CJ0ModQd6E_GOmcGpAPshnrpTEZzIgWut-2D3mlvRYrJ-wO3ulmw0b1Ljq_618DyMGdH6VOGIaRYgis6biY5an-53VPobej9RbDG-tTfr0hGJT_q-n2JeBb3Tnd1Lc_s",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0In0.Ei_rLrAhvYRhAuYJsYPY6L2ogMsWorMcSS8_8RNSa7HNsz86AjFM_8K139N5cocQcJO8WBVzi1MedwCqyMkcngI7UL70B_Um5PLodaw01qz7r_cFrPjHl2yeo93QADKv",
       "comment": "Replaced alg ES384 by ES256",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -160,8 +164,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSUzI1NiJ9.eyJtc2ciOiJwYXlsb2FkIn0.NTLc1iNYW82ivlRkyel6IBpb_2js2R37-E7HMd7L7TK6OFBMpXEdKy9ibg7fngSOj0B3mMWAyqc34zOypHrcaJEyQmoeHWT_57TRkHbDy6_9by2GB1AG3k0Byuq4PFOW",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0In0.uDs5o51ptjinqlOBcFt0og4rIkwNdr45SBxtnzx_Pz7EhEGSPKWv0Y0Nrt4GoyAgQkshKLuDZRa9q4fk24eOhMCLQAQchF-uk3n-qjIeleYog1TPR7cI7NyzVCmiwZ3L",
       "comment": "Replaced alg ES384 by RS256",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -177,8 +181,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.jCEK8CM35paRRiqDaMJzR95IZSyivy574UZd-L3E2T9ZexW1Lyvo8cVl3dTJzErY2BAEwbjYGQwN9ZIJ6dtHtozPzUOWU8XhRyA0JcOr5Olyl8K0_ytiUKFpgAF50IX1",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.nsQ9uAGv2nxwFFoAPmOpKeyBSdQDw3WprME_DbUz-knU2oIhEpvwXu8md3GOJdKhZlDxxkfc8C0xGlbHWf4nNh1IVpjFTBMKzwL35cguaIdALSEnOHO7GZ6QmEyGE4qz",
       "comment": "Replaced alg ES384 by RS384",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -194,8 +198,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJQUzI1NiJ9.eyJtc2ciOiJwYXlsb2FkIn0.JvUJOaO0TXMJ_t7DEdd_vxWevPtUWxzbK8RhwOZqi3fsprk3qS8WC52zYVdGfQGbZgbCCVzmdxCcoI33UsRbU1udiuXIrjXXS3YlU36fLdim7m48GKMYCK6fP9EZO1lJ",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJQUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0In0.epAZvCgJPP9Pd_YBTw-pyM59NtDMn6R_MQ4bJcbew0W4MD8hjUvkQZXtoIEL1G5OEBIjTwi9fuI2WJxEoFQbTpEPpdYZxGM3MkmNLeCah9Dq5DxyWMa-uamfExG8yjmJ",
       "comment": "Replaced alg ES384 by PS256",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -211,8 +215,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJQUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.15P4YPediLg816A4EcwUCYs1bkQ_9GLBJ3agEDGCxLHeM5vufFCHSNo7ulkclsyV6OTWKiWZSTeBu9FVJFGAo5Jh1Kvwwvdrat3vzQfq_z_XIcvbl6yrxPS3aNFltUu9",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJQUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.wV58-fKni94_kCvgxErD0v-hPtHqhb855Ug5dUMcx8bQl1y8XAFc_vH20WKYceXtImC_XYAwGSdBY-ddmnPny1sg6pnnHpyYwLOFszRxfCI-79dTJOpBc302LoeX87L1",
       "comment": "Replaced alg ES384 by PS384",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -228,8 +232,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSU0ExXzUifQ.eyJtc2ciOiJwYXlsb2FkIn0.SiL5VkCgPqVTj2UDOVol9AJDEu7Dn8SqJ1AzMlogN69fu_98eiifvKJbaNBmC2214AJ0Z7cwo0ip0d-5JSTm-QUjPqWswJnV9JqBZmhjROi2eo2iLYZCS_JP448St0K4",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSU0ExXzUifQ.eyJzdWIiOiJzdWJqZWN0In0.tXFEKAUkvxnnjt_fnETFUyIYo6q8tUi5r5IkQAgJdWy83XYRC_8a8S5Pj6XJzgRAb9QFXh-Rx20NecKcheY8iO83okc_clU2sFLBujelaOCXHXa1Oc2pfpEnRwtZC0xr",
       "comment": "Replaced alg ES384 by RSA1_5",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -245,8 +249,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSU0EtT0FFUCJ9.eyJtc2ciOiJwYXlsb2FkIn0.PlL8dYLEmfN6GMuIMSRWEFHVUyVB5CoKkiTsTsmh_XUlicxu9nGLN4SeTn1hsZ35IKAmaJ_cGAHWvPO7FERLWmMPfsZ3HlXHSHBLUlEjyff3agL6us3npz_XUA3N8fDx",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSU0EtT0FFUCJ9.eyJzdWIiOiJzdWJqZWN0In0.vKwtJu9OcgzQcX_W1HBV9dQMblRvJpjBn5SUP-Dnn3MMaewibIKFCYRWbMt7gvE5K39XEZSjbt7pDe8aJCkXLj7qUAkXZW5ZTgI4ef0B9GFTieS0-wwNVZayAXE_99jO",
       "comment": "Replaced alg ES384 by RSA-OAEP",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -262,8 +266,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJBRVMxMjhLVyJ9.eyJtc2ciOiJwYXlsb2FkIn0.lEo3JTNQ4vHfszKhBq3Z9bENErhIa3P_1uEl7RELSz3ctjpqdXCHBfaIeZqNryCGG9P5uSSm0Z4U3irXxWk-5BtUX1zf-OTw5DCvQhla4Ot6yP3oUc1LD1j5_0eMHKkA",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJBRVMxMjhLVyJ9.eyJzdWIiOiJzdWJqZWN0In0.rIZ7D4r4kZO2pBVY7NsGt1PKwyNnQ-utb3HTWzocj3Q9U6SddFCQdfk_2P0aspj1OXbc9v7QPj6UbX-ebHgZ5Y941JTXCqUd-ZWKSXlnE5OqvohDDMXQNnOEE6KCHbGh",
       "comment": "Replaced alg ES384 by AES128KW",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -279,8 +283,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJBMTI4R0NNS1cifQ.eyJtc2ciOiJwYXlsb2FkIn0._4YjykHBveCxx7l7Hy_7cCjq_rjVkVjhOwOndQINIhzFQkX1c0T3pzQXYnd7LANsj9mTMHfURGcjPVva35Y8hQ3pjFa-b8DUugXET9W_jNX1dch4yUYNVzB0XTJ6FrUD",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJBMTI4R0NNS1cifQ.eyJzdWIiOiJzdWJqZWN0In0.M8E9yQk16oAozrzzcNKbvVgN1GoEgy29Uv3nAoiHmlygFv0uBN_B4MZfxjMYCNtyXHVCZIQGHJFgXzV1W--qPWh7GppwmqtmchOajvPA7YUcoeIjy1WT18uEsLV7YIc9",
       "comment": "Replaced alg ES384 by A128GCMKW",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -296,8 +300,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJBRVMxMjhHQ00ifQ.eyJtc2ciOiJwYXlsb2FkIn0.h67QbgsIlee4xZ_OD8yj9ZIbHFLLL85bseTJbRYWze5bqJtwAfv55OCL3W89cE-ldZ0tAuePfeYhR8sYUxPoCneCJ-TAehsYYnE8VRo1uoaQa9pQ7ADxFcK8k8568DC2",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJBRVMxMjhHQ00ifQ.eyJzdWIiOiJzdWJqZWN0In0.gbMx3o1ZmdBQSyDqSiANqn5y6fGHmUaDZz_sZeXnvPeqUSpChkEV1UPynugebNvMZQZJfDVc66Z3e8bQ8Pvnv4D3__xvKfyaupqYSTYkz1hvvnnroadZ-E6oj7pL914D",
       "comment": "Replaced alg ES384 by AES128GCM",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -313,8 +317,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFQ0RILUVTIn0.eyJtc2ciOiJwYXlsb2FkIn0.xTqtfwVpo5X0n6OXUqkMAcAfj7HKYGMnaXmX3fX4SAqVwsaWizn8Ay8Jo29gICRjw4TAnIOxyzktuYaTWjwX8CTfogHju9aAq9f1wrjJmtvkt5ASXMI2TTwcmqHjNiIc",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFQ0RILUVTIn0.eyJzdWIiOiJzdWJqZWN0In0.nxlLRL7gBwwNZhpf7GIXXLHOXB9Oi-PU4GT1mqD_nxdDCXGcDRnWTD3X6spROPntJzeLpqt0wXKBgn959zNltCWBmiabzj2Mfv8MvESnV-hXUQVOd26dA9VsE9qZM6Lf",
       "comment": "Replaced alg ES384 by ECDH-ES",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -330,8 +334,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJub25lIn0.eyJtc2ciOiJwYXlsb2FkIn0._tOtNNzujfc_biUDiuiCswZLnbtG0I6iTItzrYnT7yHEeYZEiBr5TSSbYStuXRolTOWsWYDU3mu2i3GST_EfSKeuqvpPzP00aCeBkqcML-wJ8pXErZdS8fHVGh_t83Vq",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJub25lIn0.eyJzdWIiOiJzdWJqZWN0In0.Bi5bTWfUNk6GRiAoDQgUYpSwcbLHtgwdyPSDygF2hk7bBm4jcdNwXLHUMpARTCJaXamJcyAOBlIJnWw1XxOdTGHfE3fFkkgTBi4zx8iNBJAnVJX1WT7Ss58_QkIQqppN",
       "comment": "Replaced alg ES384 by none",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -347,8 +351,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJkaXIifQ.eyJtc2ciOiJwYXlsb2FkIn0.eeWRSgaXWdqIXkrErFqeI_seSC2lHTACL4r9wAysdZRPCIlKBzy4FU-U2bbpinKW4rNKfhJUs7FQPdE7I_wPt95-J-88750n5AfrrjScJZHpu6YYX3EAUSow3c2tYS8i",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJkaXIifQ.eyJzdWIiOiJzdWJqZWN0In0._KID6LM3yW8VY5RJdH2qy2nqBpe_5RJjWy6tiuTt330FXO1ud4FtmYWAgQ8Tu7PfHPXXoZu-kVKDoUT5IvdgMfd5JlcBi24SB-3qbK3bpaP5rhA3ZLPcO4Fznk5LRGOH",
       "comment": "Replaced alg ES384 by dir",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -364,8 +368,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSU0EifQ.eyJtc2ciOiJwYXlsb2FkIn0.QPyVb8okt4jnDrLU_Wp-4TbHHn1q0ps4SSqEURMfAP4tE_C_2ECkIk4thXhPYFZxHRpjje_Vpc2U4Of1BECy-pPjVCFLB_1qjI9tOm--0KuHQL3XTIoQK92tBlUgbNmg",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJSU0EifQ.eyJzdWIiOiJzdWJqZWN0In0.iG6FocPXPFnqV8FwS7yx0b9j6gBVZ-ts5aLJ_bM0Q_ywBS8HRbY6oXDAxWjdz8m6OEFOXIHSX_sxy3lEcp5HMJ24K95NEfa9_eK_cT-DH4ffrd4zWLGyo4JCNDDfHbS6",
       "comment": "Replaced alg by undefined algorithm RSA",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -381,8 +385,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFQyJ9.eyJtc2ciOiJwYXlsb2FkIn0.29fRhtEygZCV9YwCqGqQ0wrgZ1T3rM2y3dcsy0lYPpBxUXW2sacfTHRnpVOh2sFiHURNlL8a8lXig2EtGvSDGdU1MwOPNukZr0UzviyKEa6t-UK7DZKhuDIj2REA7lDK",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFQyJ9.eyJzdWIiOiJzdWJqZWN0In0.gROVjdJwpqwFy9JjyxS1w72eKQgb9uD3pZsa8FeHUQtqPWPjvbVCYcAECqroVOsEOZcdu-z2FoSzmiuJWyt1EElFUMaPlgqV5dknvP4L7IVe4olMWsAY1npblLQIUAJt",
       "comment": "Replaced alg by undefined algorithm EC",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -398,8 +402,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFQ0RTQSJ9.eyJtc2ciOiJwYXlsb2FkIn0.tmd9Q2Q9_pws_Q4ZKrT4EibDgVhnnODSKD9iBo149oCFSPTtf69ymWHwDwn3PLgWcxtgzQUyDGdXs3U5MQ6X_l_1C3y0pYJORu4SXRfmz9APNJMxsvNZe-0fJPsZnGr2",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFQ0RTQSJ9.eyJzdWIiOiJzdWJqZWN0In0.0jLBjsJ6MUUSlSczFplyQYLTiW79GczY5386DULhr0ARpkMH1aFtHIW1duQPT4iAGdVIeDZeeElLXaDLJjYFNWdlLY8tojNl0QH-K93O16jPeOqaU6BcNKKwiW8PwUjX",
       "comment": "Replaced alg by undefined algorithm ECDSA",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -415,8 +419,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJEU0EifQ.eyJtc2ciOiJwYXlsb2FkIn0.evc8T2dsfQ-W0fhpOap7aSsGN7d9yTpmYs8RtW_px1DXyVro-voSfz5hS79gNIziuEtEYY9mn_4NMc5IxbJ8UWcW4i058o6VxL80oMMjpi2XwT5RpXn-_EO0q0IZcGty",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJEU0EifQ.eyJzdWIiOiJzdWJqZWN0In0.AiC9Eb445jMtlWnQGWYPhGJeH3hlAIm9egcLVV_lQZXvQNTtIClP7M8kcOWASBsaH4U2ndT6vEUcd7p5AyylC4Gnd39Kpt0rvysnd6v698-wKmV8mPhx9CZffAFax01C",
       "comment": "Replaced alg by undefined algorithm DSA",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -432,8 +436,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCIsImFsZyI6Im5vbmUifQ.eyJtc2ciOiJwYXlsb2FkIn0.L-UD4_IJENBpthAR3KbMyQuHibIzZ9wdeivM7bW9oFdWQrFsSFZEsrYyRRQYJyQ3s9GeDdpWqXyxEfMnJlIzbvdpH9UULvEDkcUyMdCqzJp1wYw6ljedP16fzg4NnXZe",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCIsImFsZyI6Im5vbmUifQ.eyJzdWIiOiJzdWJqZWN0In0.pXmldgrksuUD35r3vzvZzoV4JJ8VInxwVH6Vd1IWTFSUh0UjwOQa4ylN2hokp5OkaURZUtPYMTMUN1MK21Lbcp1RpKW1lZPL8AMttJTQgQll73TDfjcpLxCC3fEYPomA",
       "comment": "Duplicate alg field",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -449,8 +453,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQifQ.eyJtc2ciOiJwYXlsb2FkIn0.LqojI61MTaAFdR6WhlAdoh5k9BWGfYcmGxhISl2czFJM2JkOynJXnEYoR_W9rAEzI7r_LWrZ5G_zxYxPhyHyUQl4VPcuuOHLw7x8QVXKz5lu0lKXUpmDphppnGhlyCTz",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQifQ.eyJzdWIiOiJzdWJqZWN0In0.WiUH4ooapOYliptKlyBfyWC9MeD1xuwxlGtJIrPHK3t4EWHQ1I8jpACr9JFwTW_lWEkCQEFAbxHIAlUzd-0rPqgSeEIHYhAMECNFdFMab1AtXGTtIwYBmPGZlkhQJsuY",
       "comment": "alg field missing",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -466,8 +470,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9?.eyJtc2ciOiJwYXlsb2FkIn0.0pQolYOAjXWL4OjCcLY-7arIgT6AoPkqYpK1eRNFaf79zrHBOT6XSX8wbvZfNSXorHaz2rhCWRWxlcknb5SpJAZ1PQxdRRuuqwEwjqdHO-J5Ed4-YKAVK4yPS4dq-yKi",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9?.eyJzdWIiOiJzdWJqZWN0In0.rdUi34SK_LhkjpYN5J3gvK3aXBZWC245De5toFawmK6Ef9avg3-Ps8H1gmWDPEOIIw2gRNmrKTmStvCQyaNmOcf60uDsLjbgmP9Ffmtv43ES6SwWtEqDGnXyYvv0Xzrl",
       "comment": "inserting invalid '?' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -483,8 +487,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "#eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.jIgZg8Ta2vDNoQRT8TRhrH5STzcMBTKzlz1Ux76nQ07DqiKtJ_RXGuU1iva7i9xssYI7IrddjFyeAT53ptoxjEc90D2AXGGAWQaFAOUMCczqjjmKNhI1DOmEYoK7ZtUp",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "#eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0._yMg4kQpWFS6m0Hkh_W-pDsaypIa3SZuNev9R0O0t4Dc1GZZtIiwgOutBErPoCxPbm1j5nFgfAyfSXyVRYPQXv2cGH-ffbUzE3_p55jaYMguaU7rpjXjYUywavBY24C_",
       "comment": "inserting invalid '#' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -500,8 +504,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJ:raWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.aN2taLyrX-Oa8MbYtKL5n9-Pj_Vxr4lzk0MkROdxJTdUtizm7cpRqTeV9NFd7VqfniK6mOuJbgX_JQGeFyce_-_U2ata8LCQuaAuYzovK6GGvBrZL42Pp0_E5UeRI6MX",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJ:raWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.8KDvxYPgYOHe3CgcZUBGy7Eu1_pVPCr7MdeBBnEv3VWNxTM3ZO9xqdYcH--xZh-1abHGiNcId-E5JcioosDmQRhtENLnF1BOZpWg5xtfG1aStC1_vI7rUP4nT9cnz__E",
       "comment": "inserting invalid ':' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -517,8 +521,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQi@OiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.vyUkXsqETEH1TlQIuJY-xQ1iaJTy46bGgAcbXEMLzpnBeQPQm4bcigBNchlJqbAGBDY3op1_VB9xjrkaIEMmd6oF2gPG_bnmVqvWITEs2Fx2xIGdC6pet_1BSFerLdP9",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQi@OiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.LlRjuSiog2ymUAjeMpuSOc93-GRyRHcwG0YdzF0WY7NUim26OlcPXMWJs4BsWkxEOdCCMPbT2LI_pk2YmfHHMhakzfTwYyn_9VsH6bloccAAUoMt0yA6tjcngVAID9qQ",
       "comment": "inserting invalid '@' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -534,8 +538,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQ^tRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.Ke6xgpVmT31C52b7GoXZVCKwfTeNXIl7PNNq40l5St7yfbAIU08LGWuZvKTkudWN-y5pW6fFQlnELyYVsqvSbofhUC1GYwb0Wkt0csM0cCtTmYri7BbN1eWZbS4vcZ4E",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQ^tRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.3HV_zEFZOvCmX5LA3k7vHswj7ELRGflxIMUBIvKZLKTW90vMTv0ZhTgbGlby9W4UR2T-FR0-i7JvzHSVhyvyiAwJHbSjdLzJM_Eg6aoytcLF3SD3r9T-lmoLfyFwLM9N",
       "comment": "inserting invalid '^' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -551,8 +555,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQi%LCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.tCFkOpoX5Wrd5UeX-BQo8etDEB6pkpChY7zD9HpX-ATFWTC7gl0dZAeyMUQsWELNDbjXx7QK0QZNddv08GPPdJg9Wl9BE2m8pgNUs0cdt27rRGDy1g9XsBjbOc3xyOkG",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQi%LCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.h9e0KewzV7aJktbptr3GS8CPGZgMTFfgS_NPo2K-XYIoRt1YVpbFCHgzwc3jXp6HDWXx7YDCEzCpCxg-po06Cs7BuV67MJSL8IKQBtFK2dwAAmVL1k5gaeykJ4s6U7Na",
       "comment": "inserting invalid '%' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -568,8 +572,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJ\\FUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.zUYMd-jVbCxULuMCW9WI2DK2crLRyezuAMV6KjTEhoONKN7AUq-0oPZZ7nvoATLaKspZAapPoSkH8FVyscXh9k2TIL11mq3f4oTbLSXpFISKI5aFAhB7jqNuPru8SqK_",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJ\\FUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.NiiyFYPmqUnba1Y8CPftJHkZbU4paJsl-e048dUjSGuuiTz6gKrr3Z73kW4ORcnjBVu0WUIH3s56_oIA_DbX6PfaT1a6j8f7MLDIRm3b7Y28REx3_TCL3ZmJ3tqaqZNG",
       "comment": "inserting invalid '\\' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -585,8 +589,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJ|raWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.O3-oGrGprvpsOKfbNAIBykjFBpuCEfCy6WqsjywmRr-oWxR-2rhpQaXwGu4jFB-D9Va6mc-tlfQjO303CUg9j1hCvMBLwbx9_Dvd7hrdBtSYRmRVWgcFnFOcrL_UnVKP",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJ|raWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.Yf6SuR85qBpZYAoBgFu1oc1eQyBjCXQbOETawkN6aAmJb2tIZaH2rr8k90C70vApTNuTIl0y77phbc_73FbNl4pYhA6Eehb7LDM5OlHm_iShzmESSGbCtzYrr2le3rFr",
       "comment": "inserting invalid '|' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -602,8 +606,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRV/MzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.4sPe9S9IQc7OCK25GeiBmK8AdCoTJlL36S4Xc_z8K52XRDaeeWzWMv8arHszGZi2MvfaljJMOH7vGm4zuoU8WcqyxlwQwLobYT_TgL6rpO195HFt7eFjk93usvgzD_1h",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRV/MzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.m41zIvPReCU2vwxZbV3jh2wV5jM5MdsvLJlHjVsXlXmB-OocgS-J7p5wVlQ33jBmTYkEWJOSF1aRYn7jXpSsKcWUWSACVZowVWSkm6wavX589vkDUAUBUziV3vBwDXFE",
       "comment": "inserting invalid '/' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -619,8 +623,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJ$FUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.4u-FmZ6ZiPFDrYCJdOmIeu7H5sSpq7vsSgjym-ovvJqr_94crXpfNBGf6LY9x2GHA35i94y20zsJ24-nsmNcJQIo88mYoI3ysiWWoJmFnwxDMaDeV0yxqhucx3zlHjnL",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJ$FUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.l0rijGsGnS_ZxIaWFP_bPHEALOMhzTW_8v7bCXr836WEMHyh4LEHjusvz7DmD8TQTBV1CY6JEcG-o7c21V0Rw0PCJ9F3mr0vd9xWxLvvIT4PDJub9LsBFrcFirrb6PsB",
       "comment": "inserting invalid '$' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -636,8 +640,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiO iJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.P-0LURb5qJ8M1AGoGVizKlq1EpokMPSDtqY0zVs6nMvNfFKLr9atWUNaTh2BYAAp2mmvwf_AWQ10CwBhB39Tlau-_jXgMkEd5Xm-JacNRxT34iAwYTj2bDESDrwriBD1",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiO iJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.AOHUYwsDmZ9wIA8u07K2DbG83D0FLr8IycjFmJZg5wq7_ssunBHPfYytv4miFVMLduF9xEsMPFCOeeZn9JNAFauiXnHU46tfAs9sq9kWZW16oQUYgE3_nORzrzjpducL",
       "comment": "inserting invalid ' ' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -653,8 +657,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbG.ciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.RVfA2OOcmvLshbwfMlVxnbCaNbWpDnG-jBJiB4XrfvemIv2ExPVvY0bLqXZd0f6W0E4IQYZ0CRNv3c9kT9Eor3r_HTUxoQLmFetSy_M6W4MGt91YlIs5IRaDXcDCBH27",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbG.ciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.EF-wy19xoL4AsZ2rjCtdBRzlfsGiuIn9ybpNrfvwWav0buOtkgKehIJdpK28-yZALUmVDWWC04VHqK6IZLhy_Xy8P80bwvLT5dwxZzgWRCLtEY8vXWM_dAF4pF-u7H7R",
       "comment": "inserting invalid '.' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -670,8 +674,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQi=OiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.Z4fvUMNxK3pLjPeq8CFodAuuuSbjSojiZLE5VLi_tsSISBPjH1YTou-qjo3phmVqijjgxS2zg4oLEK1xbZFjuOO1oN5GMPVRAFbTMHebRfBCBwMxQhs7UTjAYAbg9_CW",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQi=OiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.zuziKTmFGCigTicnVmQ2_2F0o7lVpJSJI0ZgluN4CEDJ6JA8Tz2XPh_0fRH0VAKlPnWPrzIQTk9LY9jeP8rQ7AFlVJXsBTHwQoc5aLsGShSuUkb9_yOCCW7MNE6d1jSZ",
       "comment": "inserting invalid '=' into base64 encoding of header",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -687,8 +691,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0?.G-AV1ogos_8Ja01r7r6-edLGProXuA2H_-2-T6wWhHrFBfrP2BRVQFj-c6ahKHlFwAgkYBgl-Yk8Zp_yoFi3sJn8_l7xVZfXRigS-l3EMOSeP9y3M0x1ye1KYVdzUDJP",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0?.SvznjOfpFuS_S2G9roLPnEalyMKmO-2k_TTzmiBydcq0obsKf1QYew7ta9oKB4P_dhDWMSvp6Xhypnb9MN2oWqZcNztCrfVyc3LrKnH_qxfI-aNPV2hloH3K0Muikxp0",
       "comment": "inserting invalid '?' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -704,8 +708,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.#eyJtc2ciOiJwYXlsb2FkIn0.AZ4o8i-HYPwnzEHceZcitMFVlV8WL8CI9rlzZTFeK0YpToleBMAkWEzMPJhwLiPyvRtHYgMNmAeldtopwDByRGuVi3omoNkahhvyP7pEQCJuR1a8PXZ0IBvp61qNgAeb",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.#eyJzdWIiOiJzdWJqZWN0In0.iaDRrtQT5hLo-tasst_vAg0HGUetrTsTojF7cn4DTwUh0o8NNvW8wGK83Iu1SoY6eB4HUqB-c2advXiLsvrA0KoBD9cL-Ijn_ubBWTXyF9Wr1C_qJDWdxxOPd8il9_hH",
       "comment": "inserting invalid '#' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -721,8 +725,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJ:tc2ciOiJwYXlsb2FkIn0.T0XCymnyFdNyYg95QEwh-J1aB1t3jhMKzZvcsmmfDpPHpAzxFumdkgIHgOgB2_lz7FwokBk7CDYNhMnrTd3J64vnMjYpMJeUUryE3CEZysFFVf7EASJPBPjLP0vt2yGX",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJ:zdWIiOiJzdWJqZWN0In0.nwNcmBaQu7kfrgFfcvhV0LDCPN-m6sXgHD_0uQfE7sSCKUoYepDXk768ZLM0hINuXc-z65ETEyOtksz2iMMIDTuZWuUKRlTVykSwMdgdyMJwNkMGLdiiOxOwN47xWKvx",
       "comment": "inserting invalid ':' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -738,8 +742,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ci@OiJwYXlsb2FkIn0.UzsQUTm_XCnzaN-0ElKFCzwfjMJqGdBhN4c3SApMRniTY9gl3LL8QbVtmfkl_WyzsQ1BhyJxXfaOCT3Y0HTfQ7tlPHGbKp90wc3BEofdmeiMVpw0CUehBslM3phsyX1O",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIi@OiJzdWJqZWN0In0.uAEr3X_gn6vkjwW0ZreDof6Tu8QGz2El2iLnFyKZeYXPvqy5AuIEMqUZ-OaYmrvGaldoHedjGpw6e_BSocpz5BkjNGdDWO-ech5NPF2sxGO6uMQXKK8AXBVoHO2-j4p4",
       "comment": "inserting invalid '@' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -755,8 +759,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXl^sb2FkIn0.lAtCGskSmxHCxqZPLwEI1M2hu2i-VKLmt-HyVox_sEPQilpp9cqbMnWSjP2bMStwtd9ZTHjZJ_p1rsRPIHgp4QSMQ8dQKcNn0o5ezpODN4LlaYZfQxnNBGhPuIa0VopB",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJ^qZWN0In0.NpjjXTCcwW4LQ2SgaKa_irozkZ2LPzPpdOU8JcbKOOc_WkcinvVjbaLAOKF2uzCfU8tfnoVCZNrf0ST2sJM2jXUHNQUQxBZhCsB_RU9imgQk4BdTGHzW44SwJoUE64xt",
       "comment": "inserting invalid '^' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -772,8 +776,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.%eyJtc2ciOiJwYXlsb2FkIn0.aUE_HRcBcn6vr1Fs0Iv5E27kgyEEQJns4roWlxnjYu3dqJGkvcBR_AZSnKSQ0Mueg2Ocb9iXUyndbYig6wmoM09-IrzGi8QMVSBlIbZYAiPZ2nl-F1V_7QPB4NJ2ESxM",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.%eyJzdWIiOiJzdWJqZWN0In0.lsiNRgZ7HsxAyz77_EsFPhqbNubxH3Mo4WiAOlA_ZqdRt3O0eUolFitp_Yq0iPc9dK83Hzl3KmbkOndOT076KjnDhuoa9xmO2UclEdO77XPuwEt_DsnbzN-mvGeeeVoc",
       "comment": "inserting invalid '%' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -789,8 +793,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJ\\wYXlsb2FkIn0._WfUNvbcUD23v_sbCmTU1stAGOrlgrLioemzM9vsjPPGEj2UXiIEXvg-cA1nqdK-j2KTF-oPat1AcUieFAhLBZnKZ2YWglEFx-iJIKHksuN6d922x4g6dVG_biqsQYyV",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJ\\zdWJqZWN0In0.vpjxAFF9vBLUgCoCuIakTqDQWz6QOGjPCEp_G9TktNuU1oNyC_HF-o_rg2OWEB76d5kRR9c3UFCWxy1SiEtr_jIxEWbXweV3oTJwkCw_QcsvrVoTw4fScoViCi7-Dk_D",
       "comment": "inserting invalid '\\' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -806,8 +810,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.|eyJtc2ciOiJwYXlsb2FkIn0.TPL-NMuEp69Zr1TcAQyEO18LXmjwqxSTMhGH6bmYgaWKp-QAKeaLn0cWIY5reB056KZP--nw-hfT2DEMYy6JyrMAOP3OL9tQw_QbBljWlG_7cMnROpRQWPu0b4jRCHvl",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.|eyJzdWIiOiJzdWJqZWN0In0.XlUKCNPrQtd2ghkvMK5FBT_vOldQ6naVrV1wUdW01AhBWwXvSrZwpcTPCgotxglxT0Zbl306myRXI4DBN4m1DpUpeunP5ZDTyZ5LSSA49CDvNnXcRbV7FM12h4nC7Sx6",
       "comment": "inserting invalid '|' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -823,8 +827,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXl/sb2FkIn0.6WQA5DFQhTfStwRfayd_GNRcWYg_7C_oH4ob9wfU8cqzTFs4AXfMT5njHvC-9H5El-nFHps_64bYF0cnvdZh2ZiuMKvwWsxKt0MtqAVRsUZ2ef8EJQkGYRsqD2L1p0ex",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJ/qZWN0In0.wGUwVYc8vg0B2swg01M8rVQcTS9ADfMhSJcN4w8dRw0Kj0p6jf8t_FmiDH_XG0gFZKRI_aybS86Z8vJyfwb1kEvWL2oSO4wrk_oAksrGGxCSD9mjo3OEaE3QOiAgg1wQ",
       "comment": "inserting invalid '/' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -840,8 +844,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ci$OiJwYXlsb2FkIn0.-AODRLigO3pbQ3w65Uc8nMqgLfRYt8vpr9ahkYKeuoz1uVBlYUfRCROl0fvV7cz5bP84QuCjmVYmBUTTbcPBYi_TGj7e6Qkkv3yOLlipOcEg46yRIKfjzxtB5dBUNUZq",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIi$OiJzdWJqZWN0In0.MHwpsdMw6iX3bB6FCI1ZUFsx4eJKmIXLQBgADee4oJ5mLaOrZav4eOmJA8eIB1IUVRQcoP7ik5rPoa58vfCo1zBgSz2kd04uo7WTiQx8ZzMzQuQKthNdLOMMQeKMuX3r",
       "comment": "inserting invalid '$' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -857,8 +861,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJ tc2ciOiJwYXlsb2FkIn0.tCnaW4c1sJUWPxFwV6kmdr3bnWo98gJi1bBV1Cx9u6jCoO37WDYnoECjlvZSvOieXCboNFMx1t5vijhtunJi-ALGGcem7Br7IqxuxkC-FDfUPF4o5DQmctegeB7yVccs",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJ zdWIiOiJzdWJqZWN0In0.YUARIoduwh3OiufwSTNlM1Vz-Lc_Ux_r4MFoOUl01N09HNtkl5RD8t3iM3S9YulrcRaRt4fR8lec3dmax2jdXAEAiqeYWv8sIiD0XxP_nLA9raPwSHjH8oi-1BjVgMzZ",
       "comment": "inserting invalid ' ' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -874,8 +878,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9..eyJtc2ciOiJwYXlsb2FkIn0.xuwiOPWbOZ017o5SkizUri2J1kSTV4HV9MuB01D5mfFiJOHLJ6ask-wc8KDBCVDPFYtMf4F6X53lwrFbnjZUFtVu-XHYSBQ5pFp4lUsbGw8qUYEHKAQgx-A2mqm14HvZ",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9..eyJzdWIiOiJzdWJqZWN0In0.WTHgaIrkWkamaVJL1VTrLHZkEPfTKFh6TsgTvfXh-gpOURsSlTP7haSgjLXvjtsfLJEQSh9wwklDbkOJoV42Bi5O3lY2jX5X6_hV-bls1So2vI0uAw4qQyg9kJaj0VQR",
       "comment": "inserting invalid '.' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -891,8 +895,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0=.rz5ukOxjEUC26rGlZwxrEVBxtaF091qSGgNSEPVSmza2383eTz1HIkdof9ljo7-przKlxKySrZj2vDWb0K8xPc7s6cKf--y3QWBJgZtknDmVVvXx9K_jVYiWpYwNbrcf",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0=.ZdbafgsS-G5TXHyKb5M0bmHN-JCatZXwaAMTFs7m7lTd0FbUSYh8dYUKO_--mQ-tDPHBqwy-tgu3t2FDtg8GNAT8L0CmlGLFHBAqizWBE5p1ESjCtKWqJHJKzaZJMuZv",
       "comment": "inserting invalid '=' into base64 encoding of payload",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -908,8 +912,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.R2FyYmFnZQ.saiPHnar-VaTjwXqQ5TcZKSJ9dIx_Ij4TXD0XP2uoKRCsAM67f0cl_fMjwjPWTS4Oxw-7eCJkM6UaItX_EDOhhG3lG65cl1ENVm3qNx3VBS3AsV0fPzf_5tliFzt9Iai",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.R2FyYmFnZQ.10KAx-YZBMySIgPjKAow11ULIntanWwm0haeadYPfueU_TFahJPpinKxU7A5SWdAUl6G-Dr6Wm9mh8qJRBgyy8joo92mfyYcCWS833s4A70legyzbXaaL1n-P8ao0w_6",
       "comment": "Inserting additional element",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -925,8 +929,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.AAAAAAAAAAAAAAAAAAAAAAAAAAA.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.AAAAAAAAAAAAAAAAAAAAAAAAAAA.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "Inserting zeros",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -942,8 +946,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.R2FyYmFnZQ.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.R2FyYmFnZQ.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "Inserting unsigned element",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -959,8 +963,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0",
       "comment": "Dropping signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -976,8 +980,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0._dtunnv9bxHDKhDTxnqiBbmcf1y0ZUY5PObaPH4ML4GY8jUfPFHOmm5z57dJkTTv_9aAWnxv178W88hpGX6jZhjh4ca2smn_hgNB8uyVyVx9wh-eCvlaWAL6KswJjeFF",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0._dtunnv9bxHDKhDTxnqiBbmcf1y0ZUY5PObaPH4ML4GY8jUfPFHOmm5z57dJkTTvACl_pYOQKEDpDDeW5oFcmeceHjlJTZYAQWALjwehZILaV-4UPbdNIunx7p7DN0gu",
       "comment": "Signing empty string",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -993,8 +997,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI?",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj?",
       "comment": "inserting invalid '?' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1010,8 +1014,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.#N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.#yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '#' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1027,8 +1031,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I:2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu:9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid ':' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1044,8 +1048,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5p@ZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger1@3pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '@' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1061,8 +1065,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnK^C-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNN^RebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '^' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1078,8 +1082,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu%3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7S%YKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '%' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1095,8 +1099,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6r\\au4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6\\hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '\\' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1112,8 +1116,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1Znv|SUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhg|eQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '|' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1129,8 +1133,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVj/nfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10Qj/ORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '/' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1146,8 +1150,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOB$s7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn$_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '$' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1163,8 +1167,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn 8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux 7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid ' ' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1180,8 +1184,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3mis.qiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDG.EsCMFlAj",
       "comment": "inserting invalid '.' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1197,8 +1201,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcn=KC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhN=NRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj",
       "comment": "inserting invalid '=' into base64 encoding of signature",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1214,8 +1218,8 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
-      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJtc2ciOiJwYXlsb2FkIn0.N8I2pe5pZjYbcnKC-0w1Whgu3zPfuxq7z6rau4ZkpFKJ1ZnvSUy-9kIzVgGQMVjnfyzg3INsTP7eWyOBs7eObuuhuAs-Lpno8Yn8zLA7M88BYifw7c4f3misqiSTZSyI.R2FyYmFnZQ",
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.yNu9ger13pVDhNNRebAVBU7SYKvdUjil7Z6hPhiJWfD_LWhgeQ1sq6C_e7A10QjORU_kw1vMFuf0Lqhn_nRLmLqr4m1YecHe3ux7lzUmWt3DvjvjQKaMBdDGEsCMFlAj.R2FyYmFnZQ",
       "comment": "Appending additional data to token",
       "valid": false,
       "flags": ["ModifiedSignature"]
@@ -1231,11 +1235,28 @@
         "kid": "key-bwkIWXj6",
         "use": "sig"
       },
-      "msg": "{\"msg\":\"payload\"}",
+      "msg": "{\"sub\":\"subject\"}",
       "sig": "................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................",
       "comment": "Checking split",
       "valid": false,
       "flags": ["ModifiedSignature"]
+    },
+    {
+      "tcId": 72,
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEp3mmdqCHdQumZ1QvN/ri6bHWcV9VrNad\nMXCpxGZXF9esIyqiU8i8u6uIP9VFZ192zIYNeCYXHpZ+/PZ3yjHZYj7hHXu/z8ip\no6dNH5A3OP+KPd2m9Pt8YgAoMlaznuGR\n-----END PUBLIC KEY-----",
+      "publicKeyJwk": {
+        "kty": "EC",
+        "crv": "P-384",
+        "x": "p3mmdqCHdQumZ1QvN_ri6bHWcV9VrNadMXCpxGZXF9esIyqiU8i8u6uIP9VFZ192",
+        "y": "zIYNeCYXHpZ-_PZ3yjHZYj7hHXu_z8ipo6dNH5A3OP-KPd2m9Pt8YgAoMlaznuGR",
+        "kid": "key-p3mmdqCH",
+        "use": "sig"
+      },
+      "msg": "{\"sub\":\"subject\"}",
+      "sig": "eyJraWQiOiJraWQtRVMzODQiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJzdWJqZWN0In0.9nAUPoE3x_8bm5COttStY5Er-6UZxvkqdNOBJEH3Ot7dszBdV2yLTVrOo1IpA3qKgsmFm41d2cy_TQU_c273anGPjrYrI9U3yy3-tzicaXYJlupMrVRZL45lf5xobX34",
+      "comment": "signature is not canonical",
+      "valid": true,
+      "flags": ["NoncanonicalSignature"]
     }
   ]
 }
