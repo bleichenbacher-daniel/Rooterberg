@@ -5,7 +5,7 @@
 | primitive | keySize | ivSize | tagSize |
 | --- | --- | --- | --- |
 | AesGcm | 128, 192, 256 | 96 | 96, 128 |
-| AesCcm | 128, 192, 256 | 88, 96, 104 | 64, 96, 128 |
+| AesCcm | 128, 192, 256 | 88, 96, 104 | 32, 48, 64, 80, 96, 128 |
 
 Nonce size for GCM is restricted to 12 bytes.
 Tag size for GCM must be at least 12 bytes.

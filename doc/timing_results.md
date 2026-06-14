@@ -85,6 +85,9 @@ selected that way. This bias can be used a
 |           | sjcl         | Ecdsa secp256r1   |                   | 0.99 | [known since 2023](https://github.com/bitwiseshiftleft/sjcl/issues/438) |
 |           | sjcl         | Ecdsa secp256k1   |                   | 0.99 | "                   |
 | Java      | bouncycastle | Ecdh brainpool256r1 | 1'567 / 200'000 | 0.50 |                     |
+|           | conscrypt 2.5.2   | Ecdsa secp224r1   |                   | 0.99 | fixed in version 2.6 (Jun 2026) |
+|           | conscrypt 2.5.2   | Ecdsa secp384r1   |                   | 0.99 | " |
+|           | conscrypt 2.5.2   | Ecdsa secp521r1   |                   | 0.80 | " |
 | Python    | pycryptodome | Ed25519           | 2'533 / 5'000'000 | 0.99 | reported (June 2025) <!-- GHSA-f98j-f7x2-p99m --> |
 |           | pycryptodome | Ed448             |                   | 0.99 | "                   |
 |           | pycryptodome | Ecdsa secp256r1   | 2'619 / 5'000'000 | 0.28 | "                   |
@@ -100,7 +103,9 @@ unprotected implementation. The reason appears to be that incomplete countermeas
 leak just one type of information (e.g. the bit-length of *k*) and that as a result this
 type of information is easier to determine.
 
-
+For libraries and primitives with a large bias (i.e. bias > 0.8), experiments have been
+performed trying to recover EC private keys from timing measurments using an LLL based approach.
+These experiments have been successful against browserify-sign, sjcl, conscrypt and pycryptodome.
 
 <!--
 noble/curves contains a timing channel, that can be reliably detected (i.e. p-value < 1e-9).
