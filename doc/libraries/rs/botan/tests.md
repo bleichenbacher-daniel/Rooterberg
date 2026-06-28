@@ -76,11 +76,17 @@
 | TripleDes | 192 |
 | Threefish512 | 512 |
 
+## DsaVerify
+
+| primitive | pLen | qLen | sha | encoding | signatureGeneration |
+| --- | --- | --- | --- | --- | --- |
+| Dsa | 1024, 2048, 3072 | 160, 224, 256 | SHA-1, SHA-224, SHA-256, SHA-512 | DER, P1363 | Generic |
+
 ## EcdsaVerify
 
 | primitive | curve | sha | encoding | normalize | signatureGeneration |
 | --- | --- | --- | --- | --- | --- |
-| Ecdsa | brainpoolP192r1, brainpoolP224r1, brainpoolP256r1, brainpoolP320r1, brainpoolP384r1, brainpoolP512r1, frp256v1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | KECCAK256, SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256, SHA3-256, SHA3-384, SHA3-512, SHAKE128, SHAKE256 | P1363 | False | Generic |
+| Ecdsa | brainpoolP192r1, brainpoolP224r1, brainpoolP256r1, brainpoolP320r1, brainpoolP384r1, brainpoolP512r1, frp256v1, prime192v2, prime239v1, secp160k1, secp160r1, secp160r2, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | KECCAK256, SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256, SHA3-256, SHA3-384, SHA3-512, SHAKE128, SHAKE256 | DER, P1363 | False | Generic |
 
 ## KeyWrap
 
@@ -112,6 +118,7 @@
 | shake256 | 512 |
 | blake2b | 512 |
 | blake2s | 256 |
+| ascon-hash256 | 256 |
 
 ## Mac
 

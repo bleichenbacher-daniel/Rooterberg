@@ -9,8 +9,8 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [.NET](libraries/cs/dotnet/dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 109 |
-| [BC_CSHARP](libraries/cs/bc_csharp/bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 686 |
+| [.NET](libraries/cs/dotnet/dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 115 |
+| [BC_CSHARP](libraries/cs/bc_csharp/bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 692 |
 
 ## Dart
 
@@ -24,7 +24,7 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [AmazonCorrettoCryptoProvider](libraries/java/amazoncorrettocryptoprovider/amazoncorrettocryptoprovider.md) | [https://github.com/corretto/amazon-corretto-crypto-provider](https://github.com/corretto/amazon-corretto-crypto-provider) | 122 |
-| [BC](libraries/java/bc/bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 642 |
+| [BC](libraries/java/bc/bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 648 |
 | [Conscrypt](libraries/java/conscrypt/conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
 | [SC](libraries/java/sc/sc.md) | [https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle) | 527 |
 | [SUN](libraries/java/sun/sun.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 35 |
@@ -45,14 +45,14 @@ At this point no test results are being included.
 | [bitcoinjs-lib-v5](libraries/js/bitcoinjs-lib-v5/bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [browserify-sign](libraries/js/browserify-sign/browserify-sign.md) | [https://www.npmjs.com/package/browserify-sign](https://www.npmjs.com/package/browserify-sign) | 47 |
-| [crypto-browserify](libraries/js/crypto-browserify/crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 141 |
+| [crypto-browserify](libraries/js/crypto-browserify/crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 147 |
 | [crypto-js](libraries/js/crypto-js/crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
 | [crypto.subtle](libraries/js/crypto.subtle/crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 76 |
 | curve25519-js | [https://www.npmjs.com/package/curve25519-js](https://www.npmjs.com/package/curve25519-js) | 1 |
 | [ecc-jsbn](libraries/js/ecc-jsbn/ecc-jsbn.md) | [https://www.npmjs.com/package/ecc-jsbn](https://www.npmjs.com/package/ecc-jsbn) | 4 |
 | ed25519-hd-key | [https://github.com/alepop/ed25519-hd-key](https://github.com/alepop/ed25519-hd-key) | 1 |
 | [elliptic](libraries/js/elliptic/elliptic.md) | [https://www.npmjs.com/package/elliptic](https://www.npmjs.com/package/elliptic) | 34 |
-| [jose](libraries/js/jose/jose.md) | [https://www.npmjs.com/package/jose](https://www.npmjs.com/package/jose) | 15 |
+| [jose](libraries/js/jose/jose.md) | [https://www.npmjs.com/package/jose](https://www.npmjs.com/package/jose) | 44 |
 | [js-ascon](libraries/js/js-ascon/js-ascon.md) | [https://github.com/brainfoolong/js-ascon](https://github.com/brainfoolong/js-ascon) | 2 |
 | [jws](libraries/js/jws/jws.md) | [https://www.npmjs.com/package/jws](https://www.npmjs.com/package/jws) | 15 |
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
@@ -71,9 +71,10 @@ At this point no test results are being included.
 | Name | Url | Tests |
 | --- | --- | --- |
 | [ecdsa](libraries/py/ecdsa/ecdsa.md) | [https://pypi.org/project/ecdsa/](https://pypi.org/project/ecdsa/) | 100 |
-| [pyca](libraries/py/pyca/pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 317 |
+| [joserfc](libraries/py/joserfc/joserfc.md) | [https://jose.authlib.org/](https://jose.authlib.org/) | 31 |
+| [pyca](libraries/py/pyca/pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 322 |
 | [pycryptodome](libraries/py/pycryptodome/pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 343 |
-| [pyjwt](libraries/py/pyjwt/pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 16 |
+| [pyjwt](libraries/py/pyjwt/pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 19 |
 | [pynacl](libraries/py/pynacl/pynacl.md) | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 3 |
 
 ## Rust
@@ -88,13 +89,13 @@ At this point no test results are being included.
 | [aes_siv](libraries/rs/aes_siv/aes_siv.md) | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
 | [aria](libraries/rs/aria/aria.md) | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
 | [ascon-aead](libraries/rs/ascon-aead/ascon-aead.md) | [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/) | 1 |
-| [ascon-hash](libraries/rs/ascon-hash/ascon-hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
+| [ascon_hash](libraries/rs/ascon_hash/ascon_hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
 | bign256 | [https://docs.rs/bign256/latest/bign256/](https://docs.rs/bign256/latest/bign256/) | 1 |
 | bip32 | [https://docs.rs/bip32/latest/bip32/](https://docs.rs/bip32/latest/bip32/) | 1 |
 | blake2 | [https://docs.rs/blake2/latest/blake2/](https://docs.rs/blake2/latest/blake2/) | 2 |
 | [bls12_381](libraries/rs/bls12_381/bls12_381.md) | [https://docs.rs/bls12_381/latest/bls12_381/](https://docs.rs/bls12_381/latest/bls12_381/) | 2 |
 | [bn254](libraries/rs/bn254/bn254.md) | [https://docs.rs/bn254/latest/bn254/](https://docs.rs/bn254/latest/bn254/) | 1 |
-| [botan](libraries/rs/botan/botan.md) | [https://docs.rs/botan/latest/botan/](https://docs.rs/botan/latest/botan/) | 331 |
+| [botan](libraries/rs/botan/botan.md) | [https://docs.rs/botan/latest/botan/](https://docs.rs/botan/latest/botan/) | 405 |
 | [bp256](libraries/rs/bp256/bp256.md) | [https://docs.rs/bp256/latest/bp256/](https://docs.rs/bp256/latest/bp256/) | 2 |
 | [bp384](libraries/rs/bp384/bp384.md) | [https://docs.rs/bp384/latest/bp384/](https://docs.rs/bp384/latest/bp384/) | 2 |
 | [camellia](libraries/rs/camellia/camellia.md) | [https://docs.rs/camellia/latest/camellia/](https://docs.rs/camellia/latest/camellia/) | 3 |
@@ -118,11 +119,11 @@ At this point no test results are being included.
 | hkdf | [https://docs.rs/hkdf/latest/hkdf/](https://docs.rs/hkdf/latest/hkdf/) | 11 |
 | [hmac](libraries/rs/hmac/hmac.md) | [https://docs.rs/hmac/latest/hmac/](https://docs.rs/hmac/latest/hmac/) | 11 |
 | idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
-| [jwt_rustcrypto](libraries/rs/jwt_rustcrypto/jwt_rustcrypto.md) | [https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/](https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/) | 16 |
+| [jwt_rustcrypto](libraries/rs/jwt_rustcrypto/jwt_rustcrypto.md) | [https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/](https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/) | 19 |
 | [k256](libraries/rs/k256/k256.md) | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
 | kangarootwelve | [https://docs.rs/kangarootwelve/latest/kangarootwelve/](https://docs.rs/kangarootwelve/latest/kangarootwelve/) | 1 |
 | [keccak_asm](libraries/rs/keccak_asm/keccak_asm.md) | [https://docs.rs/keccak-asm/latest/keccak_asm/](https://docs.rs/keccak-asm/latest/keccak_asm/) | 8 |
-| kisaseed | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
+| [kisaseed](libraries/rs/kisaseed/kisaseed.md) | [https://docs.rs/kisaseed/latest/kisaseed/](https://docs.rs/kisaseed/latest/kisaseed/) | 1 |
 | libcrux | [https://github.com/cryspen/libcrux](https://github.com/cryspen/libcrux) | 2 |
 | [ml_dsa](libraries/rs/ml_dsa/ml_dsa.md) | [https://docs.rs/ml-dsa/latest/ml_dsa/](https://docs.rs/ml-dsa/latest/ml_dsa/) | 9 |
 | [ocb3](libraries/rs/ocb3/ocb3.md) | [https://docs.rs/ocb3/latest/ocb3/](https://docs.rs/ocb3/latest/ocb3/) | 14 |
@@ -157,6 +158,7 @@ At this point no test results are being included.
 | [twofish](libraries/rs/twofish/twofish.md) | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
 | [x25519_dalek](libraries/rs/x25519_dalek/x25519_dalek.md) | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
 | [x448](libraries/rs/x448/x448.md) | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
+| [xtea](libraries/rs/xtea/xtea.md) | [https://docs.rs/xtea/latest/xtea/](https://docs.rs/xtea/latest/xtea/) | 1 |
 | [xts_mode](libraries/rs/xts_mode/xts_mode.md) | [https://docs.rs/xts-mode/latest/xts_mode/](https://docs.rs/xts-mode/latest/xts_mode/) | 10 |
 
 ## Swift

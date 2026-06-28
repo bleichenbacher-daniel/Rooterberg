@@ -51,7 +51,10 @@ bits and random signatures).
 |           | noble        | Ed25519         | lsb                  |  <2 $\mu s$       |
 |           | sjcl         | Ecdsa secp256r1 | msb, lsb, bit_length | 150 $\mu s$       |
 |           | sjcl         | Ecdsa secp256k1 | msb, lsb, bit_length | 150 $\mu s$       |
-| Java      | spongycastle | Ecdsa secp256k1 | msg, lsb, bit_length |  <2 $\mu s$       |
+| Java      | spongycastle | Ecdsa secp256k1 | msb, lsb, bit_length |  <2 $\mu s$       |
+|           | conscrypt 2.5.2 | Ecdsa secp224r1 | msb, bit_length   |   3 $\mu s$       |
+|           | conscrypt 2.5.2 | Ecdsa secp384r1 | msb, bit_length   |                   |
+|           | conscrypt 2.5.2 | Ecdsa secp521r1 | msb, bit_length   |                   |
 | Python    | pycryptodome | Ecdsa secp256r1 | msb, lsb, bit_length |   3 $\mu s$       |
 |           | pycryptodome | Ed25519         | msb, lsb, bit_length |   4 $\mu s$       |
 |           | pycryptodome | Dsa (2048 bit)  | msb, bit_length      |  20 $\mu s$       |
@@ -126,6 +129,10 @@ is so old that I'd expect a larger bias.
 
 | spongycastle | Ecdsa secp256r1   | 36'654 / 500'000  | 0.03 | known flaw          |
 
+The timing attack against Conscrypt has been reported multiple times:
+I.e. timing tests in google version of Wycheproof.
+Direct measurments of BoringSSL https://issues.chromium.org/issues/41490854
+Hence it is unclear why the vulnerability has only been fixed in 2026.
 --> 
 
 ## Libraries where no timing side channels were detected
