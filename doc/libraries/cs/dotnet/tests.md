@@ -50,6 +50,12 @@ Support for SHA-3 is platform dependent.
 | HmacSha384 | 384 |
 | HmacSha512 | 512 |
 
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-256, SHA-384, SHA-512 |
+
 ## Hkdf
 
 | primitive | sha |

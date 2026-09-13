@@ -38,6 +38,18 @@
 | --- | --- | --- | --- | --- | --- |
 | Ecdsa | brainpoolP192r1, brainpoolP192t1, brainpoolP224r1, brainpoolP224t1, brainpoolP256r1, brainpoolP256t1, brainpoolP320r1, brainpoolP320t1, brainpoolP384r1, brainpoolP384t1, brainpoolP512r1, brainpoolP512t1, prime192v2, prime239v1, secp160r1, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1, secp521r1 | SHA-224, SHA-256, SHA-384, SHA-512, SHA3-256, SHA3-384, SHA3-512 | DER, JWK, P1363 | False | Generic |
 
+## EddsaVerify
+
+| primitive | curve | cofactored | encoding |
+| --- | --- | --- | --- |
+| Eddsa | edwards25519, edwards448 | False | RAW |
+
+## EddsaSign
+
+| primitive | curve | cofactored | encoding |
+| --- | --- | --- | --- |
+| Eddsa | edwards25519, edwards448 | False | RAW |
+
 ## Ecdh
 
 | primitive | curve | encoding |
@@ -49,6 +61,40 @@
 | primitive | keySize |
 | --- | --- |
 | AesKw | 128, 192, 256 |
+
+## Hash
+
+| primitive | digestSize |
+| --- | --- |
+| sha-1 | 160 |
+| sha-224 | 224 |
+| sha-256 | 256 |
+| sha-384 | 384 |
+| sha-512 | 512 |
+| sha3-224 | 224 |
+| sha3-256 | 256 |
+| sha3-384 | 384 |
+| sha3-512 | 512 |
+
+## Mac
+
+| primitive | macSize |
+| --- | --- |
+| HmacSha1 | 160 |
+| HmacSha224 | 224 |
+| HmacSha256 | 256 |
+| HmacSha384 | 384 |
+| HmacSha512 | 512 |
+| HmacSha3_224 | 224 |
+| HmacSha3_256 | 256 |
+| HmacSha3_384 | 384 |
+| HmacSha3_512 | 512 |
+
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
 
 ## Hkdf
 

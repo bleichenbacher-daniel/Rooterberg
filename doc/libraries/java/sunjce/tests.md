@@ -54,6 +54,12 @@
 | HmacSha3_384 | 384 |
 | HmacSha3_512 | 512 |
 
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512 |
+
 ## Pbes2
 
 | primitive | sha | cipher | keySize |

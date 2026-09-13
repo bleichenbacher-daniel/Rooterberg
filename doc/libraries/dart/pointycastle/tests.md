@@ -4,11 +4,15 @@
 
 | primitive | keySize | ivSize | tagSize |
 | --- | --- | --- | --- |
+| Chacha20Poly1305 | 256 | 96 | 128 |
 | AesGcm | 128, 192, 256 | 64, 96, 128, 256 | 128 |
 | CamelliaGcm | 128, 192, 256 | 96 | 128 |
 | TwofishGcm | 128, 256 | 96 | 128 |
 | AesCcm | 128, 192, 256 | 88, 96, 104 | 64, 96, 128 |
 | CamelliaCcm | 128, 192, 256 | 104 | 64, 80 |
+| AesEax | 128, 192, 256 | 96, 128 | 64, 128 |
+| CamelliaEax | 128, 192, 256 | 128 | 128 |
+| TwofishEax | 256 | 128 | 128 |
 
 ## Mac
 

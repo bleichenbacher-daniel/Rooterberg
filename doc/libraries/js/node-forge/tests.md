@@ -27,6 +27,12 @@
 | --- | --- | --- | --- |
 | Eddsa | edwards25519 | False | RAW |
 
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1 |
+
 ## RsaPkcs1Verify
 
 | primitive | size | sha | encoding |

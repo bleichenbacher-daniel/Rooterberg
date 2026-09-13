@@ -33,6 +33,14 @@
 | --- | --- | --- |
 | Ecdh | secp224r1, secp256r1, secp384r1, secp521r1 | DER |
 
+## MlDsaVerify
+
+| primitive |
+| --- |
+| ML-DSA-44 |
+| ML-DSA-65 |
+| ML-DSA-87 |
+
 ## Hash
 
 | primitive | digestSize |

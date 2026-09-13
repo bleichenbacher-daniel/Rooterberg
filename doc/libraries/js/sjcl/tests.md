@@ -31,6 +31,12 @@ The implementation of AES-CCM silently truncates nonces when they are too long.
 | HmacSha256 | 256 |
 | HmacSha512 | 512 |
 
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-256 |
+
 ## Scrypt
 
 | primitive |

@@ -114,6 +114,12 @@
 | HmacSha3_384 | | 384 |
 | HmacSha3_512 | | 512 |
 
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
+
 ## Scrypt
 
 | primitive |
@@ -129,6 +135,11 @@
 | X963KdfSha256 | SHA-256 |
 | X963KdfSha384 | SHA-384 |
 | X963KdfSha512 | SHA-512 |
+| ConcatKdfSha1 | SHA-1 |
+| ConcatKdfSha224 | SHA-224 |
+| ConcatKdfSha256 | SHA-256 |
+| ConcatKdfSha384 | SHA-384 |
+| ConcatKdfSha512 | SHA-512 |
 
 ## Hkdf
 

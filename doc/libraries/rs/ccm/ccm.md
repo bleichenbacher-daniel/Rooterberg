@@ -2,7 +2,7 @@
 
 **Language:** rust\
 **Url:** [https://docs.rs/ccm/latest/ccm/](https://docs.rs/ccm/latest/ccm/)\
-**Tested version:** 0.5.0
+**Tested version:** 0.5.0, 0.6.0-rc.3
 
 ## Tables
 

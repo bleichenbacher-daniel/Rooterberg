@@ -9,27 +9,27 @@ At this point no test results are being included.
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [.NET](libraries/cs/dotnet/dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 115 |
+| [.NET](libraries/cs/dotnet/dotnet.md) | [https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptography-model) | 119 |
 | [BC_CSHARP](libraries/cs/bc_csharp/bc_csharp.md) | [https://github.com/bcgit/bc-csharp](https://github.com/bcgit/bc-csharp) | 692 |
 
 ## Dart
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [cryptography_plus](libraries/dart/cryptography_plus/cryptography_plus.md) | [https://pub.dev/packages/cryptography_plus](https://pub.dev/packages/cryptography_plus) | 19 |
-| [pointycastle](libraries/dart/pointycastle/pointycastle.md) | [https://pub.dev/packages/pointycastle](https://pub.dev/packages/pointycastle) | 54 |
+| [cryptography_plus](libraries/dart/cryptography_plus/cryptography_plus.md) | [https://pub.dev/packages/cryptography_plus](https://pub.dev/packages/cryptography_plus) | 21 |
+| [pointycastle](libraries/dart/pointycastle/pointycastle.md) | [https://pub.dev/packages/pointycastle](https://pub.dev/packages/pointycastle) | 68 |
 
 ## Java
 
 | Name | Url | Tests |
 | --- | --- | --- |
 | [AmazonCorrettoCryptoProvider](libraries/java/amazoncorrettocryptoprovider/amazoncorrettocryptoprovider.md) | [https://github.com/corretto/amazon-corretto-crypto-provider](https://github.com/corretto/amazon-corretto-crypto-provider) | 122 |
-| [BC](libraries/java/bc/bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 648 |
-| [Conscrypt](libraries/java/conscrypt/conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 104 |
+| [BC](libraries/java/bc/bc.md) | [https://www.bouncycastle.org/](https://www.bouncycastle.org/) | 660 |
+| [Conscrypt](libraries/java/conscrypt/conscrypt.md) | [https://github.com/google/conscrypt](https://github.com/google/conscrypt) | 107 |
 | [SC](libraries/java/sc/sc.md) | [https://github.com/rtyley/spongycastle](https://github.com/rtyley/spongycastle) | 527 |
 | [SUN](libraries/java/sun/sun.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 35 |
 | [SunEC](libraries/java/sunec/sunec.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 35 |
-| [SunJCE](libraries/java/sunjce/sunjce.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 104 |
+| [SunJCE](libraries/java/sunjce/sunjce.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 109 |
 | [SunRsaSign](libraries/java/sunrsasign/sunrsasign.md) | [https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html](https://docs.oracle.com/en/java/javase/24/security/oracle-providers.html) | 67 |
 
 ## Javascript
@@ -39,13 +39,13 @@ At this point no test results are being included.
 | [@bitcoin-js/tiny-secp256k1-asmjs](libraries/js/bitcoin-js-tiny-secp256k1-asmjs/bitcoin-js-tiny-secp256k1-asmjs.md) | [https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs](https://www.npmjs.com/package/@bitcoin-js/tiny-secp256k1-asmjs) | 5 |
 | [@noble/ciphers](libraries/js/noble-ciphers/noble-ciphers.md) | [https://github.com/paulmillr/noble-ciphers](https://github.com/paulmillr/noble-ciphers) | 70 |
 | [@noble/curves](libraries/js/noble-curves/noble-curves.md) | [https://github.com/paulmillr/noble-curves](https://github.com/paulmillr/noble-curves) | 69 |
-| [@noble/hashes](libraries/js/noble-hashes/noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 36 |
-| [@polkadot/wasm-crypto](libraries/js/polkadot-wasm-crypto/polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 11 |
+| [@noble/hashes](libraries/js/noble-hashes/noble-hashes.md) | [https://github.com/paulmillr/noble-hashes](https://github.com/paulmillr/noble-hashes) | 47 |
+| [@polkadot/wasm-crypto](libraries/js/polkadot-wasm-crypto/polkadot-wasm-crypto.md) | [https://github.com/polkadot-js/wasm](https://github.com/polkadot-js/wasm) | 12 |
 | @scure/bip32 | [https://github.com/paulmillr/scure-bip32](https://github.com/paulmillr/scure-bip32) | 1 |
 | [bitcoinjs-lib-v5](libraries/js/bitcoinjs-lib-v5/bitcoinjs-lib-v5.md) | [https://www.npmjs.com/package/bitcoinjs-lib](https://www.npmjs.com/package/bitcoinjs-lib) | 2 |
 | blakejs | [https://www.npmjs.com/package/blakejs](https://www.npmjs.com/package/blakejs) | 2 |
 | [browserify-sign](libraries/js/browserify-sign/browserify-sign.md) | [https://www.npmjs.com/package/browserify-sign](https://www.npmjs.com/package/browserify-sign) | 47 |
-| [crypto-browserify](libraries/js/crypto-browserify/crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 147 |
+| [crypto-browserify](libraries/js/crypto-browserify/crypto-browserify.md) | [https://www.npmjs.com/package/crypto-browserify](https://www.npmjs.com/package/crypto-browserify) | 156 |
 | [crypto-js](libraries/js/crypto-js/crypto-js.md) | [https://www.npmjs.com/package/crypto-js](https://www.npmjs.com/package/crypto-js) | 35 |
 | [crypto.subtle](libraries/js/crypto.subtle/crypto.subtle.md) | [https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/](https://www.w3.org/TR/2017/REC-WebCryptoAPI-20170126/) | 76 |
 | curve25519-js | [https://www.npmjs.com/package/curve25519-js](https://www.npmjs.com/package/curve25519-js) | 1 |
@@ -58,10 +58,10 @@ At this point no test results are being included.
 | keccak | [https://www.npmjs.com/package/keccak](https://www.npmjs.com/package/keccak) | 8 |
 | keccak256 | [https://github.com/keccak256js/keccak256](https://github.com/keccak256js/keccak256) | 1 |
 | [miscreant](libraries/js/miscreant/miscreant.md) | [https://www.npmjs.com/package/miscreant](https://www.npmjs.com/package/miscreant) | 12 |
-| [node-forge](libraries/js/node-forge/node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 84 |
-| [node.js](libraries/js/node.js/node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 269 |
+| [node-forge](libraries/js/node-forge/node-forge.md) | [https://www.npmjs.com/package/node-forge](https://www.npmjs.com/package/node-forge) | 85 |
+| [node.js](libraries/js/node.js/node.js.md) | [https://nodejs.org/api/crypto.html](https://nodejs.org/api/crypto.html) | 300 |
 | [secp256k1](libraries/js/secp256k1/secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 2 |
-| [sjcl](libraries/js/sjcl/sjcl.md) | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 51 |
+| [sjcl](libraries/js/sjcl/sjcl.md) | [https://github.com/bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) | 52 |
 | sshpk | [https://www.npmjs.com/package/sshpk](https://www.npmjs.com/package/sshpk) | 12 |
 | [tiny-secp256k1](libraries/js/tiny-secp256k1/tiny-secp256k1.md) | [https://www.npmjs.com/package/secp256k1](https://www.npmjs.com/package/secp256k1) | 5 |
 | [tweetnacl](libraries/js/tweetnacl/tweetnacl.md) | [https://github.com/dchest/tweetnacl-js](https://github.com/dchest/tweetnacl-js) | 4 |
@@ -72,9 +72,9 @@ At this point no test results are being included.
 | --- | --- | --- |
 | [ecdsa](libraries/py/ecdsa/ecdsa.md) | [https://pypi.org/project/ecdsa/](https://pypi.org/project/ecdsa/) | 100 |
 | [joserfc](libraries/py/joserfc/joserfc.md) | [https://jose.authlib.org/](https://jose.authlib.org/) | 31 |
-| [pyca](libraries/py/pyca/pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 322 |
-| [pycryptodome](libraries/py/pycryptodome/pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 343 |
-| [pyjwt](libraries/py/pyjwt/pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 19 |
+| [pyca](libraries/py/pyca/pyca.md) | [https://cryptography.io/en/latest/](https://cryptography.io/en/latest/) | 333 |
+| [pycryptodome](libraries/py/pycryptodome/pycryptodome.md) | [https://pypi.org/project/pycryptodome/](https://pypi.org/project/pycryptodome/) | 359 |
+| [pyjwt](libraries/py/pyjwt/pyjwt.md) | [https://pyjwt.readthedocs.io/](https://pyjwt.readthedocs.io/) | 20 |
 | [pynacl](libraries/py/pynacl/pynacl.md) | [https://pynacl.readthedocs.io/en/latest/](https://pynacl.readthedocs.io/en/latest/) | 3 |
 
 ## Rust
@@ -88,6 +88,10 @@ At this point no test results are being included.
 | [aes_kw](libraries/rs/aes_kw/aes_kw.md) | [https://docs.rs/aes_kw/latest/aes_kw/](https://docs.rs/aes_kw/latest/aes_kw/) | 16 |
 | [aes_siv](libraries/rs/aes_siv/aes_siv.md) | [https://docs.rs/aes_siv/latest/aes_siv/](https://docs.rs/aes_siv/latest/aes_siv/) | 4 |
 | [aria](libraries/rs/aria/aria.md) | [https://docs.rs/aria/latest/aria/](https://docs.rs/aria/latest/aria/) | 3 |
+| [ark_bls12_377](libraries/rs/ark_bls12_377/ark_bls12_377.md) | [https://docs.rs/ark-bls12-377/latest/ark_bls12_377/](https://docs.rs/ark-bls12-377/latest/ark_bls12_377/) | 2 |
+| [ark_bls12_381](libraries/rs/ark_bls12_381/ark_bls12_381.md) | [https://docs.rs/ark-bls12-381/latest/ark_bls12_381/](https://docs.rs/ark-bls12-381/latest/ark_bls12_381/) | 2 |
+| [ark_bn254](libraries/rs/ark_bn254/ark_bn254.md) | [https://docs.rs/ark-bn254/latest/ark_bn254/](https://docs.rs/ark-bn254/latest/ark_bn254/) | 2 |
+| [ark_test_curves](libraries/rs/ark_test_curves/ark_test_curves.md) | [https://docs.rs/ark-test-curves/latest/ark_test_curves/](https://docs.rs/ark-test-curves/latest/ark_test_curves/) | 2 |
 | [ascon-aead](libraries/rs/ascon-aead/ascon-aead.md) | [https://docs.rs/ascon-aead/latest/ascon_aead/](https://docs.rs/ascon-aead/latest/ascon_aead/) | 1 |
 | [ascon_hash](libraries/rs/ascon_hash/ascon_hash.md) | [https://docs.rs/ascon-hash/latest/ascon_hash/](https://docs.rs/ascon-hash/latest/ascon_hash/) | 1 |
 | bign256 | [https://docs.rs/bign256/latest/bign256/](https://docs.rs/bign256/latest/bign256/) | 1 |
@@ -102,7 +106,7 @@ At this point no test results are being included.
 | cast5 | [https://docs.rs/cast5/latest/cast5/](https://docs.rs/cast5/latest/cast5/) | 1 |
 | cast6 | [https://docs.rs/cast6/latest/cast6/](https://docs.rs/cast6/latest/cast6/) | 5 |
 | [cbc](libraries/rs/cbc/cbc.md) | [https://docs.rs/cbc/latest/cbc/](https://docs.rs/cbc/latest/cbc/) | 22 |
-| [ccm](libraries/rs/ccm/ccm.md) | [https://docs.rs/ccm/latest/ccm/](https://docs.rs/ccm/latest/ccm/) | 27 |
+| [ccm](libraries/rs/ccm/ccm.md) | [https://docs.rs/ccm/latest/ccm/](https://docs.rs/ccm/latest/ccm/) | 33 |
 | [cfb8](libraries/rs/cfb8/cfb8.md) | [https://docs.rs/cfb8/latest/cfb8/](https://docs.rs/cfb8/latest/cfb8/) | 16 |
 | [cfb_mode](libraries/rs/cfb_mode/cfb_mode.md) | [https://docs.rs/cfb_mode/latest/cfb_mode/](https://docs.rs/cfb_mode/latest/cfb_mode/) | 17 |
 | chacha20poly1305 | [https://docs.rs/chacha20poly1305/latest/chacha20poly1305/](https://docs.rs/chacha20poly1305/latest/chacha20poly1305/) | 2 |
@@ -119,6 +123,7 @@ At this point no test results are being included.
 | hkdf | [https://docs.rs/hkdf/latest/hkdf/](https://docs.rs/hkdf/latest/hkdf/) | 11 |
 | [hmac](libraries/rs/hmac/hmac.md) | [https://docs.rs/hmac/latest/hmac/](https://docs.rs/hmac/latest/hmac/) | 11 |
 | idea | [https://docs.rs/idea/latest/idea](https://docs.rs/idea/latest/idea) | 1 |
+| [jsonwebtoken](libraries/rs/jsonwebtoken/jsonwebtoken.md) | [https://docs.rs/jsonwebtoken/latest/jsonwebtoken/](https://docs.rs/jsonwebtoken/latest/jsonwebtoken/) | 16 |
 | [jwt_rustcrypto](libraries/rs/jwt_rustcrypto/jwt_rustcrypto.md) | [https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/](https://docs.rs/jwt-rustcrypto/latest/jwt_rustcrypto/) | 19 |
 | [k256](libraries/rs/k256/k256.md) | [https://docs.rs/k256/latest/k256/](https://docs.rs/k256/latest/k256/) | 6 |
 | kangarootwelve | [https://docs.rs/kangarootwelve/latest/kangarootwelve/](https://docs.rs/kangarootwelve/latest/kangarootwelve/) | 1 |
@@ -133,6 +138,7 @@ At this point no test results are being included.
 | [p256](libraries/rs/p256/p256.md) | [https://docs.rs/p256/latest/p256/](https://docs.rs/p256/latest/p256/) | 4 |
 | [p384](libraries/rs/p384/p384.md) | [https://docs.rs/p384/latest/p384/](https://docs.rs/p384/latest/p384/) | 4 |
 | [p521](libraries/rs/p521/p521.md) | [https://docs.rs/p521/latest/p521/](https://docs.rs/p521/latest/p521/) | 4 |
+| pbkdf2 | [https://docs.rs/pbkdf2/latest/pbkdf2/](https://docs.rs/pbkdf2/latest/pbkdf2/) | 7 |
 | pcbc | [https://docs.rs/pcbc/latest/pcbc/](https://docs.rs/pcbc/latest/pcbc/) | 3 |
 | pkcs8 | [https://docs.rs/pkcs8/latest/pkcs8/](https://docs.rs/pkcs8/latest/pkcs8/) | 11 |
 | pmac | [https://docs.rs/pmac/latest/pmac/](https://docs.rs/pmac/latest/pmac/) | 3 |
@@ -158,12 +164,12 @@ At this point no test results are being included.
 | [twofish](libraries/rs/twofish/twofish.md) | [https://docs.rs/twofish/latest/twofish/](https://docs.rs/twofish/latest/twofish/) | 3 |
 | [x25519_dalek](libraries/rs/x25519_dalek/x25519_dalek.md) | [https://docs.rs/x25519_dalek/latest/x25519_dalek/](https://docs.rs/x25519_dalek/latest/x25519_dalek/) | 1 |
 | [x448](libraries/rs/x448/x448.md) | [https://docs.rs/x448/latest/x448/](https://docs.rs/x448/latest/x448/) | 1 |
-| [xtea](libraries/rs/xtea/xtea.md) | [https://docs.rs/xtea/latest/xtea/](https://docs.rs/xtea/latest/xtea/) | 1 |
+| [xtea](libraries/rs/xtea/xtea.md) | [https://docs.rs/xtea/latest/xtea/](https://docs.rs/xtea/latest/xtea/) | 2 |
 | [xts_mode](libraries/rs/xts_mode/xts_mode.md) | [https://docs.rs/xts-mode/latest/xts_mode/](https://docs.rs/xts-mode/latest/xts_mode/) | 10 |
 
 ## Swift
 
 | Name | Url | Tests |
 | --- | --- | --- |
-| [CryptoSwift](libraries/swift/cryptoswift/cryptoswift.md) | [https://github.com/krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) | 69 |
-| [swift-crypto](libraries/swift/swift-crypto/swift-crypto.md) | [https://github.com/apple/swift-crypto](https://github.com/apple/swift-crypto) | 25 |
+| [CryptoSwift](libraries/swift/cryptoswift/cryptoswift.md) | [https://github.com/krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) | 78 |
+| [swift-crypto](libraries/swift/swift-crypto/swift-crypto.md) | [https://github.com/apple/swift-crypto](https://github.com/apple/swift-crypto) | 26 |

@@ -14,3 +14,12 @@
 | PS256 | PS256 | 2048, 3072 |
 | PS384 | PS384 | 2048, 3072 |
 | PS512 | PS512 | 2048, 3072 |
+| EdDSA | EdDSA | |
+
+## JwsMacVerify
+
+| primitive | jwa |
+| --- | --- |
+| HS256 | HS256 |
+| HS384 | HS384 |
+| HS512 | HS512 |

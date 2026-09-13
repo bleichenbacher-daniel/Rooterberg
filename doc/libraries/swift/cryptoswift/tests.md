@@ -32,6 +32,12 @@
 | HmacSha3_384 | | 384 |
 | HmacSha3_512 | | 512 |
 
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
+
 ## Hkdf
 
 | primitive | sha |

@@ -13,12 +13,12 @@
 | SerpentGcm | 128, 256 | 96 | 128 |
 | TwofishGcm | 128, 256 | 96 | 128 |
 | AesGcmSiv | 128, 256 | 96 | 128 |
-| AesCcm | 128, 192, 256 | 88, 96, 104 | 64, 96, 128 |
+| AesCcm | 128, 192, 256 | 88, 96, 104 | 32, 48, 64, 80, 96, 128 |
 | CamelliaCcm | 128, 192, 256 | 104 | 64, 80 |
 | SeedCcm | 128 | 96 | 80, 128 |
 | Sm4Ccm | 128 | 96 | 128 |
 | AriaCcm | 128, 192, 256 | 96, 104 | 64, 128 |
-| AesEax | 128, 192, 256 | 128 | 64, 128 |
+| AesEax | 128, 192, 256 | 96, 128 | 64, 128 |
 | CamelliaEax | 128, 192, 256 | 128 | 128 |
 | TwofishEax | 256 | 128 | 128 |
 | AesOcb | 128, 192, 256 | 96, 120 | 64, 96, 128 |
@@ -218,6 +218,12 @@ There does not seem to be an algorithm name for deterministic signatures with P1
 | SipHash128_48 | 128 | 128 |
 | Kmac128 | 128 | 256 |
 | Kmac256 | 256 | 512 |
+
+## Pbkdf
+
+| primitive | sha |
+| --- | --- |
+| Pbkdf | SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA3-224, SHA3-256, SHA3-384, SHA3-512 |
 
 ## Pbes2
 

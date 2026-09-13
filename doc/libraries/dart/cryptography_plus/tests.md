@@ -8,6 +8,18 @@
 | XChacha20Poly1305 | 256 | 192 | 128 |
 | AesGcm | 128, 192, 256 | 64, 96, 128, 256 | 128 |
 
+## EddsaVerify
+
+| primitive | curve | cofactored | encoding |
+| --- | --- | --- | --- |
+| Eddsa | edwards25519 | False | RAW |
+
+## EddsaSign
+
+| primitive | curve | cofactored | encoding |
+| --- | --- | --- | --- |
+| Eddsa | edwards25519 | False | RAW |
+
 ## Hkdf
 
 | primitive | sha |
